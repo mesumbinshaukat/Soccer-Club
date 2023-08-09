@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Soccer &mdash; Website by Colorlib</title>
+<title>Soccer </title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
 <link rel="stylesheet" href="css/aos.css">
 <link rel="stylesheet" href="css/style.css">
-<?php include('./bootstrap/bootstrap-cdn.html')?>
+
 </head>
 <body>
 <div class="site-wrap">
@@ -33,7 +33,7 @@
 <div class="container">
 <div class="row align-items-center">
 <div class="col-lg-5 mx-auto text-center">
-<h1 class="text-white">Blog Posts</h1>
+<h1 class="text-white">News</h1>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae pariatur.</p>
 </div>
 </div>
@@ -42,7 +42,7 @@
 <div class="container site-section">
 <div class="row">
 <div class="col-6 title-section">
-<h2 class="heading">Latest Blog</h2>
+<h2 class="heading">Latest News</h2>
 </div>
 </div>
 <div class="row">
@@ -53,7 +53,7 @@
 </div>
 <div class="text">
 <span class="meta">May 20, 2020</span>
-<h3 class="mb-4"><a href="#">Romolu to stay at Real Nadrid?</a></h3>
+<h3 class="mb-4"><a href="#">News 1</a></h3>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus deserunt saepe tempora dolorem.</p>
 <p><a href="#">Read more</a></p>
 </div>
@@ -66,7 +66,7 @@
 </div>
 <div class="text">
 <span class="meta">May 20, 2020</span>
-<h3 class="mb-4"><a href="#">Romolu to stay at Real Nadrid?</a></h3>
+<h3 class="mb-4"><a href="#">News 2</a></h3>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus deserunt saepe tempora dolorem.</p>
 <p><a href="#">Read more</a></p>
 </div>
@@ -79,7 +79,7 @@
 </div>
 <div class="text">
 <span class="meta">May 20, 2020</span>
-<h3 class="mb-4"><a href="#">Romolu to stay at Real Nadrid?</a></h3>
+<h3 class="mb-4"><a href="#">News 3</a></h3>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus deserunt saepe tempora dolorem.</p>
 <p><a href="#">Read more</a></p>
 </div>
@@ -92,7 +92,7 @@
 </div>
 <div class="text">
 <span class="meta">May 20, 2020</span>
-<h3 class="mb-4"><a href="#">Romolu to stay at Real Nadrid?</a></h3>
+<h3 class="mb-4"><a href="#">News 4</a></h3>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus deserunt saepe tempora dolorem.</p>
 <p><a href="#">Read more</a></p>
 </div>
@@ -105,7 +105,7 @@
 </div>
 <div class="text">
 <span class="meta">May 20, 2020</span>
-<h3 class="mb-4"><a href="#">Romolu to stay at Real Nadrid?</a></h3>
+<h3 class="mb-4"><a href="#">News 5</a></h3>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus deserunt saepe tempora dolorem.</p>
 <p><a href="#">Read more</a></p>
 </div>
@@ -118,7 +118,7 @@
 </div>
 <div class="text">
 <span class="meta">May 20, 2020</span>
-<h3 class="mb-4"><a href="#">Romolu to stay at Real Nadrid?</a></h3>
+<h3 class="mb-4"><a href="#">News 6</a></h3>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus deserunt saepe tempora dolorem.</p>
 <p><a href="#">Read more</a></p>
 </div>

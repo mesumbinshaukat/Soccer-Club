@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Soccer &mdash; Website by Colorlib</title>
+  <title>Soccer</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
   <link rel="stylesheet" href="css/aos.css">
   <link rel="stylesheet" href="css/style.css">
-  <?php include('./bootstrap/bootstrap-cdn.html')?>
+ 
 </head>
 
 <body>
@@ -35,12 +35,12 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-5 ml-auto">
-            <h1 class="text-white">World Cup Event</h1>
+            <h1 class="text-white">Soccer</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae pariatur.</p>
             <div id="date-countdown"></div>
             <p>
-              <a href="#" class="btn btn-outline-info">Book Ticket</a>
-              <a href="#" class="more light">Learn More</a>
+              <a href="#" class="btn btn-primary py-3 px-4 mr-3">View Merchandise</a>
+              <a href="#" class="more light"></a>
             </p>
           </div>
         </div>
@@ -88,14 +88,15 @@
         </div>
         <div class="row no-gutters">
           <div class="col-md-4">
+         
             <div class="post-entry">
-              <a href="#">
+              <a href="index.php">
                 <img src="images/img_1.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="caption">
                 <div class="caption-inner">
-                  <h3 class="mb-3">Romolu to stay at Real Nadrid?</h3>
-                  <div class="author d-flex align-items-center">
+                  <!-- <h3 class="mb-3">Romolu to stay at Real Nadrid?</h3> -->
+                  <!-- <div class="author d-flex align-items-center">
                     <div class="img mb-2 mr-3">
                       <img src="images/person_1.jpg" alt="">
                     </div>
@@ -103,18 +104,20 @@
                       <h4>Mellissa Allison</h4>
                       <span>May 19, 2020 &bullet; Sports</span>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
+        
           </div>
+
           <div class="col-md-4">
             <div class="post-entry">
               <a href="#">
                 <img src="images/img_3.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="caption">
-                <div class="caption-inner">
+                <!-- <div class="caption-inner">
                   <h3 class="mb-3">Kai Nets Double To Secure Comfortable Away Win</h3>
                   <div class="author d-flex align-items-center">
                     <div class="img mb-2 mr-3">
@@ -125,17 +128,19 @@
                       <span>May 19, 2020 &bullet; Sports</span>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
+     
+
           <div class="col-md-4">
             <div class="post-entry">
               <a href="#">
                 <img src="images/img_2.jpg" alt="Image" class="img-fluid">
               </a>
               <div class="caption">
-                <div class="caption-inner">
+                <!-- <div class="caption-inner">
                   <h3 class="mb-3">Dogba set for Juvendu return?</h3>
                   <div class="author d-flex align-items-center">
                     <div class="img mb-2 mr-3">
@@ -146,10 +151,11 @@
                       <span>May 19, 2020 &bullet; Sports</span>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -384,7 +390,7 @@
             </div>
             <div class="text">
               <span class="meta">May 20, 2020</span>
-              <h3 class="mb-4"><a href="#">Romolu to stay at Real Nadrid?</a></h3>
+              <h3 class="mb-4"><a href="#">News 1</a></h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus deserunt saepe tempora dolorem.</p>
               <p><a href="#">Read more</a></p>
             </div>
@@ -397,7 +403,7 @@
             </div>
             <div class="text">
               <span class="meta">May 20, 2020</span>
-              <h3 class="mb-4"><a href="#">Romolu to stay at Real Nadrid?</a></h3>
+              <h3 class="mb-4"><a href="#">News 2</a></h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus deserunt saepe tempora dolorem.</p>
               <p><a href="#">Read more</a></p>
             </div>
