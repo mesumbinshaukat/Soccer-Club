@@ -12,10 +12,15 @@
         $players_count = $_POST['players_count'];
         $team_logo = $_FILES['team_logo']['name'];
         $team_logo_tmp = $_FILES['team_logo']['tmp_name'];
-        $team_logo_path = '../team logo'.$team_logo;
+        $team_logo_path = '../team_logo' . date('Y-m-d-H-s') . $team_logo;
         move_uploaded_file($team_logo_path,$img_logo_tmp);
 
-
+       $insert_query = "INSERT INTO `team`(`t_name`, `t_logo`, `t_players_count`) VALUES
+        ('$team_name','$team_logo_path','$players_count')";
+        $insert_query_run = mysqli_query($conn,$insert_query);
+        if($insert_query_run){
+          echo "<script>alert('worked')</script>";
+        }
    }
 
 ?>
@@ -25,12 +30,15 @@
     <title>Add team</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
-       body{
-            background-color: #252525;
-       }
+      body{
+        background-color: #252525;
+      }
     </style>
 </head>
 <body>
+<?php include('navbar.php'); ?>
+
+
     <h2 class="text-center pt-5 pb-5 text-light ">Add Team</h2>
 <div class="container d-flex justify-content-center">
 <form method="POST" enctype="multipart/form-data">
@@ -41,22 +49,10 @@
     <input type="file" class="form-control " name="team_logo" placeholder="Enter Player logo">
 </div>
 <div class="mb-3">
-    <input type="number" max="14" class="form-control " name="players_count" placeholder="Enter Players count">
+    <input type="number" min="12" max="16" class="form-control " name="players_count" placeholder="Enter Players count ( 12 - 16 )">
 </div>
 
-<div class="mb-3">
-   <select name="league_name" class="form-control">
-    <?php while($league_data= mysqli_fetch_array($run_query)){?>
-        <option value="<?php echo $league_data['l_id']; ?>"><?php echo $league_data['l_name']; ?></option>
-        <?php }?>
-   </select>
-</div>
-<div class="mb-3">
-    <input type="number" max="14" class="form-control " name="players_count" placeholder="Enter Players count">
-</div>
-<div class="mb-3">
-    <input type="number" max="14" class="form-control " name="players_count" placeholder="Enter Players count">
-</div>
+
 
 
 <div class="mb-3">

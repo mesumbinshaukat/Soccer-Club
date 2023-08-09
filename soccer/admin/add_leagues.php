@@ -3,11 +3,11 @@
 include('../connection.php');
 if(isset($_POST['submit_btn'])){
     $league_name = $_POST['league_name'];
-    $league_logo = $_FILES['league_pic']['name'];
+    $league_logo = $_FILES['league_pic']['name'] ;
     $league_logo_tmp = $_FILES['league_pic']['tmp_name'];
-    $league_logo_path = 'league_logo'. $league_logo;
-    move_uploaded_file($league_logo_path,$league_logo_tmp);
-    $insert_query = "INSERT INTO `leagues`(`l_name`, `l_logo`) VALUES ('$league_name' , '$league_logo')";
+    $league_logo_path = "../league_logo/" . date('Y-m-d-H-s') . $league_logo;
+    move_uploaded_file($league_logo_tmp ,$league_logo_path);
+    $insert_query = "INSERT INTO `leagues`(`l_name`, `l_logo`) VALUES ('$league_name' , '$league_logo_path')";
     $insert_query_run = mysqli_query($conn , $insert_query);
 }
 
@@ -20,7 +20,7 @@ if(isset($_POST['submit_btn'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
-    <title>Document</title>
+    <title>Add Leagues</title>
 
          <style>
        body{
@@ -31,6 +31,12 @@ if(isset($_POST['submit_btn'])){
     
 </head>
 <body>
+
+<?php include('navbar.php'); ?>
+
+
+
+
     <h1 class="text-center mt-5 ">ADD LEAGUE NAME</h1>
     <div class="container mt-5">
     <form  method="post" enctype="multipart/form-data">
