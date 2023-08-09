@@ -11,6 +11,9 @@
 <body>
     <section>
         <div class="container-sm mt-5">
+            <div class="text-dark text-center d-flex justify-content-center">
+                <h3>Sign Up</h3>
+            </div>
         <form>
   <div class="mb-3">
     
@@ -22,7 +25,8 @@
     <input type="password" class="form-control" id="exampleInputPassword1">
   </div>
   
-  <button type="submit" class="btn btn-primary">Submit</button>
+<input type="submit" class="btn btn-dark" >
+
 </form>
         </div>
     
