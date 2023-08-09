@@ -379,7 +379,7 @@
     <div class="container site-section">
       <div class="row">
         <div class="col-6 title-section">
-          <h2 class="heading">Our Blog</h2>
+          <h2 class="heading">Latest News</h2>
         </div>
       </div>
       <div class="row">
