@@ -24,7 +24,7 @@ padding-left: 20px;
 }
 .sidenav a {
   
-  padding: 6px 8px 6px 16px;
+  padding: 10px 10px 14px 18px;
   text-decoration: none;
   font-size: 20px;
   color: #818181;
@@ -50,11 +50,15 @@ padding-left: 20px;
 <body>
 
 <div class="sidenav">
-  <img src="../images/logo.png" class="hello mb-4" alt="">
-  <a href="notifications.php">Notifications</a>
-  <a href="add_leagues.php">Add Leagues</a>
-  <a href="addteam.php">Add Teams</a>
-  <a href="schedule.php">Schedule</a>
+  <img src="../images/logo.png" class="hello mb-5" alt="">
+  <a style="font-size: medium;" href="notifications.php">Notifications</a>
+  <a style="font-size: medium;" href="add_leagues.php">Add Leagues</a>
+  <a style="font-size: medium;" href="addteam.php">Add Teams</a>
+  <a style="font-size: medium;" href="schedule.php">Schedule</a>
+  <a style="font-size: medium;" href="addplayers.php">Add Players</a>
+  <a style="font-size: medium;" href="add_marchendise.php">Add Marchendise</a>
+  <a style="font-size: medium;" href="marchendise_category.php">Add Marchendise Category</a>
+
   
   </div>
 

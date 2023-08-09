@@ -1,6 +1,6 @@
 <?php
 include('../connection.php');
-$select_query = "SELECT * FROM 'team'";
+$select_query = "SELECT * FROM `team`";
 $select_query_run = mysqli_query($conn,$select_query);
 if(isset($_POST['Add_player_button'])){
 
@@ -32,7 +32,10 @@ if($insert_query_run){
     </style>
 </head>
 <body>
-<form method="post">
+<?php include('navbar.php')?>
+<h1 class="text-center mt-5">ADD PLAYER</h1>
+<div class="container mt-3 me-5">
+<form method="post" enctype="multipart/form-data">
    <div class="container">
   <div class="mb-3">
     <label>Player Name</label>
@@ -44,9 +47,9 @@ if($insert_query_run){
   </div>
   <div class="mb-3">
     <label>Select Team</label>
-    <select name="player_team">
+    <select name="player_team" class="form-select form-control" >
         <?php while($teams = mysqli_fetch_array($select_query_run)) {?>
-        <option value="<?php echo $teams['t_id']?>"><?php echo $teams['t_name']?></option>
+        <option  value="<?php echo $teams['t_id']?>"><?php echo $teams['t_name']?></option>
         <?php }?>
     </select>
   </div>
@@ -56,5 +59,9 @@ if($insert_query_run){
 
 </form>
 </div>
+</div>
+
+
+
 </body>
 </html>

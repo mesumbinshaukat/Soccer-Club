@@ -39,8 +39,8 @@
 <?php include('navbar.php'); ?>
 
 
-    <h2 class="text-center pt-5 pb-5 text-light ">Add Team</h2>
-<div class="container d-flex justify-content-center">
+    <h1 class="text-center pt-5 pb-5 text-light ">Add Team</h1>
+<div class="container me-5">
 <form method="POST" enctype="multipart/form-data">
 <div class="mb-3">
   <input type="text" class="form-control " name="team_name" placeholder="Enter team name">

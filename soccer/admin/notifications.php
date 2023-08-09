@@ -32,7 +32,7 @@ $select_query_run = mysqli_query($conn, $select_query);
                 <th>TEAMS</th>
                 <th>DATE</th>
                 <th>TIME</th>
-                <th></th>
+                <th>Match Update (After played)</th>
 
             </tr>
         <?php
@@ -59,7 +59,7 @@ $select_query_run = mysqli_query($conn, $select_query);
                 $s_q1 = mysqli_query($conn , $selectss1);
                 $fetch1 = mysqli_fetch_array($s_q1);
 
-                echo $fetch['t_name'] ?> Vs <?php echo $fetch1['t_name'];} 
+                echo $fetch['t_name'] ?> Vs <?php echo $fetch1['t_name'];
                         
                         ?>
                     </td>
@@ -70,11 +70,11 @@ $select_query_run = mysqli_query($conn, $select_query);
                         <?php echo  $notification['time'] ?>
                     </td>
                     <td>
-                        <a href="update_schedule.php?id=<?php echo $notification['match_id'] ?>" class="btn btn-success">Update</a>     
+                        <a href="update_schedule.php?id=<?php echo $notification['match_id'] ?>&team1=<?php echo $fetch['t_name']?>&team2=<?php echo $fetch1['t_name']?>" class="btn btn-success">Update</a>     
                     </td>
                 </tr>
                 
-                <?php }?>
+                <?php }} ?>
             </table>
     </div>
 </body>
