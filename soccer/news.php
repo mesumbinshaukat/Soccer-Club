@@ -40,7 +40,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-5 mx-auto text-center">
-            <h1 class="text-white">News</h1>
+            <h1 class="text-white">Soccer Latest News</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae pariatur.</p>
           </div>
         </div>
@@ -58,13 +58,13 @@
         // debugger
         var alldata = data.articles;
         console.log(alldata)
-        for (var index = 15; index < 20/*alldata.length*/; index++) {
+        for (var index = 15; index < alldata.length/*alldata.length*/; index++) {
           element = alldata[index];
           console.log(element);
           // console.log(element['title']);
           // console.log(element['urlToImage']);
-          document.getElementById('test').innerHTML += "<div class='col-lg-4 mb-4'><div class='custom-media d-block' ><div class='img mb-4'><a href='single.html'><img src='" + element['urlToImage'] + "' alt='Image' class='img-fluid'></a>" +
-            "<div class='text'><span class='meta'>" + element['publishedAt'] + "</span> <h3 class='mb-4'><a href='#''>" + element['title'] +
+          document.getElementById('test').innerHTML += "<div class='col-lg-4 mb-4'><div class='custom-media d-block' ><div class='img mb-4'><a href='./articles/newsrelated.php?index="+ index + "'><img src='" + element['urlToImage'] + "' alt='Image' class='img-fluid'></a>" +
+            "<div class='text'><span class='meta'>" + element['publishedAt'] + "</span> <h3 class='mb-4'><a href='./articles/newsrelated.php?index="+ index + "'>" + element['title'] +
             "</a></h3><p>" + element['description'] + "</p><p><a href='./articles/newsrelated.php?index="+ index +"'>Read more</a></p></div></div>";
 
 
