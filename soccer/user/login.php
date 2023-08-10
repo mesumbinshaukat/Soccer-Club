@@ -6,8 +6,9 @@ if (isset($_POST['btn_submit'])) {
     $u_email = $_POST['u_email'];
     $u_pass = $_POST['u_pass'];
     echo "<script>alert('$u_email')</script>";
+    echo "<script>alert('$u_pass')</script>";
 
-    $select_query = "SELECT * FROM `user` WHERE `user_email`='mesum@worldoftech.co'";
+    $select_query = "SELECT * FROM `user` WHERE `user_email`='$u_email'";
 
     $run_select_query = mysqli_query($conn, $select_query);
 
@@ -15,10 +16,10 @@ if (isset($_POST['btn_submit'])) {
         $fetch_user_details = mysqli_fetch_assoc($run_select_query);
         $fetch_email = $fetch_user_details['user_email'];
         $fetch_pass = $fetch_user_details['u_password'];
-        $fetch_pass = $fetch_user_details['u_name'];
-        echo "<script>alert('$fetch_email')</script>";
+        $fetch_name = $fetch_user_details['u_name'];
+        echo "<script>alert('$fetch_pass')</script>";
 
-        if ($u_email == $fetch_email) {
+        if ($u_email == $fetch_email && $u_pass == $fetch_pass) {
 ?>
 
 <style>
@@ -28,9 +29,9 @@ if (isset($_POST['btn_submit'])) {
 </style>
 <?php
 
-            $_SESSION['u_email'] = $u_email;
-            $_SESSION['u_pass'] = $u_pass;
-            $_SESSION['u_name'] = $u_name;
+            $_SESSION['u_email'] = $fetch_email;
+            $_SESSION['u_pass'] = $fetch_pass;
+            $_SESSION['u_name'] = $fetch_name;
 
             header("location:../index.php");
             exit();
