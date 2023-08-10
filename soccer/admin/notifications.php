@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin_loggedin'])){
+    header('location:login.php');
+
+}
 include('../connection.php');
 $select_query = "SELECT * FROM `match_schedule`  INNER JOIN `team` ON (match_schedule.team_1 = team.t_id)";
 $select_query_run = mysqli_query($conn, $select_query);
@@ -22,9 +27,12 @@ $select_query_run = mysqli_query($conn, $select_query);
 </head>
     
 <body>
-    <div>
-        <?php include('navbar.php') ?>
-    </div>
+<div id="mySidebar" class="sidebar">
+    <?php include('navbar.php') ?>
+    
+</div>
+  <div id="main">
+  <span style="font-size:30px;cursor:pointer; color:white;" onclick="openNav()">&#9776; </span> 
     <div class="container me-5 mt-5">
         <h1 class="text-center mb-4" >Matches</h1>
         <table class="table table-dark table-bordered">
@@ -32,7 +40,7 @@ $select_query_run = mysqli_query($conn, $select_query);
                 <th>TEAMS</th>
                 <th>DATE</th>
                 <th>TIME</th>
-                <th>Match Update (After played)</th>
+                <th>Match Situations</th>
 
             </tr>
         <?php
@@ -41,10 +49,8 @@ $select_query_run = mysqli_query($conn, $select_query);
             $date_now = date("Y-m-d"); 
             $tabl_date = $notification['date'];
             if ( strtotime($date_now) >= strtotime($tabl_date)  ) {
-             
-                
-                
-                
+                if (empty($notification['team_1_goals'] && $notification['team_2_goals'])  ) {
+                    
                 ?>
 
                 <tr>
@@ -70,13 +76,19 @@ $select_query_run = mysqli_query($conn, $select_query);
                         <?php echo  $notification['time'] ?>
                     </td>
                     <td>
-                        <a href="update_schedule.php?id=<?php echo $notification['match_id'] ?>&team1=<?php echo $fetch['t_name']?>&team2=<?php echo $fetch1['t_name']?>" class="btn btn-success">Update</a>     
+                        <a href="update_schedule.php?id=<?php echo $notification['match_id'] ?>&team1=<?php echo $fetch['t_name']?>&team2=<?php echo $fetch1['t_name']?>" class="btn btn-success">Played</a>     
+                        <a href="update_schedule.php?id=<?php echo $notification['match_id'] ?>&team1=<?php echo $fetch['t_name']?>&team2=<?php echo $fetch1['t_name']?>" class="btn btn-success">Delay</a>     
+                        <a href="update_schedule.php?id=<?php echo $notification['match_id'] ?>&team1=<?php echo $fetch['t_name']?>&team2=<?php echo $fetch1['t_name']?>" class="btn btn-success">Cancel</a>     
                     </td>
                 </tr>
                 
-                <?php }} ?>
+                <?php }
+            else{
+             echo "No Matches Are Pending (played)";
+            }}} ?>
             </table>
     </div>
+            </div>
 </body>
 
 </html>

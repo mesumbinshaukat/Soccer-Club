@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin_loggedin'])){
+    header('location:login.php');
+
+}
 include('../connection.php');
 if (isset($_POST['submit_btn'])) {
     $team1 = $_POST['team1_id'];
@@ -7,7 +12,7 @@ if (isset($_POST['submit_btn'])) {
     $time = $_POST['time'];
     $league = $_POST['league'];
     if ($team1 != $team2) {
-        $insert_query = "INSERT INTO `match_schedule`(`team_1`, `team_2`, `date`, `time`, `m_league_id`) VALUES
+        $insert_query = "INSERT INTO `match_schedule`(`team_1`, `team_2`, `date`, `time`,`Location`,`m_league_id`) VALUES
          ('$team1','$team2','$date','$time','$league')";
         $insert_query_run = mysqli_query($conn, $insert_query);
         if ($insert_query_run) {
@@ -42,14 +47,19 @@ if (isset($_POST['submit_btn'])) {
 </head>
 
 <body>
-    <div>
-        <?php include('navbar.php') ?>
-    </div>
-    <div class="container me-5 mt-5">
+<div id="mySidebar" class="sidebar">
+    <?php include('navbar.php') ?>
+    
+</div>
+  <div id="main">
+  <span style="font-size:30px;cursor:pointer; color:white;" onclick="openNav()">&#9776; </span> 
+    <div class="container me-5 mt-3">
         <h1 class="text-center mb-2">Schedule</h1>
         <form method="post">
             <label for="">TEAM 1</label>
-            <select name="team1_id" id="" class="form-control">
+            <select name="team1_id" id="" class="form-control form-select">
+            <option value="" disabled selected hidden >Select Team one</option>
+
                 <?php
                 $teamone_query = "SELECT * FROM `team`";
                 $teamone_query_run = mysqli_query($conn, $teamone_query);
@@ -60,7 +70,9 @@ if (isset($_POST['submit_btn'])) {
                 <?php } ?>
             </select>
             <label class="" for="">TEAM 2</label>
-            <select name="team2_id" id="" class="form-control">
+            <select name="team2_id" id="" class="form-control form-select">
+            <option value="" disabled selected hidden >Select Team two</option>
+
                 <?php
                 $teamtwo_query = "SELECT * FROM `team`";
                 $teamtwo_query_run = mysqli_query($conn, $teamtwo_query);
@@ -71,7 +83,7 @@ if (isset($_POST['submit_btn'])) {
                 <?php } ?>
             </select>
             <label for="">Premier League</label>
-            <select name="league" id="" class="form-control">
+            <select name="league" id="" class="form-control form-select">
                 <?php
                 $league_query = "SELECT * FROM `leagues`";
                 $league_query_run = mysqli_query($conn, $league_query);
@@ -85,11 +97,39 @@ if (isset($_POST['submit_btn'])) {
             <input type="date" class="form-control " name="date">
             <label for="">Scheduled Time </label>
             <input type="time" class="form-control" name="time">
+            <label for="">Location</label>
+            <select name="location" class="form-control form-select" id="">
+            <option value="" disabled selected hidden >Select Location</option>
+            <optgroup label="Spain">
+            <option value="old-trafford">Old Trafford (Manchester)</option>
+            <option value="anfield">Anfield (Liverpool)</option>
+            <option value="wembley">Wembley Stadium (London)</option>
+                </optgroup>
+                <optgroup label="Italy">
+            <option value="san-siro">San Siro (Milan)</option>
+            <option value="juventus-stadium">Allianz Stadium (Turin)</option>
+            <option value="stadio-olimpico">Stadio Olimpico (Rome)</option>
+        </optgroup>
+        <optgroup label="Germany">
+            <option value="allianz-arena">Allianz Arena (Munich)</option>
+            <option value="signal-iduna-park">Signal Iduna Park (Dortmund)</option>
+        </optgroup>
+        <optgroup label="Japan">
+    <option value="national-stadium">National Stadium (Tokyo)</option>
+    <option value="saitama-stadium">Saitama Stadium 2002 (Saitama)</option>
+</optgroup>
+<optgroup label="Russia">
+    <option value="luzhniki">Luzhniki Stadium (Moscow)</option>
+    <option value="krestovsky">Krestovsky Stadium (Saint Petersburg)</option>
+</optgroup>
+            </select>
 
 
             <input type="submit" class="mt-2 btn btn-success" value="Submit" name="submit_btn" class="btn btn-success">
         </form>
     </div>
+    </div>
+                </div>
 </body>
 
 </html>

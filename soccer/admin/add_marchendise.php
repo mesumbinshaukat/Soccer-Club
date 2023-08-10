@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin_loggedin'])){
+    header('location:login.php');
+
+}
 include('../connection.php');
 if(isset($_POST['product_btn'])) {
     $p_name = $_POST["p_name"]; 
@@ -6,7 +11,7 @@ if(isset($_POST['product_btn'])) {
     $p_price = $_POST["p_price"];
     $product_pic = $_FILES['p_img']['name'];
     $product_pic_tmp = $_FILES['p_img']['tmp_name'];
-    $product_pic_path = "../product_photos/" . date('Y-m-d-H-s') . $product_pic;
+    $product_pic_path = "product_photos/" . date('Y-m-d-H-s') . $product_pic;
     move_uploaded_file($product_pic_tmp , $product_pic_path);
     $insert_query = "INSERT INTO `marchandise`(`p_cat`, `p_name`, `p_price`, `p_image`) VALUES
      ('$p_category','$p_name','$p_price','$product_pic_path')";
@@ -36,10 +41,15 @@ if(isset($_POST['product_btn'])) {
     </style>
 </head>
 <body>
-<?php include('navbar.php') ?>
-
-    <h1 class="text-center mt-5">Add Product</h1>
-    <div class="container me-5 " >
+  <div id="mySidebar" class="sidebar">
+    <?php include('navbar.php') ?>
+    
+</div>
+  <div id="main">
+  <span style="font-size:30px;cursor:pointer; color:white;" onclick="openNav()">&#9776; </span> 
+  <div  class="container me-5 " >
+    <h1 class="text-center mt-5 ">Add Product</h1>
+    
     <form method="post" enctype="multipart/form-data">
   <div class="mb-3">
     <label>Product Name</label>
@@ -47,7 +57,8 @@ if(isset($_POST['product_btn'])) {
   </div>
   <div class="mb-3">
     <label>Product Category</label>
-    <select name="p_category" class="form-control">
+    <select name="p_category" class="form-control form-select">
+    <option value="" disabled selected hidden >Select Product Category</option>
         <?php $select_category = "SELECT * FROM `product_category` ";
         $select_query_run = mysqli_query($conn , $select_category);
         while($category = mysqli_fetch_array($select_query_run)){?>

@@ -1,4 +1,10 @@
-<?php include('../connection.php');
+<?php
+session_start();
+if(!isset($_SESSION['admin_loggedin'])){
+    header('location:login.php');
+
+}
+include('../connection.php');
 $get_id = $_GET['id'];
 $get_team1 = $_GET['team1'];
 $get_team2 = $_GET['team2'];
@@ -6,16 +12,18 @@ $select_query = "SELECT * FROM `match_schedule` WHERE match_id = '$get_id'";
 $select_query_run = mysqli_query($conn , $select_query);
 $fetch_query = mysqli_fetch_all($select_query_run);
 
+
 if (isset($_POST['btn_update'])) {
-   $m_status = $_POST['m_status'];     
    $team1_goals = $_POST['team1_goals'];     
    $team2_goals = $_POST['team2_goals'];    
    $player_of_the_match = $_POST['player_of_the_match'];
 
-   $update_query = "UPDATE `match_schedule` SET `m_status`='$m_status',`team_1_goals`='$team1_goals',`team_2_goals`='$team2_goals',`player_of_match`='$player_of_the_match' WHERE `match_id` = '$get_id'";
+   $update_query = "UPDATE `match_schedule` SET `m_status`='2' ,`team_1_goals`='$team1_goals',`team_2_goals`='$team2_goals',`player_of_match`='$player_of_the_match' WHERE `match_id` = '$get_id'";
    $update_query_run = mysqli_query($conn , $update_query);
    if($update_query_run){
-    echo "<script>alert('schedule updated')</script>";
+    echo "<script>alert('schedule updated');
+    window.location.href='notifications.php'
+    </script>";
    }
 
 }
@@ -39,24 +47,20 @@ if (isset($_POST['btn_update'])) {
     </style>
 </head>
 <body>
-<?php include('navbar.php') ?>
+<div id="mySidebar" class="sidebar">
+    <?php include('navbar.php') ?>
+    
+</div>
+  <div id="main">
+  <span style="font-size:30px;cursor:pointer; color:white;" onclick="openNav()">&#9776; </span> 
 
 <h1 class="text-center mt-5">UPDATE SCHEDULE</h1>
  
     <div class="container me-5 mt-5 ">
         
 <form method="post">
-  <div class="mb-3">
-    <label >Match Status</label>
-    <select name="m_status" class=" form-select form-control">
-      <option value="2">Match Completed</option>
-      <option value="1">Match Delayed</option>
-      <option value="0" onclick="functionhide()">Match Drawn/Cancelled</option>
 
-
-    </select>
-  </div>
-  <div id="hide">
+ 
   <div class="mb-3">
     <label >Team 1 Goals</label>
     <input type="number" min="0" class="form-control" name="team1_goals" placeholder="Goals Score By <?php echo $get_team1 ?>">
@@ -78,13 +82,13 @@ if (isset($_POST['btn_update'])) {
     </select>
     
   </div>
-  </div>
+     
 
   
   <input type="submit" class="btn btn-success" value="After Match Update" name="btn_update">
 </form>
 </div>
 
-
+        </div>
 </body>
 </html>

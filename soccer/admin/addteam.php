@@ -1,4 +1,9 @@
 <?php 
+session_start();
+if(!isset($_SESSION['admin_loggedin'])){
+    header('location:login.php');
+
+}
 
 
    include("../connection.php");
@@ -12,8 +17,8 @@
         $players_count = $_POST['players_count'];
         $team_logo = $_FILES['team_logo']['name'];
         $team_logo_tmp = $_FILES['team_logo']['tmp_name'];
-        $team_logo_path = '../team_logo' . date('Y-m-d-H-s') . $team_logo;
-        move_uploaded_file($team_logo_path,$img_logo_tmp);
+        $team_logo_path = 'team_logo/' . date('Y-m-d-H-s') . $team_logo;
+        move_uploaded_file($team_logo_tmp,$team_logo_path);
 
        $insert_query = "INSERT INTO `team`(`t_name`, `t_logo`, `t_players_count`) VALUES
         ('$team_name','$team_logo_path','$players_count')";
@@ -36,7 +41,12 @@
     </style>
 </head>
 <body>
-<?php include('navbar.php'); ?>
+<div id="mySidebar" class="sidebar">
+    <?php include('navbar.php') ?>
+    
+</div>
+  <div id="main">
+  <span style="font-size:30px;cursor:pointer; color:white;" onclick="openNav()">&#9776; </span> 
 
 
     <h1 class="text-center pt-5 pb-5 text-light ">Add Team</h1>
@@ -60,5 +70,6 @@
 </div>
 </form>
 </div>
+    </div>
 </body>
 </html>

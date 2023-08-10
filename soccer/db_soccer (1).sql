@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2023 at 11:11 PM
+-- Generation Time: Aug 10, 2023 at 02:01 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,6 +32,13 @@ CREATE TABLE `admin` (
   `user_name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `user_name`, `password`) VALUES
+(1, 'admin', 'admin123');
 
 -- --------------------------------------------------------
 
@@ -118,8 +125,9 @@ CREATE TABLE `match_schedule` (
   `team_2` int(11) NOT NULL,
   `date` date DEFAULT NULL,
   `time` varchar(500) NOT NULL,
+  `Location` varchar(200) NOT NULL,
   `m_league_id` int(11) DEFAULT NULL,
-  `m_status` int(11) DEFAULT NULL,
+  `m_status` int(11) DEFAULT 0,
   `team_1_goals` int(11) DEFAULT NULL,
   `team_2_goals` int(11) DEFAULT NULL,
   `player_of_match` int(11) DEFAULT NULL
@@ -129,9 +137,12 @@ CREATE TABLE `match_schedule` (
 -- Dumping data for table `match_schedule`
 --
 
-INSERT INTO `match_schedule` (`match_id`, `team_1`, `team_2`, `date`, `time`, `m_league_id`, `m_status`, `team_1_goals`, `team_2_goals`, `player_of_match`) VALUES
-(1, 2, 3, '2023-08-09', '21:00', 6, 2, 3, 1, 4),
-(2, 4, 2, '2023-08-09', '01:39', 6, NULL, NULL, NULL, NULL);
+INSERT INTO `match_schedule` (`match_id`, `team_1`, `team_2`, `date`, `time`, `Location`, `m_league_id`, `m_status`, `team_1_goals`, `team_2_goals`, `player_of_match`) VALUES
+(1, 2, 3, '2023-08-09', '21:00', '', 7, 0, 3, 2, NULL),
+(3, 3, 4, '2023-08-10', '14:02', '', 9, 2, 2, 3, 4),
+(4, 4, 3, '2023-08-10', '14:06', '', 6, 2, 4, 7, 5),
+(5, 14, 4, '2023-08-10', '15:42', '', 6, 0, NULL, NULL, NULL),
+(6, 14, 2, '2023-08-10', '15:51', '', 11, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -152,8 +163,10 @@ CREATE TABLE `players` (
 --
 
 INSERT INTO `players` (`p_id`, `p_name`, `p_pic`, `p_achievement`, `team_id`) VALUES
-(4, 'Cristiano Ronaldo', '../player_photo/2023-08-09-21-31manchester city.png', NULL, 3),
-(5, 'Lionel Messi', '../player_photo/2023-08-09-21-42654_russia2018_logo.jpg', NULL, 4);
+(7, 'Harry Maguire', 'player_photo/2023-08-10-13-07harry maguire manchester united.jpg', NULL, 14),
+(8, 'Casmiro', 'player_photo/2023-08-10-13-51casmiro mancester united.jpg', NULL, 14),
+(9, 'Muhammad Salah', 'player_photo/2023-08-10-13-56m salah liverpool.jpg', NULL, 3),
+(10, 'William Saliba', 'player_photo/2023-08-10-13-17william saliba livepool.jfif', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -197,9 +210,10 @@ CREATE TABLE `team` (
 --
 
 INSERT INTO `team` (`t_id`, `t_name`, `t_logo`, `t_players_count`, `league_acheivment_id`, `total_win`, `total_drawn`, `total_lost`) VALUES
-(2, 'Arsenal', '../team_logo2023-08-09-18-02Arsenal-Logo.png', 14, NULL, NULL, NULL, NULL),
-(3, 'Liverpool FC', '../team_logo2023-08-09-18-54Liverpool_FC.png', 15, NULL, NULL, NULL, NULL),
-(4, 'Chelsea', '../team_logo2023-08-09-20-46Chelsea_FC.png', 16, NULL, NULL, NULL, NULL);
+(2, 'Arsenal', 'team_logo/Arsenal-Logo.png', 14, NULL, NULL, NULL, NULL),
+(3, 'Liverpool FC', 'team_logo/Liverpool_FC.png', 15, NULL, NULL, NULL, NULL),
+(4, 'Chelsea', 'team_logo/Chelsea_FC.png', 16, NULL, NULL, NULL, NULL),
+(14, 'Manchester United', 'team_logo/2023-08-10-11-52manchester united.jpg', 12, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -300,7 +314,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `checkout`
@@ -330,13 +344,13 @@ ALTER TABLE `marchandise`
 -- AUTO_INCREMENT for table `match_schedule`
 --
 ALTER TABLE `match_schedule`
-  MODIFY `match_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `match_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `players`
 --
 ALTER TABLE `players`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `product_category`
@@ -348,7 +362,7 @@ ALTER TABLE `product_category`
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
-  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `user`

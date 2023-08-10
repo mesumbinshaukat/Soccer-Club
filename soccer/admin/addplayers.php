@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin_loggedin'])){
+    header('location:login.php');
+
+}
 include('../connection.php');
 $select_query = "SELECT * FROM `team`";
 $select_query_run = mysqli_query($conn,$select_query);
@@ -8,7 +13,7 @@ $player_name = $_POST['player_name'];
 $player_team = $_POST['player_team'];
 $player_pic = $_FILES['player_photo']['name'];
 $player_pic_tmp = $_FILES['player_photo']['tmp_name'];
-$player_pic_path = "../player_photo/" . date('Y-m-d-H-s') . $player_pic;
+$player_pic_path = "player_photo/" . date('Y-m-d-H-s') . $player_pic;
 move_uploaded_file($player_pic_tmp , $player_pic_path);
 
 $insert_query = "INSERT INTO `players`( `p_name`, `p_pic`, `team_id`) VALUES
@@ -32,7 +37,13 @@ if($insert_query_run){
     </style>
 </head>
 <body>
-<?php include('navbar.php')?>
+  
+<div id="mySidebar" class="sidebar">
+    <?php include('navbar.php') ?>
+    
+</div>
+  <div id="main">
+  <span style="font-size:30px;cursor:pointer; color:white;" onclick="openNav()">&#9776; </span> 
 <h1 class="text-center mt-5">ADD PLAYER</h1>
 <div class="container mt-3 me-5">
 <form method="post" enctype="multipart/form-data">
@@ -48,6 +59,8 @@ if($insert_query_run){
   <div class="mb-3">
     <label>Select Team</label>
     <select name="player_team" class="form-select form-control" >
+    <option value="" disabled selected hidden >Select Team</option>
+
         <?php while($teams = mysqli_fetch_array($select_query_run)) {?>
         <option  value="<?php echo $teams['t_id']?>"><?php echo $teams['t_name']?></option>
         <?php }?>
@@ -60,7 +73,7 @@ if($insert_query_run){
 </form>
 </div>
 </div>
-
+        </div>
 
 
 </body>

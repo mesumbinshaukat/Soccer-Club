@@ -1,11 +1,15 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin_loggedin'])){
+    header('location:login.php');
 
+}
 include('../connection.php');
 if (isset($_POST['submit_btn'])) {
     $league_name = $_POST['league_name'];
     $league_logo = $_FILES['league_pic']['name'];
     $league_logo_tmp = $_FILES['league_pic']['tmp_name'];
-    $league_logo_path = "../league_logo/" . date('Y-m-d-H-s') . $league_logo;
+    $league_logo_path = "league_logo/" . date('Y-m-d-H-s') . $league_logo;
     move_uploaded_file($league_logo_tmp, $league_logo_path);
     $insert_query = "INSERT INTO `leagues`(`l_name`, `l_logo`) VALUES ('$league_name' , '$league_logo_path')";
     $insert_query_run = mysqli_query($conn, $insert_query);
@@ -35,7 +39,12 @@ if (isset($_POST['submit_btn'])) {
 
 <body>
 
-    <?php include('navbar.php'); ?>
+<div id="mySidebar" class="sidebar">
+    <?php include('navbar.php') ?>
+    
+</div>
+  <div id="main">
+  <span style="font-size:30px;cursor:pointer; color:white;" onclick="openNav()">&#9776; </span> 
 
 
     <h1 class="text-center mt-5 ">ADD LEAGUE NAME</h1>
@@ -53,6 +62,7 @@ if (isset($_POST['submit_btn'])) {
                 <input type="submit" name="submit_btn" class="btn btn-success" value="Add League">
             </div>
         </form>
+    </div>
     </div>
 </body>
 

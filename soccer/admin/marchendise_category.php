@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(!isset($_SESSION['admin_loggedin'])){
+    header('location:login.php');
+
+}
 include('../connection.php');
 if(isset($_POST['cat_btn'])){
     $catname = $_POST['product_category'];
@@ -27,8 +32,12 @@ if(isset($_POST['cat_btn'])){
 </head>
 <body>
 
-<?php include('navbar.php') ?>
-<h1 class="text-center mb-3 mt-5 ">Product Categories</h1>
+<div id="mySidebar" class="sidebar">
+    <?php include('navbar.php') ?>
+    
+</div>
+  <div id="main">
+  <span style="font-size:30px;cursor:pointer; color:white;" onclick="openNav()">&#9776; </span> <h1 class="text-center mb-3 mt-5 ">Product Categories</h1>
 <div class="container me-5">
 <form method="post">
   <div class="mb-3">
@@ -39,5 +48,6 @@ if(isset($_POST['cat_btn'])){
   <input type="submit" class="btn btn-success" value="Add Category" name="cat_btn">
 </form>
 </div>
+    </div>
 </body>
 </html>
