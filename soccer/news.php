@@ -65,7 +65,7 @@
           // console.log(element['urlToImage']);
           document.getElementById('test').innerHTML += "<div class='col-lg-4 mb-4'><div class='custom-media d-block' ><div class='img mb-4'><a href='./articles/newsrelated.php?index="+ index + "'><img src='" + element['urlToImage'] + "' alt='Image' class='img-fluid'></a>" +
             "<div class='text'><span class='meta'>" + element['publishedAt'] + "</span> <h3 class='mb-4'><a href='./articles/newsrelated.php?index="+ index + "'>" + element['title'] +
-            "</a></h3><p>" + element['description'] + "</p><p><a href='./articles/newsrelated.php?index="+ index +"'>Read more</a></p></div></div>";
+            "</a></h3> <p><a href='./articles/newsrelated.php?index="+ index +"'>Read more</a></p></div></div>";
 
 
         }
