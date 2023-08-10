@@ -5,14 +5,25 @@ if(isset($_POST['btn_submit'])){
 
 
   $u_name = $_POST['u_name'];
-  $u_email = $_POST['user_email'];
+  $regex_email = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+  $u_email = $_POST['u_email'];
   $u_password = $_POST['u_password'];
   $u_contact = $_POST['u_contact'];
   $u_profile_name = $_FILES['u_profile']['name'];
   $u_profile_tmp_name = $_FILES['u_profile']['tmp_name'];
-  $location = "user_profile_pic/" . $u_profile_name;
-  move_uploaded_file($u_profile_tmp_name, $location);
+  
 
+if(preg_match($regex_email, $u_email))
+{
+
+  ?>
+  <style>
+    #error_msg{
+      display:none !important;
+    }
+  </style>
+
+<?php
 
   $select_user_data = "SELECT * FROM `user` WHERE `user_email` = '$u_email'";
 
@@ -22,22 +33,42 @@ if(isset($_POST['btn_submit'])){
 
   $fetch_email = $fetch_user_detail['user_email'];
 
-  if($fetch_email == $u_email){
-    echo "<script>alert('User Already Exist')</script>";
-  }
-  else{
+  if($fetch_email != $u_email){
     $insert_query = "INSERT INTO `user`(`u_name`, `user_email`, `u_password`, `u_profile`, `u_contact`) VALUES
     ('$u_name', '$u_email', '$u_password','$u_profile_name','$u_contact')";
  
    $query_run = mysqli_query($conn, $insert_query);
  
     if($query_run){
-     echo "<script>alert('Working')</script>";
+      $location = "user_profile_pic/" . $u_profile_name;
+      move_uploaded_file($u_profile_tmp_name, $location);
+      echo "<script>alert('Working')</script>";
+      header('location:login.php');
+      exit();
     }else{
      echo "<script>alert('Not Working')</script>";
  
     }
+    
   }
+  else{
+    
+    echo "<script>alert('User Already Exist')</script>";
+  }
+}else {
+  
+
+?>
+
+<style>
+#error_msg{
+  display:block !important;
+}  
+</style>
+<?php
+echo "<script>alert('Invalid Email')</script>";
+}
+  
 
   
 
@@ -66,31 +97,38 @@ if(isset($_POST['btn_submit'])){
 <center>
         <div class="mb-3">
           
-          <input type="text" class="form-control w-25" placeholder="Username" name="u_name">
+          <input type="text" class="form-control w-25" placeholder="Username" name="u_name" required>
           
         </div>
         <div class="mb-3">
           
-          <input type="text" class="form-control w-25" placeholder="Email" name="u_email">
-          
+          <input type="text" class="form-control w-25" placeholder="Email" name="u_email" required>
+          <p class="text-danger fw-bold" style="display:none;" id="error_msg">*Invalid Email Address</p>
         </div>
         <div class="mb-3">
           
-          <input type="password" class="form-control w-25" placeholder="Password" name="u_password">
+          <input type="password" class="form-control w-25" placeholder="Password" name="u_password" required>
         </div>
         <div class="mb-3">
           
-          <input type="text" class="form-control w-25" placeholder="Phone Number" name="u_contact">
+          <input type="text" class="form-control w-25" placeholder="Phone Number" name="u_contact" required>
         </div>
         <div class="mb-3">
           
-          <input type="file" class="form-control w-25" name="u_profile">
+          <input type="file" class="form-control w-25" name="u_profile" required>
         </div>
 
 </center>
     <!-- </div>         -->
   <center>
 <input type="submit" class="btn btn-outline-light" name="btn_submit">
+</center>
+
+
+<center>
+<div class="mb-3 mt-5 p-1">
+  <p><a href="login.php" class="text-primary fw-bold text-decoration-underline">Already have account</a></p>
+</div>
 </center>
 </form>
         </div>
