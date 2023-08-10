@@ -1,8 +1,29 @@
+<?php
+include('connection.php');
+$selecting_last_played_match = "SELECT * FROM `match_schedule` where `m_status` = 2  ORDER BY `match_id` DESC";
+$selecting_last_played_match_run = mysqli_query($conn, $selecting_last_played_match);
+$fetching_array = mysqli_fetch_array($selecting_last_played_match_run);
+$team1 = $fetching_array['team_1'];
+
+
+$select_team1_name = "SELECT * FROM `team` WHERE t_id = '$team1' ";
+$select_match1 = mysqli_query($conn , $select_team1_name);
+$fetcharrayteam1 = mysqli_fetch_array($select_match1);
+
+$team2 = $fetching_array['team_2'];
+
+
+$select_team2_name = "SELECT * FROM `team` WHERE t_id = '$team2' ";
+$select_match2 = mysqli_query($conn , $select_team2_name);
+$fetcharrayteam2 = mysqli_fetch_array($select_match2);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Soccer </title>
+    <title>Soccer</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -21,6 +42,7 @@
 </head>
 
 <body>
+
     <div class="site-wrap">
         <div class="site-mobile-menu site-navbar-target">
             <div class="site-mobile-menu-header">
@@ -30,127 +52,143 @@
             </div>
             <div class="site-mobile-menu-body"></div>
         </div>
-        <?php include('navbar.php') ?>
+        <?php include("navbar.php"); ?>
         <div class="hero overlay" style="background-image: url('images/bg_3.jpg');">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-5 mx-auto text-center">
-                        <h1 class="text-white">Players</h1>
+                    <div class="col-lg-5 ml-auto">
+                        <h1 class="text-white">Soccer</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae
                             pariatur.</p>
+                        <div id="date-countdown"></div>
+                        <p>
+                            <a href="#" class="btn btn-primary py-3 px-4 mr-3">View Merchandise</a>
+                            <a href="#" class="more light"></a>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="site-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6 title-section">
-                        <h2 class="heading">Star Players / Videos</h2>
-                    </div>
-                    <div class="col-6 text-right">
-                        <div class="custom-nav">
-                            <a href="#" class="js-custom-prev-v2"><span class="icon-keyboard_arrow_left"></span></a>
-                            <span></span>
-                            <a href="#" class="js-custom-next-v2"><span class="icon-keyboard_arrow_right"></span></a>
+        <div class="container mb-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="d-flex team-vs">
+                        <span class="score"><?php echo $fetching_array['team_1_goals'];?> -
+                            <?php  echo $fetching_array['team_2_goals'];    ?></span>
+                        <div class="team-1 w-50">
+                            <div class="team-details w-100 text-center">
+                                <img src="./admin/<?php echo $fetcharrayteam1['t_logo'] ?>" alt="Image"
+                                    class="img-fluid mb-2" style="height:100px;">
+                                <h3><?php echo $fetcharrayteam1['t_name'];?><span><?php if ( $fetching_array['team_1_goals'] >  $fetching_array['team_2_goals']) {
+                                   ?> (win)
+
+
+                                        <?php }else { ?>
+                                        (loss)
+                                        <?php } ?></span></h3>
+                                <?php 
+                                 
+                                 $select_player_team_1 = "SELECT *  FROM `players` WHERE team_id = '$team1' LIMIT 4";
+                                 $fetch_select_team_1 = mysqli_query($conn , $select_player_team_1);
+                                
+                                 
+                                 ?>
+
+
+                                <ul class="list-unstyled">
+                                    <?php while ( $fetch_query_player = mysqli_fetch_array($fetch_select_team_1)) { ?>
+                                    <li><?php echo $fetch_query_player['p_name'];?>(<?php echo $fetch_query_player['p_id']?>)
+                                    </li>
+                                    <?php  }?>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-2 w-50">
+                            <div class="team-details w-100 text-center">
+                                <img src="./admin/<?php echo $fetcharrayteam2['t_logo'];  ?>" alt="Image"
+                                    class="img-fluid mb-2" style="height:100px;">
+                                <h3><?php echo $fetcharrayteam2['t_name'];?><span><?php if ( $fetching_array['team_2_goals'] >  $fetching_array['team_1_goals']) {
+                                    ?> (win)
+
+
+                                        <?php }else { ?>
+                                        (loss)
+                                        <?php } ?></span></h3>
+                                <?php 
+                                 
+                                 $select_player_team_2 = "SELECT *  FROM `players` WHERE team_id = '$team2' LIMIT 4";
+                                 $fetch_select_team_2 = mysqli_query($conn , $select_player_team_2);
+                                
+                                 
+                                 ?>
+
+
+                                <ul class="list-unstyled">
+                                    <?php while ( $fetch_query_player_2 = mysqli_fetch_array($fetch_select_team_2)) { ?>
+                                    <li><?php echo $fetch_query_player_2['p_name'];?>
+                                        (<?php echo $fetch_query_player_2['p_id'] ?>) </li>
+                                    <?php  }?>
+
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="owl-4-slider owl-carousel">
-                    <div class="item">
-                        <div class="video-media">
-                            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                            <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
-                                data-fancybox>
-                                <span class="icon mr-3">
-                                    <span class="icon-play"></span>
-                                </span>
-                                <div class="caption">
-                                    <span class="meta">#10 / Forward</span>
-                                    <h3 class="m-0">Phillip Hobbs</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-media">
-                            <img src="images/img_2.jpg" alt="Image" class="img-fluid">
-                            <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
-                                data-fancybox>
-                                <span class="icon mr-3">
-                                    <span class="icon-play"></span>
-                                </span>
-                                <div class="caption">
-                                    <span class="meta">#7 / Forward</span>
-                                    <h3 class="m-0">Garry Norris</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-media">
-                            <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-                            <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
-                                data-fancybox>
-                                <span class="icon mr-3">
-                                    <span class="icon-play"></span>
-                                </span>
-                                <div class="caption">
-                                    <span class="meta">#4 / Forward</span>
-                                    <h3 class="m-0">Romolu Harper</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-media">
-                            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                            <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
-                                data-fancybox>
-                                <span class="icon mr-3">
-                                    <span class="icon-play"></span>
-                                </span>
-                                <div class="caption">
-                                    <span class="meta">#4 / Forward</span>
-                                    <h3 class="m-0">Phillip Hobbs</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-media">
-                            <img src="images/img_2.jpg" alt="Image" class="img-fluid">
-                            <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
-                                data-fancybox>
-                                <span class="icon mr-3">
-                                    <span class="icon-play"></span>
-                                </span>
-                                <div class="caption">
-                                    <span class="meta">#1 / GoalKeeper</span>
-                                    <h3 class="m-0">Garry Norris</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-media">
-                            <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-                            <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
-                                data-fancybox>
-                                <span class="icon mr-3">
-                                    <span class="icon-play"></span>
-                                </span>
-                                <div class="caption">
-                                    <span class="meta">#8 / Forward</span>
-                                    <h3 class="m-0">Romolu Harper</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
-        <div class="container site-section">
+        <?php 
+$select_query =  "SELECT * FROM `players`";
+$select_query_player_run = mysqli_query($conn , $select_query);
+?>
+
+
+        <div class="container mt-5 mb-4">
+            <div class="col-12 title-section">
+                <h2 class="heading mt-5">Players</h2>
+            </div>
+            <div class="text-center mb-5">
+                <input type="search" name="searchfield" id="search_player" onkeyup="searchfunction()"
+                    class="form-control" placeholder="Search Player">
+            </div>
+            <div class="row" id="show_player"></div>
+            <div class="row" id="hide">
+
+
+
+                <?php while ($player = mysqli_fetch_array($select_query_player_run)) { ?>
+
+
+                <div class="col-lg-3 mb-4">
+                    <div class="bg-light p-4 rounded">
+                        <div class="widget-body">
+                            <div class="widget-vs">
+                                <div class="d-flex align-items-center justify-content-center w-100">
+                                    <div class="team-1 text-center">
+                                        <a href="playerdetails.php?id=<?php echo $player['p_id'];?>"><img
+                                                src="./admin/<?php echo $player['p_pic'];?>" alt="Image"
+                                                style="height:100px;"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center widget-vs-contents mb-4">
+                            <a href="playerdetails.php?id=<?php echo $player['p_id'];?>">
+                                <h4><?php echo $player['p_name'] ?></h4>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <?php } ?>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="container site-section">
             <div class="row">
                 <div class="col-6 title-section">
                     <h2 class="heading">Latest News</h2>
@@ -186,8 +224,10 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <?php include('footer.html') ?>
+        </div> -->
+
+    <?php include('footer.html')?>
+
     </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -206,22 +246,32 @@
     <script src="js/jquery.mb.YTPlayer.min.js"></script>
     <script src="js/main.js"></script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.414/build/spline-viewer.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+
     <script>
-    window.dataLayer = window.dataLayer || [];
+    function searchfunction() {
+        $("#hide").hide();
+        var word = $("#search_player").val();
+        $.ajax({
+            url: "searchplayer.php",
+            type: "POST",
+            data: {
+                search_word: word,
+            },
+            // cache: false,
+            success: function(Result) {
 
-    function gtag() {
-        dataLayer.push(arguments);
+
+                $("#show_player").html(Result);
+
+
+            }
+        });
+
     }
-    gtag('js', new Date());
-
-    gtag('config', 'UA-23581568-13');
     </script>
-    <script defer
-        src="https://static.cloudflareinsights.com/beacon.min.js/v8b253dfea2ab4077af8c6f58422dfbfd1689876627854"
-        integrity="sha512-bjgnUKX4azu3dLTVtie9u6TKqgx29RBwfj3QXYt5EKfWM/9hPSAI/4qcV5NACjwAo8UtTeWefx6Zq5PHcMm7Tg=="
-        data-cf-beacon='{"rayId":"7f3e127ece1e3e2f","version":"2023.7.0","b":1,"token":"cd0b4b3a733644fc843ef0b185f98241","si":100}'
-        crossorigin="anonymous"></script>
 </body>
 
 </html>

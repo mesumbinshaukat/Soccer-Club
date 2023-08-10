@@ -75,7 +75,7 @@ body {
 <!-- <span style="font-size:30px;cursor:pointer; color:white;" onclick="openNav()">&#9776; </span> -->
 
 
-<div  >
+<div >
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <img  src="../images/logo.png" class="hello mb-4  ms-4 mt-5" alt="">
   <a style="font-size: medium;" href="notifications.php">Notifications</a>
@@ -85,7 +85,7 @@ body {
   <a style="font-size: medium;" href="addplayers.php">Add Players</a>
   <a style="font-size: medium;" href="add_marchendise.php">Add Marchendise</a>
   <a style="font-size: medium;" href="marchendise_category.php">Add Marchendise Category</a>
-  <a style="font-size: medium;" href="logout.php">Logout</a>
+  <a style="font-size: medium; color:white;font-weight:bold;" href="logout.php">Logout</a>
 </div>
 <!-- </div> -->
 <script>
