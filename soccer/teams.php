@@ -134,24 +134,24 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
             </div>
         </div>
 <?php 
-$select_query =  "SELECT * FROM `players`";
-$select_query_player_run = mysqli_query($conn , $select_query);
+$select_query =  "SELECT * FROM `team`";
+$select_query_teams_run = mysqli_query($conn , $select_query);
 ?>
 
 
 <div class="container mt-5 mb-4">
     <div class="col-12 title-section">
-      <h2 class="heading mt-5">Players</h2>
+      <h2 class="heading mt-5">Teams</h2>
     </div>
     <div class="text-center mb-5">
-      <input type="search" name="searchfield" id="search_player" onkeyup="searchfunction()" class="form-control" placeholder="Search Player">
+      <input type="search" name="searchfield" id="forsearch" onkeyup="searchfunction()" class="form-control" placeholder="Search Team">
     </div>
-        <div class="row" id="show_player"></div>
+        <div class="row" id="show_team"></div>
         <div class="row" id="hide">
 
 
 
-          <?php while ($player = mysqli_fetch_array($select_query_player_run)) { ?>
+          <?php while ($team = mysqli_fetch_array($select_query_teams_run)) { ?>
 
           
           <div class="col-lg-3 mb-4">
@@ -160,13 +160,13 @@ $select_query_player_run = mysqli_query($conn , $select_query);
                 <div class="widget-vs">
                   <div class="d-flex align-items-center justify-content-center w-100">
                     <div class="team-1 text-center">
-                    <a href="playerdetails.php?id=<?php echo $player['p_id'];?>"><img src="./admin/<?php echo $player['p_pic'];?>" alt="Image" style="height:100px;"></a> 
+                    <a href="team_details.php?id=<?php echo $team['t_id'];?>"><img src="./admin/<?php echo $team['t_logo'];?>" alt="Image" style="height:100px;"></a>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="text-center widget-vs-contents mb-4">
-               <a href="playerdetails.php?id=<?php echo $player['p_id'];?>"> <h4><?php echo $player['p_name'] ?></h4> </a> 
+               <a href="team_details.php?id=<?php echo $team['t_id'];?>"> <h4><?php echo $team['t_name'] ?></h4> </a> 
               </div>
             </div>
           </div>
@@ -243,9 +243,9 @@ $select_query_player_run = mysqli_query($conn , $select_query);
 <script>
     function searchfunction() {
         $("#hide").hide();
-       var word =  $("#search_player").val();
+       var word =  $("#forsearch").val();
       $.ajax({
-        url: "searchplayer.php",
+        url: "searchteam.php",
         type: "POST",
         data: {
           search_word: word,
@@ -254,7 +254,7 @@ $select_query_player_run = mysqli_query($conn , $select_query);
         success: function(Result) {
 
 
-          $("#show_player").html(Result);
+          $("#show_team").html(Result);
 
 
         }
