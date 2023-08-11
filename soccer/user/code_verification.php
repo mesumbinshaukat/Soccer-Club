@@ -9,7 +9,7 @@ if (isset($_SESSION['code']) && !empty($_SESSION['code'])) {
         $code = $_SESSION['code'];
 
         if ($code_input == $code) {
-            session_unset($code);
+            session_unset();
             header('location:login.php');
             exit();
         }
@@ -35,6 +35,12 @@ if (isset($_SESSION['code']) && !empty($_SESSION['code'])) {
 
     </section>
 
+    <main>
+        <div class="container">
+            <p class="text-success">A verification code has been sent to your specified email. Please check your email.
+            </p>
+        </div>
+    </main>
 
     <section>
         <form method="POST">
@@ -50,7 +56,7 @@ if (isset($_SESSION['code']) && !empty($_SESSION['code'])) {
         </form>
     </section>
 
-    <section>
+    <section class="fixed-bottom">
         <?php include('footer.php'); ?>
     </section>
 </body>

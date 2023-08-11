@@ -61,7 +61,15 @@ if (isset($_POST['btn_submit'])) {
 
     } else {
 
-      echo "<script>alert('User Already Exist')</script>";
+    ?>
+
+<style>
+#user_already_exist {
+    display: block !important;
+}
+</style>
+
+<?php
     }
   } else {
 
@@ -78,30 +86,7 @@ if (isset($_POST['btn_submit'])) {
   }
 }
 
-if (isset($_POST['alert'])) {
-  echo "<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('myForm').addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent the default form submission
 
-            // Display SweetAlert confirmation
-            swal({
-                title: 'Are you sure?',
-                text: 'Do you really want to submit this form?',
-                icon: 'warning',
-                buttons: ['Cancel', 'Yes, submit!'],
-                dangerMode: true,
-            }).then((willSubmit) => {
-                if (willSubmit) {
-                    // If the user clicks 'Yes, submit!' continue with form submission
-                    this.submit();
-                }
-            });
-        });
-    });
-</script>
-)";
-}
 ?>
 
 <!-- DOM -->
@@ -116,8 +101,7 @@ if (isset($_POST['alert'])) {
     </title>
     <!-- Bootstrap CDN File Link -->
     <?php include('../bootstrap/bootstrap-cdn.html') ?>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sweetalert2.all.min.js"></script>
+
 </head>
 
 <body>
@@ -161,6 +145,11 @@ if (isset($_POST['alert'])) {
 
                         <input type="file" class="form-control w-25" name="u_profile" required>
                     </div>
+                    <div class="mb-3">
+
+                        <p class="text-danger fw-bold" style="display:none;" id="user_already_exist">User Already Exist
+                        </p>
+                    </div>
 
                 </center>
                 <!-- </div>         -->
@@ -177,13 +166,9 @@ if (isset($_POST['alert'])) {
                 </center>
             </form>
 
-            <form method="post">
-                <center>
-                    <input type="submit" class="btn btn-outline-warning" name="submit" value="Alert">
-                </center>
 
-            </form>
         </div>
+
 
     </section>
 
@@ -193,6 +178,10 @@ if (isset($_POST['alert'])) {
     <section>
         <?php include('footer.php') ?>
     </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

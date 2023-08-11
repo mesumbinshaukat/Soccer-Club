@@ -12,12 +12,12 @@ require '../vendor/autoload.php';
 $mail = new PHPMailer(true);
 
 
-if (!isset($_SESSION['u_email']) && !isset($_SESSION['u_pass']) && !isset($_SESSION['u_name'])) {
-    header('location:../index.php');
-    exit();
-}
+// if (!isset($_SESSION['u_email']) && !isset($_SESSION['u_pass']) && !isset($_SESSION['u_name'])) {
+//     header('location:../index.php');
+//     exit();
+// }
 
-$user_name = $_GET['u_name'];
+$user_name = $_GET['user_name'];
 $user_email = $_GET['u_email'];
 $user_pass = $_GET['u_pass'];
 $user_number = $_GET['u_number'];
@@ -29,7 +29,7 @@ $insert_query = "INSERT INTO `user`(`u_name`, `user_email`, `u_password`, `u_pro
 $query_run = mysqli_query($conn, $insert_query);
 
 if ($query_run) {
-    
+
     $code_gen = rand(10000, 99999);
 
     try {
@@ -60,24 +60,12 @@ if ($query_run) {
 
         $mail->send();
         $_SESSION['code'] = $code_gen;
-        
+
         echo 'Message has been sent';
         echo "<script>alert('Form submitted successfuly')</script>";
         header('location:code_verification.php');
         exit();
-
-
-
-
-
-
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
-
-
-
 }
-
-
-?>
