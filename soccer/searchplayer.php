@@ -12,23 +12,24 @@ include('connection.php');
     </div>
 
 
-  <?php
-  while ($player_data = mysqli_fetch_array($search_player_query_run)) { ?>
-          <div class="col-lg-3 mb-4">
-            <div class="bg-light p-4 rounded">
-              <div class="widget-body">
-                <div class="widget-vs">
-                  <div class="d-flex align-items-center justify-content-center w-100">
-                    <div class="team-1 text-center">
-                    <a href="playerdetails.php?id=<?php echo $player_data['p_id'];?>"><img src="./admin/<?php echo $player_data['p_pic'];?>" alt="Image" style="height:100px;"></a> 
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="text-center widget-vs-contents mb-4">
-               <a href="playerdetails.php?id=<?php echo $player_data['p_id'];?>"> <h4><?php echo $player_data['p_name'] ?></h4> </a> 
-              </div>
-            </div>
-          </div>
 
-  <?php } ?>
+                <?php while ($player = mysqli_fetch_array($search_player_query_run)) { ?>
+
+
+                  <div class="col-lg-3 mb-4" >
+  
+                      <div class="card bg-dark " >
+                          <a href="playerdetails.php?id=<?php echo $player['p_id'];?>"><img
+                                  src="./admin/<?php echo $player['p_pic'];?>" class="card-img-top" style="height:180px;width:100%; "></a>
+                          <div class="card-body">
+  
+  
+                              <a href="playerdetails.php?id=<?php echo $player['p_id'];?>">
+                                  <h4 class="card-title text-center fs-6">
+                                      <?php echo $player['p_name'] ?>
+                                  </h4>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+                  <?php } ?>

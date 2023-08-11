@@ -77,7 +77,7 @@ $select_query_run = mysqli_query($conn, $select_query);
                         <?php echo  $notification['time'] ?>
                     </td>
                     <td>
-                        <a href="update_schedule.php?id=<?php echo $notification['match_id'] ?>&team1=<?php echo $fetch['t_name']?>&team2=<?php echo $fetch1['t_name']?>" class="btn btn-success">Played</a>     
+                        <a href="update_schedule.php?id=<?php echo $notification['match_id'] ?>&team1=<?php echo $fetch['t_name']?>&team1_id=<?php echo $fetch['t_id'] ?>&team2_id=<?php echo $fetch1['t_id']?>&team2=<?php echo $fetch1['t_name']?>" class="btn btn-success">Played</a>     
                         <a href="delay_schedule.php?id=<?php echo $notification['match_id'] ?>&team1=<?php echo $fetch['t_name']?>&team2=<?php echo $fetch1['t_name']?>" class="btn btn-success">Delay</a>     
                         <a href="cancel_schedule.php?id=<?php echo $notification['match_id'] ?>&team1=<?php echo $fetch['t_name']?>&team2=<?php echo $fetch1['t_name']?>" class="btn btn-success">Cancel</a>     
                     </td>

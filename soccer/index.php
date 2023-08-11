@@ -296,6 +296,16 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                             </div>
                         </div>
                     </div>
+
+                    <?php 
+                    $league_id  = $fetching_next_match_array['m_league_id'] ;
+                    $select_query_match = "SELECT * FROM `match_schedule` INNER JOIN `team` ON match_schedule.won_team = team.t_id  WHERE `m_league_id` = 13 ";
+                    $select_query_run = mysqli_query($conn , $select_query_match);
+                    // SELECT COUNT(won_team) FROM `match_schedule` WHERE m_league_id = 11;
+                    ?> 
+
+
+
                     <div class="col-lg-6">
                         <div class="widget-next-match">
                             <table class="table custom-table">
@@ -310,70 +320,31 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                                     </tr>
                                 </thead>
                                 <tbody>
+                                        <?php 
+                                        while($select_league = mysqli_fetch_array($select_query_run)){
+                                        ?>
                                     <tr>
                                         <td>1</td>
-                                        <td><strong class="text-white">Football League</strong></td>
-                                        <td>22</td>
+                                        <td><strong class="text-white"><?php echo $select_league['t_name'];?></strong></td>
+                                        <!-- match point winning -->
+                                        <td>
+                                            <?php
+                                        $for_match_count = "SELECT COUNT(won_team) FROM match_schedule";
+                                        $run_query = mysqli_query($conn , $for_match_count);
+                                        
+
+                                        //    $mysqli_fetch_array = mysqli_fetch_array($run_query);
+                                           $total_points =  $run_query * 2;
+                                           echo $total_points;
+                                            ?>
+                                        </td>
+                                         <!-- match point winning -->
+
                                         <td>3</td>
                                         <td>2</td>
                                         <td>140</td>
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td><strong class="text-white">Soccer</strong></td>
-                                        <td>22</td>
-                                        <td>3</td>
-                                        <td>2</td>
-                                        <td>140</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td><strong class="text-white">Juvendo</strong></td>
-                                        <td>22</td>
-                                        <td>3</td>
-                                        <td>2</td>
-                                        <td>140</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td><strong class="text-white">French Football League</strong></td>
-                                        <td>22</td>
-                                        <td>3</td>
-                                        <td>2</td>
-                                        <td>140</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td><strong class="text-white">Legia Abante</strong></td>
-                                        <td>22</td>
-                                        <td>3</td>
-                                        <td>2</td>
-                                        <td>140</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td><strong class="text-white">Gliwice League</strong></td>
-                                        <td>22</td>
-                                        <td>3</td>
-                                        <td>2</td>
-                                        <td>140</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td><strong class="text-white">Cornika</strong></td>
-                                        <td>22</td>
-                                        <td>3</td>
-                                        <td>2</td>
-                                        <td>140</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td><strong class="text-white">Gravity Smash</strong></td>
-                                        <td>22</td>
-                                        <td>3</td>
-                                        <td>2</td>
-                                        <td>140</td>
-                                    </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>

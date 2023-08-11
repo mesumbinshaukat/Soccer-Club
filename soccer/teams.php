@@ -73,18 +73,28 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
             <div class="row">
             <div class="col-lg-12">
                     <div class="d-flex team-vs">
-                        <span class="score"><?php echo $fetching_array['team_1_goals'];?> - <?php  echo $fetching_array['team_2_goals'];    ?></span>
+                        <span class="score">
+                            <?php echo $fetching_array['team_1_goals'];?> -
+                            <?php  echo $fetching_array['team_2_goals'];    ?>
+                        </span>
                         <div class="team-1 w-50">
                             <div class="team-details w-100 text-center">
-                                <img src="./admin/<?php echo $fetcharrayteam1['t_logo'] ?>" alt="Image" class="img-fluid mb-2" style="height:100px;">
-                                <h3><?php echo $fetcharrayteam1['t_name'];?><span><?php if ( $fetching_array['team_1_goals'] >  $fetching_array['team_2_goals']) {
+                                <img src="./admin/<?php echo $fetcharrayteam1['t_logo'] ?>" alt="Image"
+                                    class="img-fluid mb-2" style="height:100px;">
+                                <h3>
+                                    <?php echo $fetcharrayteam1['t_name'];?><span>
+                                        <?php if ( $fetching_array['team_1_goals'] >  $fetching_array['team_2_goals']) {
                                    ?> (win)
-                                    
-                                   
-                                <?php }else { ?>
-                                    (loss)
-                                <?php } ?></span></h3>
-                                 <?php 
+
+
+                                        <?php }elseif( $fetching_array['team_1_goals'] ==  $fetching_array['team_2_goals']) { ?>
+                                            (Drawn)
+                                        <?php } else{ ?>
+                                            (loss)
+                                            <?php }?>
+                                    </span>
+                                </h3>
+                                <?php 
                                  
                                  $select_player_team_1 = "SELECT *  FROM `players` WHERE team_id = '$team1' LIMIT 4";
                                  $fetch_select_team_1 = mysqli_query($conn , $select_player_team_1);
@@ -92,10 +102,13 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                                  
                                  ?>
 
-                                
+
                                 <ul class="list-unstyled">
                                     <?php while ( $fetch_query_player = mysqli_fetch_array($fetch_select_team_1)) { ?>
-                                        <li><?php echo $fetch_query_player['p_name'];?>(<?php echo $fetch_query_player['p_id']?>) </li>
+                                    <li>
+                                        <?php echo $fetch_query_player['p_name'];?>(
+                                        <?php echo $fetch_query_player['p_id']?>)
+                                    </li>
                                     <?php  }?>
 
                                 </ul>
@@ -103,14 +116,22 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                         </div>
                         <div class="team-2 w-50">
                             <div class="team-details w-100 text-center">
-                                <img src="./admin/<?php echo $fetcharrayteam2['t_logo'];  ?>" alt="Image" class="img-fluid mb-2" style="height:100px;">
-                                <h3><?php echo $fetcharrayteam2['t_name'];?><span><?php if ( $fetching_array['team_2_goals'] >  $fetching_array['team_1_goals']) {
+                                <img src="./admin/<?php echo $fetcharrayteam2['t_logo'];  ?>" alt="Image"
+                                    class="img-fluid mb-2" style="height:100px;">
+                                <h3>
+                                    <?php echo $fetcharrayteam2['t_name'];?><span>
+                                        <?php if ( $fetching_array['team_2_goals'] >  $fetching_array['team_1_goals']) {
                                     ?> (win)
-                                    
-                                   
-                                <?php }else { ?>
-                                    (loss)
-                                <?php } ?></span></h3>
+
+
+                                        <?php }elseif( $fetching_array['team_2_goals'] ==  $fetching_array['team_1_goals']) { ?>
+                                            (Drawn)
+                                        <?php }else{ ?>
+                                        (loss)
+
+                                            <?php }?>
+                                    </span>
+                                </h3>
                                 <?php 
                                  
                                  $select_player_team_2 = "SELECT *  FROM `players` WHERE team_id = '$team2' LIMIT 4";
@@ -118,20 +139,22 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                                 
                                  
                                  ?>
- 
-                                
+
+
                                 <ul class="list-unstyled">
-                                <?php while ( $fetch_query_player_2 = mysqli_fetch_array($fetch_select_team_2)) { ?>
-                                        <li><?php echo $fetch_query_player_2['p_name'];?> (<?php echo $fetch_query_player_2['p_id'] ?>) </li>
+                                    <?php while ( $fetch_query_player_2 = mysqli_fetch_array($fetch_select_team_2)) { ?>
+                                    <li>
+                                        <?php echo $fetch_query_player_2['p_name'];?> (
+                                        <?php echo $fetch_query_player_2['p_id'] ?>)
+                                    </li>
                                     <?php  }?>
 
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-            </div>
         </div>
 <?php 
 $select_query =  "SELECT * FROM `team`";
@@ -155,7 +178,7 @@ $select_query_teams_run = mysqli_query($conn , $select_query);
 
           
           <div class="col-lg-3 mb-4">
-            <div class="bg-light p-4 rounded">
+            <div class="bg-light p-4 rounded ">
               <div class="widget-body">
                 <div class="widget-vs">
                   <div class="d-flex align-items-center justify-content-center w-100">
