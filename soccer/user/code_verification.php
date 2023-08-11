@@ -63,4 +63,7 @@ if (isset($_SESSION['code']) && !empty($_SESSION['code'])) {
 
 </html>
 
-<?php } ?>
+<?php } else {
+    header('location:../index.php');
+    exit();
+} ?>
