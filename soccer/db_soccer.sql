@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2023 at 02:01 PM
+-- Generation Time: Aug 11, 2023 at 02:08 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -130,6 +130,9 @@ CREATE TABLE `match_schedule` (
   `m_status` int(11) DEFAULT 0,
   `team_1_goals` int(11) DEFAULT NULL,
   `team_2_goals` int(11) DEFAULT NULL,
+  `won_team` int(11) DEFAULT NULL,
+  `lost_team` int(11) DEFAULT NULL,
+  `drawn` int(11) DEFAULT NULL,
   `player_of_match` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -137,12 +140,14 @@ CREATE TABLE `match_schedule` (
 -- Dumping data for table `match_schedule`
 --
 
-INSERT INTO `match_schedule` (`match_id`, `team_1`, `team_2`, `date`, `time`, `Location`, `m_league_id`, `m_status`, `team_1_goals`, `team_2_goals`, `player_of_match`) VALUES
-(1, 2, 3, '2023-08-09', '21:00', '', 7, 0, 3, 2, NULL),
-(3, 3, 4, '2023-08-10', '14:02', '', 9, 2, 2, 3, 4),
-(4, 4, 3, '2023-08-10', '14:06', '', 6, 2, 4, 7, 5),
-(5, 14, 4, '2023-08-10', '15:42', '', 6, 0, NULL, NULL, NULL),
-(6, 14, 2, '2023-08-10', '15:51', '', 11, 0, NULL, NULL, NULL);
+INSERT INTO `match_schedule` (`match_id`, `team_1`, `team_2`, `date`, `time`, `Location`, `m_league_id`, `m_status`, `team_1_goals`, `team_2_goals`, `won_team`, `lost_team`, `drawn`, `player_of_match`) VALUES
+(1, 2, 3, '2023-08-09', '21:00', '', 7, 0, 3, 2, NULL, NULL, NULL, NULL),
+(3, 3, 4, '2023-08-08', '14:02', '', 9, 2, 2, 3, NULL, NULL, NULL, 4),
+(4, 4, 3, '2023-08-10', '14:06', '', 6, 2, 4, 7, NULL, NULL, NULL, 5),
+(5, 14, 4, '2023-08-10', '15:42', '', 6, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 14, 3, '2023-08-10', '15:51', '', 11, 2, 3, 4, 3, 14, NULL, 10),
+(7, 3, 2, '2023-08-10', '00:20', 'allianz-arena', 11, 2, 3, 3, 3, 2, NULL, NULL),
+(8, 4, 3, '2023-08-09', '06:21', 'saitama-stadium', 13, 2, 4, 7, 3, 4, NULL, 9);
 
 -- --------------------------------------------------------
 
@@ -276,7 +281,9 @@ ALTER TABLE `match_schedule`
   ADD PRIMARY KEY (`match_id`),
   ADD KEY `team_1` (`team_1`),
   ADD KEY `team_2` (`team_2`),
-  ADD KEY `m_league_id` (`m_league_id`);
+  ADD KEY `m_league_id` (`m_league_id`),
+  ADD KEY `won_team` (`won_team`),
+  ADD KEY `lost_team` (`lost_team`);
 
 --
 -- Indexes for table `players`
@@ -344,7 +351,7 @@ ALTER TABLE `marchandise`
 -- AUTO_INCREMENT for table `match_schedule`
 --
 ALTER TABLE `match_schedule`
-  MODIFY `match_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `match_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `players`
@@ -399,7 +406,9 @@ ALTER TABLE `marchandise`
 ALTER TABLE `match_schedule`
   ADD CONSTRAINT `match_schedule_ibfk_1` FOREIGN KEY (`team_1`) REFERENCES `team` (`t_id`),
   ADD CONSTRAINT `match_schedule_ibfk_2` FOREIGN KEY (`team_2`) REFERENCES `team` (`t_id`),
-  ADD CONSTRAINT `match_schedule_ibfk_3` FOREIGN KEY (`m_league_id`) REFERENCES `leagues` (`l_id`);
+  ADD CONSTRAINT `match_schedule_ibfk_3` FOREIGN KEY (`m_league_id`) REFERENCES `leagues` (`l_id`),
+  ADD CONSTRAINT `match_schedule_ibfk_4` FOREIGN KEY (`won_team`) REFERENCES `team` (`t_id`),
+  ADD CONSTRAINT `match_schedule_ibfk_5` FOREIGN KEY (`lost_team`) REFERENCES `team` (`t_id`);
 
 --
 -- Constraints for table `players`
