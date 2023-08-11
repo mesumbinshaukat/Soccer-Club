@@ -1,8 +1,8 @@
 <?php 
   include('connection.php');
-  session_start();
+  // session_start();
   // session_destroy();
-  print_r($_SESSION['items']);
+  
   
 
 ?>
@@ -29,9 +29,9 @@
     <?php include('./bootstrap/bootstrap-cdn.html')?>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 </head>
-<body class=" ">
+<body style="background-color:#222831;">
 <div class="site-wrap">
-        <!-- <div class="site-mobile-menu site-navbar-target">
+         <div class="site-mobile-menu site-navbar-target">
             <div class="site-mobile-menu-header">
                 <div class="site-mobile-menu-close">
                     <span class="icon-close2 js-menu-toggle"></span>
@@ -40,35 +40,37 @@
             <div class="site-mobile-menu-body"></div>
         </div>
         <?php
-        //  include("navbar.php");
+         include("navbar.php");
+        //  print_r($_SESSION['items']);
+
           ?>
-        <div class="hero overlay" style="background-image: url('images/bg_3.jpg');">
+        <div class="hero overlay" style="background-image: url('images/_124431292_best-0821-6.jpg');">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-5 ml-auto">
-                        <h1 class="text-white">Soccer</h1>
+                        <h1 class="text-white">MERCHENDISE</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae
                             pariatur.</p>
                         <div id="date-countdown"></div>
                         <p>
-                            <a href="#" class="btn btn-primary py-3 px-4 mr-3">View Merchandise</a>
+                            <a href="#card_div" class="btn btn-primary py-3 px-4 mr-3">View Merchandise</a>
                             <a href="#" class="more light"></a>
                         </p>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div> 
 
 <section >
 
   <div class="container w-50">
 <h2 class="text-center text-light fw-bold mb-4 mt-5">Select Catgeories</h2>
     
-<div class="dropdown text-center">
-  <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+<div class="dropdown text-center ">
+  <button class="btn btn-light dropdown-toggle w-100" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
      Categories
   </button>
-  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+  <ul class="dropdown-menu dropdown-menu-dark w-100 text-center" aria-labelledby="dropdownMenuButton2">
       <?php
       $select = "SELECT * FROM `product_category`";
 $select_run = mysqli_query($conn,$select);
@@ -98,16 +100,16 @@ $select_categories = "SELECT * FROM `marchandise`";
 $select_categories_run = mysqli_query($conn,$select_categories);
  while( $fetch = mysqli_fetch_array($select_categories_run)){
 ?>
-  <div class="col-lg-3 col-md-6 col-sm-6">
-    <div class="card px-4 border shadow-0 mb-4 mb-lg-0">
+  <div class="col-lg-4 col-md-6 col-sm-6">
+    <div class="card px-4 border-dark shadow-0 mb-4 mb-lg-0" style="background-color:#808080;">
       <div class="mask px-2" style="height: 20px;">
         
       </div>
-      <a href="#" class="">
-        <img src="./admin/<?php echo $fetch['p_image']?>" style="height: 225px;" class="card-img-top rounded-2" />
+      <a href="product_details.php?id=<?php echo $fetch['p_id'] ?>" class="">
+        <img src="./admin/<?php echo $fetch['p_image']?>" style="height: 285px;" class="card-img-top rounded-2" />
       </a>
       <div class="card-body d-flex flex-column pt-3 border-top">
-        <a href="#" class="nav-link fw-bold"><?php echo $fetch['p_name']?></a>
+        <a href="#" class="nav-link fs-4 text-capitalize fw-bold text-light"><?php echo $fetch['p_name']?></a>
         <div class="price-wrap mb-2">
           <strong class=" ">$ <?php echo $fetch['p_price']?></strong> 
           <del class="">$<?php echo $fetch['p_price'] * 2?></del>
@@ -117,7 +119,11 @@ $select_categories_run = mysqli_query($conn,$select_categories);
              <input type="hidden" name="pr_pic" value="<?php echo $fetch['p_image'] ?>">
              <input type="hidden" name="pr_name" value="<?php echo $fetch['p_name'] ?>">
              <input type="hidden" name="pr_price" value="<?php echo $fetch['p_price'] ?>">
-             <button type="submit" class="btn btn-success" name="submit_btn">Add to Cart</button>
+             <div class="d-flex justify-content-center" >
+
+               <button type="submit" class="btn btn-dark " name="submit_btn">Add to Cart</button>&nbsp;
+               <a type="submit" class="btn btn-dark">Buy Now</a>
+             </div>
           </form>
         </div>
       </div>
