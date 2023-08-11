@@ -20,7 +20,14 @@ if(isset($_SESSION['u_id']) && !empty($_SESSION['u_id']))
 
 
 ?>
+<head>
+<style>
+    *{
+         font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; 
+    }
+</style>
 
+</head>
 
 <header class="site-navbar py-4" role="banner">
     <div class="container">

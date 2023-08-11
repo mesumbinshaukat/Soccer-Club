@@ -50,7 +50,7 @@
 
 
 
-        <!-- Latest News Script-->
+        <!-- Latest News Script
 
         <script>
         var url = 'https://newsapi.org/v2/everything?q=football&apiKey=4707ccada6ac4342888507cc4227efd1';
@@ -75,58 +75,13 @@
 
             }
         });
-        </script>
-
-
-        <div class="container site-section">
-            <div class="row">
-                <div class="col-6 title-section">
-                    <h2 class="heading">Latest News</h2>
-                </div>
-            </div>
-
-            <div class="row" id="test">
-
-
-            </div>
-        </div>
-    </div>
+        </script> -->
 
 
 
-    <div class="row justify-content-center">
-        <div class="col-lg-7 text-center">
-            <div class="custom-pagination">
-                <a href="#">1</a>
-                <span>2</span>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
 
-    <?php include('footer.html') ?>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/bootstrap-datepicker.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/jquery.fancybox.min.js"></script>
-    <script src="js/jquery.sticky.js"></script>
-    <script src="js/jquery.mb.YTPlayer.min.js"></script>
-    <script src="js/main.js"></script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+  
     <script>
 
         var url = 'https://newsapi.org/v2/everything?q=football&apiKey=4707ccada6ac4342888507cc4227efd1';
