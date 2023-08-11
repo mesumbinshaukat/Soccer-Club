@@ -11,10 +11,10 @@
 ?>
 
 <style>
-#sign_up {
-    background: rgb(2, 255, 205);
-    background: linear-gradient(90deg, rgba(2, 255, 205, 1) 0%, rgba(13, 161, 154, 1) 53%, rgba(0, 174, 209, 1) 100%);
-}
+/* #sign_up {
+    background: #4A55A2;
+
+} */
 </style>
 
 <header class="site-navbar py-4" role="banner">
@@ -31,13 +31,14 @@
                         <li class="active"><a href="index.php" class="nav-link">Home</a></li>
                         <li><a href="matches.php" class="nav-link">Matches</a></li>
                         <li><a href="players.php" class="nav-link">Players</a></li>
+                        <li><a href="teams.php" class="nav-link">Teams</a></li>
                         <li><a href="news.php" class="nav-link">News</a></li>
                         <li><a href="contact.php" class="nav-link">Contact</a></li>
                         <?php if (isset($_SESSION['u_email']) && isset($_SESSION['u_pass']) && isset($_SESSION['u_name'])) { ?>
                         <li><a href="logout.php" class="nav-link" style="color:red; font-weight:bold; ">Log Out</a></li>
                         <?php } else {
                         ?>
-                        <li><a href="./user/signup.php" class="nav-link" style="color:black; font-weight:bold; "
+                        <li><a href="./user/signup.php" class="nav-link btn btn-primary" style=" font-weight:bold; "
                                 id="sign_up">Sign
                                 Up</a></li>
                         <?php

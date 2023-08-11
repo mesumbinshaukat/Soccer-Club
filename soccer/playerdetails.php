@@ -45,7 +45,7 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
             </div>
             <div class="site-mobile-menu-body"></div>
         </div>
-        <?php include("navbar.html"); ?>
+        <?php include("navbar.php"); ?>
         <div class="hero mt-5">
 
             <div class="container">

@@ -69,8 +69,7 @@
                     element['urlToImage'] + "' alt='Image' class='img-fluid'></a>" +
                     "<div class='text'><span class='meta'>" + element['publishedAt'] +
                     "</span> <h3 class='mb-4'><a href='#''>" + element['title'] +
-                    "</a></h3><p>" + element['description'] +
-                    "</p><p><a href='./articles/newsrelated.php?index=" + index +
+                    "</a></h3><p><a href='./articles/newsrelated.php?index=" + index +
                     "'>Read more</a></p></div></div>";
 
 
@@ -129,10 +128,7 @@
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
     <script>
-    << << << < HEAD
-        ===
-        ===
-        =
+
         var url = 'https://newsapi.org/v2/everything?q=football&apiKey=4707ccada6ac4342888507cc4227efd1';
     var req = new Request(url);
     fetch(req).then(res => res.json()).then(data => {
@@ -209,7 +205,7 @@
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
     <script>
-    >>> >>> > 42 fc7627378858a0afb293c7e07d0a655f10c1ef
+
     window.dataLayer = window.dataLayer || [];
 
     function gtag() {

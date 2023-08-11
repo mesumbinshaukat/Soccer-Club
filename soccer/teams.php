@@ -52,7 +52,7 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
             </div>
             <div class="site-mobile-menu-body"></div>
         </div>
-        <?php include("navbar.html"); ?>
+        <?php include("navbar.php"); ?>
         <div class="hero overlay" style="background-image: url('images/bg_3.jpg');">
             <div class="container">
                 <div class="row align-items-center">

@@ -87,9 +87,11 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                                    ?> (win)
 
 
-                                        <?php }else { ?>
-                                        (loss)
-                                        <?php } ?>
+                                        <?php }elseif( $fetching_array['team_1_goals'] ==  $fetching_array['team_2_goals']) { ?>
+                                            (Drawn)
+                                        <?php } else{ ?>
+                                            (loss)
+                                            <?php }?>
                                     </span>
                                 </h3>
                                 <?php 
@@ -122,9 +124,12 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                                     ?> (win)
 
 
-                                        <?php }else { ?>
+                                        <?php }elseif( $fetching_array['team_2_goals'] ==  $fetching_array['team_1_goals']) { ?>
+                                            (Drawn)
+                                        <?php }else{ ?>
                                         (loss)
-                                        <?php } ?>
+
+                                            <?php }?>
                                     </span>
                                 </h3>
                                 <?php 
