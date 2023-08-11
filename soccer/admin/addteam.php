@@ -8,20 +8,20 @@ if(!isset($_SESSION['admin_loggedin'])){
 
    include("../connection.php");
 
-   $select_query_league = "SELECT * FROM `leagues`";
-   $run_query =  mysqli_query($conn , $select_query_league ) ;
+   
+
    
    if(isset($_POST['submit_button'])){
         $team_name = $_POST['team_name'];
-
         $players_count = $_POST['players_count'];
+        $team_league = $_POST['league_name'];
         $team_logo = $_FILES['team_logo']['name'];
         $team_logo_tmp = $_FILES['team_logo']['tmp_name'];
         $team_logo_path = 'team_logo/' . date('Y-m-d-H-s') . $team_logo;
         move_uploaded_file($team_logo_tmp,$team_logo_path);
 
-       $insert_query = "INSERT INTO `team`(`t_name`, `t_logo`, `t_players_count`) VALUES
-        ('$team_name','$team_logo_path','$players_count')";
+       $insert_query = "INSERT INTO `team`(`t_name`, `t_logo`, `t_players_count`, `league_id`) VALUES
+        ('$team_name','$team_logo_path','$players_count', '$team_league')";
         $insert_query_run = mysqli_query($conn,$insert_query);
         if($insert_query_run){
           echo "<script>alert('worked')</script>";
@@ -61,6 +61,25 @@ if(!isset($_SESSION['admin_loggedin'])){
 <div class="mb-3">
     <input type="number" min="12" max="16" class="form-control " name="players_count" placeholder="Enter Players count ( 12 - 16 )">
 </div>
+
+
+
+
+                <select name="league_name" id="" class="form-control form-select">
+                    <?php
+                $league_query = "SELECT * FROM `leagues`";
+                $league_query_run = mysqli_query($conn, $league_query);
+                while ($league = mysqli_fetch_array($league_query_run)) {
+
+                    ?>
+                    <option value="<?php echo $league['l_id'] ?>"><?php echo $league['l_name']; ?></option>
+                    <?php } ?>
+                </select>
+
+
+
+
+
 
 
 

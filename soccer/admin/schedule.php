@@ -83,7 +83,7 @@ if (isset($_POST['submit_btn'])) {
                     <option value="<?php echo $data2['t_id']; ?>"><?php echo $data2['t_name']; ?></option>
                     <?php } ?>
                 </select>
-                <label for="">Premier League</label>
+                <label for="">League</label>
                 <select name="league" id="" class="form-control form-select">
                     <?php
                 $league_query = "SELECT * FROM `leagues`";

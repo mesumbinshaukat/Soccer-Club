@@ -250,7 +250,9 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
 
 
                             ?>
-                            <div class="widget-title">
+
+                            <?php if (empty($fetching_next_match_array['team_1_goals'])) { ?>
+                                <div class="widget-title">
                                 <h3>Next Match</h3>
                             </div>
                             <div class="widget-body mb-3">
@@ -294,15 +296,36 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                                 </p>
                                 <div id="date-countdown2" class="pb-1"></div>
                             </div>
-                        </div>
-                    </div>
+                            </div>
+</div>
 
-                    <?php 
-                    $league_id  = $fetching_next_match_array['m_league_id'] ;
-                    $select_query_match = "SELECT * FROM `match_schedule` INNER JOIN `team` ON match_schedule.won_team = team.t_id  WHERE `m_league_id` = 13 ";
-                    $select_query_run = mysqli_query($conn , $select_query_match);
-                    // SELECT COUNT(won_team) FROM `match_schedule` WHERE m_league_id = 11;
-                    ?> 
+                            <?php     } else { ?>
+
+
+                                <div class="widget-title mb-3">
+                                <h3>Next Match</h3>
+                            </div>
+
+                            <div class="text-center widget-vs-contents mb-4">
+                                <h4>
+                                    No Match
+                                </h4>
+
+                            </div>
+                            </div>
+</div>
+<?php   }?>
+
+                    
+                            
+<?php
+$select_teams = "SELECT * FROM `team`  ORDER BY `total_win` DESC" ;
+$se_q = mysqli_query($conn ,$select_teams);
+
+
+
+
+?>
 
 
 
@@ -320,31 +343,24 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                                     </tr>
                                 </thead>
                                 <tbody>
-                                        <?php 
-                                        while($select_league = mysqli_fetch_array($select_query_run)){
-                                        ?>
+                                       
+                                <?php $em_nar = 1; 
+                                 while ($fetchalls = mysqli_fetch_array($se_q)) {
+                                    ?>
+                                    
                                     <tr>
-                                        <td>1</td>
-                                        <td><strong class="text-white"><?php echo $select_league['t_name'];?></strong></td>
-                                        <!-- match point winning -->
-                                        <td>
-                                            <?php
-                                        $for_match_count = "SELECT COUNT(won_team) FROM match_schedule";
-                                        $run_query = mysqli_query($conn , $for_match_count);
-                                        
+                                    <td><?php echo $em_nar++ ?></td>
+                                    <td><?php echo $fetchalls['t_name'] ?></td>
+                                    <td><?php echo $fetchalls['total_win'] ?></td>
+                                    <td><?php echo $fetchalls['total_drawn'] ?></td>
+                                    <td><?php echo $fetchalls['total_lost'] ?></td>
+                                    <td><?php echo ($fetchalls['total_win'] * 2) + ($fetchalls['total_drawn'])  ?></td>
 
-                                        //    $mysqli_fetch_array = mysqli_fetch_array($run_query);
-                                           $total_points =  $run_query * 2;
-                                           echo $total_points;
-                                            ?>
-                                        </td>
-                                         <!-- match point winning -->
-
-                                        <td>3</td>
-                                        <td>2</td>
-                                        <td>140</td>
+                                    
                                     </tr>
-                                    <?php } ?>
+
+                                    <?php      } ?> 
+                                    
                                 </tbody>
                             </table>
                         </div>
