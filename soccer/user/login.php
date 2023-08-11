@@ -6,13 +6,13 @@ include("../connection.php");
 session_start();
 
 // Check if user is already login
-if(isset($_SESSION['u_email']) && isset($_SESSION['u_pass']) && isset($_SESSION['u_name'])){
+if (isset($_SESSION['u_email']) && isset($_SESSION['u_pass']) && isset($_SESSION['u_name'])) {
     header("location:../index.php");
-    exit(); 
-  }
-  
+    exit();
+}
 
-  // LogIn Logic
+
+// LogIn Logic
 if (isset($_POST['btn_submit'])) {
     $u_email = $_POST['u_email'];
     $u_pass = $_POST['u_pass'];
@@ -21,7 +21,7 @@ if (isset($_POST['btn_submit'])) {
 
     $run_select_query = mysqli_query($conn, $select_query);
 
-    if ($run_select_query) {
+    if (mysqli_num_rows($run_select_query) > 0) {
         $fetch_user_details = mysqli_fetch_assoc($run_select_query);
         $fetch_email = $fetch_user_details['user_email'];
         $fetch_pass = $fetch_user_details['u_password'];
@@ -29,7 +29,7 @@ if (isset($_POST['btn_submit'])) {
         $fetch_id = $fetch_user_details['u_id'];
 
         if ($u_email == $fetch_email && password_verify($u_pass, $fetch_pass)) {
-            
+
 ?>
 
 <style>
@@ -43,7 +43,7 @@ if (isset($_POST['btn_submit'])) {
             $_SESSION['u_pass'] = $u_pass;
             $_SESSION['u_name'] = $fetch_name;
             $_SESSION['u_id'] = $fetch_id;
-            
+
             header("location:../index.php");
             exit();
         } else {
@@ -57,8 +57,14 @@ if (isset($_POST['btn_submit'])) {
 <?php
         }
     } else {
-        die("<p class='text-danger'>Error!</p>" . "<br/><br/>" . "<p class='text-dark fs-2'><a href='../index.php' class='text-dark text-decoration-underline'>Go To Home Page</a></p>");
-        // exit();
+        ?>
+<style>
+#err_msg {
+    display: block !important;
+}
+</style>
+
+<?php
     }
 }
 
@@ -80,12 +86,12 @@ if (isset($_POST['btn_submit'])) {
 
 <body>
 
-<!-- Navbar page -->
-<section>
-  <?php include('navbar.html')?>
-</section>
+    <!-- Navbar page -->
+    <section>
+        <?php include('navbar.html') ?>
+    </section>
 
-<!-- LogIn Form -->
+    <!-- LogIn Form -->
     <section class="mt-5">
         <div class="container-sm bg-dark bg-gradient p-5 mb-5">
             <h1 class="text-light text-center pb-lg-5">Log In</h1>
@@ -120,7 +126,7 @@ if (isset($_POST['btn_submit'])) {
 
     <!-- Footer page -->
     <section>
-      <?php include('footer.php')?>
+        <?php include('footer.php') ?>
     </section>
 </body>
 
