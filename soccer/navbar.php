@@ -1,21 +1,26 @@
 <?php session_start();
+include('connection.php');
 
-// $u_email = $_SESSION['u_email'];
-// $u_pass = $_SESSION['u_pass'];
-// $u_name = $_SESSION['u_name'];
+if(isset($_SESSION['u_id']) && !empty($_SESSION['u_id']))
+{
+    $id = $_SESSION['u_id'];
+    $select_query = "SELECT * FROM `user` WHERE `u_id` = '$id'";
+    $run_select_query = mysqli_query($conn, $select_query);
 
-// echo "<script>alert('$u_email')</script>";
-// echo "<script>alert('$u_pass')</script>";
-// echo "<script>alert('$u_name')</script>";
+    if($run_select_query)
+    {
+        $fetch_details = mysqli_fetch_assoc($run_select_query);
+        $fetch_u_id = $fetch_details['u_id'];
+
+        $_SESSION['user_id'] = $fetch_u_id;
+    }
+
+}
+
+
 
 ?>
 
-<style>
-/* #sign_up {
-    background: #4A55A2;
-
-} */
-</style>
 
 <header class="site-navbar py-4" role="banner">
     <div class="container">
@@ -35,6 +40,7 @@
                         <li><a href="news.php" class="nav-link">News</a></li>
                         <li><a href="contact.php" class="nav-link">Contact</a></li>
                         <?php if (isset($_SESSION['u_email']) && isset($_SESSION['u_pass']) && isset($_SESSION['u_name'])) { ?>
+                        <li><a href="user/profile.php?id=<?php echo $_SESSION['user_id'];?>" class="nav-link" style="color:white; font-weight:bold; ">Profile</a></li>
                         <li><a href="logout.php" class="nav-link" style="color:red; font-weight:bold; ">Log Out</a></li>
                         <?php } else {
                         ?>

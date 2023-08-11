@@ -26,8 +26,10 @@ if (isset($_POST['btn_submit'])) {
         $fetch_email = $fetch_user_details['user_email'];
         $fetch_pass = $fetch_user_details['u_password'];
         $fetch_name = $fetch_user_details['u_name'];
+        $fetch_id = $fetch_user_details['u_id'];
 
         if ($u_email == $fetch_email && password_verify($u_pass, $fetch_pass)) {
+            
 ?>
 
 <style>
@@ -38,9 +40,10 @@ if (isset($_POST['btn_submit'])) {
 <?php
 
             $_SESSION['u_email'] = $fetch_email;
-            $_SESSION['u_pass'] = $fetch_pass;
+            $_SESSION['u_pass'] = $u_pass;
             $_SESSION['u_name'] = $fetch_name;
-
+            $_SESSION['u_id'] = $fetch_id;
+            
             header("location:../index.php");
             exit();
         } else {
