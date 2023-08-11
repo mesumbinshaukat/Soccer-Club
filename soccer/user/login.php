@@ -1,12 +1,21 @@
 <?php
+// Database Connection
 include("../connection.php");
+
+// Session Start
 session_start();
 
+// Check if user is already login
+if(isset($_SESSION['u_email']) && isset($_SESSION['u_pass']) && isset($_SESSION['u_name'])){
+    header("location:../index.php");
+    exit(); 
+  }
+  
+
+  // LogIn Logic
 if (isset($_POST['btn_submit'])) {
     $u_email = $_POST['u_email'];
     $u_pass = $_POST['u_pass'];
-    echo "<script>alert('$u_email')</script>";
-    echo "<script>alert('$u_pass')</script>";
 
     $select_query = "SELECT * FROM `user` WHERE `user_email`='$u_email'";
 
@@ -17,9 +26,8 @@ if (isset($_POST['btn_submit'])) {
         $fetch_email = $fetch_user_details['user_email'];
         $fetch_pass = $fetch_user_details['u_password'];
         $fetch_name = $fetch_user_details['u_name'];
-        echo "<script>alert('$fetch_pass')</script>";
 
-        if ($u_email == $fetch_email && $u_pass == $fetch_pass) {
+        if ($u_email == $fetch_email && password_verify($u_pass, $fetch_pass)) {
 ?>
 
 <style>
@@ -54,6 +62,7 @@ if (isset($_POST['btn_submit'])) {
 
 ?>
 
+<!-- DOM -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,12 +71,20 @@ if (isset($_POST['btn_submit'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log In | Soccer Club</title>
+    <!-- Bootstrap CDN File Link -->
     <?php include("../bootstrap/bootstrap-cdn.html") ?>
 </head>
 
 <body>
+
+<!-- Navbar page -->
+<section>
+  <?php include('navbar.html')?>
+</section>
+
+<!-- LogIn Form -->
     <section class="mt-5">
-        <div class="container-sm bg-dark bg-gradient p-5">
+        <div class="container-sm bg-dark bg-gradient p-5 mb-5">
             <h1 class="text-light text-center pb-lg-5">Log In</h1>
             <form method="POST">
                 <center>
@@ -95,6 +112,12 @@ if (isset($_POST['btn_submit'])) {
                 </center>
             </form>
         </div>
+    </section>
+
+
+    <!-- Footer page -->
+    <section>
+      <?php include('footer.php')?>
     </section>
 </body>
 
