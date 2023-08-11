@@ -1,6 +1,17 @@
 <?php
+// Database Connection
 include("../connection.php");
 
+// Session Start
+session_start();
+
+// Check if user is already login
+if(isset($_SESSION['u_email']) && isset($_SESSION['u_pass']) && isset($_SESSION['u_name'])){
+  header("location:../index.php");
+  exit(); 
+}
+
+// SignUp Logic
 if(isset($_POST['btn_submit'])){
 
 
@@ -11,7 +22,7 @@ if(isset($_POST['btn_submit'])){
   $u_contact = $_POST['u_contact'];
   $u_profile_name = $_FILES['u_profile']['name'];
   $u_profile_tmp_name = $_FILES['u_profile']['tmp_name'];
-  
+  $pass_hash = password_hash($u_password, PASSWORD_DEFAULT);
 
 if(preg_match($regex_email, $u_email))
 {
@@ -35,14 +46,13 @@ if(preg_match($regex_email, $u_email))
 
   if($fetch_email != $u_email){
     $insert_query = "INSERT INTO `user`(`u_name`, `user_email`, `u_password`, `u_profile`, `u_contact`) VALUES
-    ('$u_name', '$u_email', '$u_password','$u_profile_name','$u_contact')";
+    ('$u_name', '$u_email', '$pass_hash','$u_profile_name','$u_contact')";
  
    $query_run = mysqli_query($conn, $insert_query);
  
     if($query_run){
       $location = "user_profile_pic/" . $u_profile_name;
       move_uploaded_file($u_profile_tmp_name, $location);
-      echo "<script>alert('Working')</script>";
       header('location:login.php');
       exit();
     }else{
@@ -76,6 +86,7 @@ echo "<script>alert('Invalid Email')</script>";
 
 ?>
 
+<!-- DOM -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,11 +95,20 @@ echo "<script>alert('Invalid Email')</script>";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | Admin
     </title>
+    <!-- Bootstrap CDN File Link -->
     <?php include('../bootstrap/bootstrap-cdn.html')?>
 </head>
 <body>
+
+<!-- Navbar page -->
+<section>
+  <?php include('navbar.html')?>
+</section>
+
+
+<!-- SignUp Form -->
     <section>
-        <div class="container-sm mt-5 bg-dark p-5">
+        <div class="container-sm mt-5 bg-dark p-5 mb-5">
             <div class="text-light text-center d-flex justify-content-center p-5">
                 <h3>Sign Up</h3>
             </div>
@@ -133,6 +153,11 @@ echo "<script>alert('Invalid Email')</script>";
 </form>
         </div>
     
+    </section>
+
+    <!-- Footer page -->
+    <section>
+      <?php include('footer.php')?>
     </section>
 </body>
 </html>
