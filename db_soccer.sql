@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2023 at 04:33 PM
+-- Generation Time: Aug 12, 2023 at 05:09 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -73,7 +73,8 @@ INSERT INTO `checkout` (`payment_id`, `item_name`, `item_price`, `order_id`) VAL
 (13, 'polo shirt', 450, 10),
 (14, 'nike shoes', 300, 11),
 (15, 'polo shirt', 450, 11),
-(16, 'nike shoes', 300, 12);
+(16, 'nike shoes', 300, 12),
+(17, 'nike shoes', 300, 13);
 
 -- --------------------------------------------------------
 
@@ -266,7 +267,8 @@ INSERT INTO `tbl_order` (`order_id`, `order_time`, `user_id`) VALUES
 (9, '1943', 1),
 (10, '1957', 1),
 (11, '1980', 1),
-(12, '1932', 1);
+(12, '1932', 1),
+(13, '1943', 1);
 
 -- --------------------------------------------------------
 
@@ -316,7 +318,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`u_id`, `u_name`, `u_password`, `u_profile`, `u_contact`, `user_email`) VALUES
-(1, 'sarim khan', '$2y$10$gFcKDYQGjTty3chxQ.EajuK0oVHO5A6lPLswoEhhfJufkXjii/6Dm', 'portfolio.png', 987662223, 'sarimsaleem515@gmail.com');
+(1, 'sarim khan', '$2y$10$gFcKDYQGjTty3chxQ.EajuK0oVHO5A6lPLswoEhhfJufkXjii/6Dm', 'portfolio.png', 987662223, 'sarimsaleem515@gmail.com'),
+(2, 'Username', '$2y$10$xaSmokELAGA5/R5qtJ8HVucfYUdRDTtelHVnqC0kMgWcsK6k9pyli', 'dataset-card (2).png', 2147483647, 'smokeark3@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -421,7 +424,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `checkout`
 --
 ALTER TABLE `checkout`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -469,7 +472,7 @@ ALTER TABLE `product_category`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `team`
@@ -481,7 +484,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
