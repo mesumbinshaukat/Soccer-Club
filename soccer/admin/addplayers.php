@@ -20,7 +20,7 @@ $insert_query = "INSERT INTO `players`( `p_name`, `p_pic`, `team_id`) VALUES
  ('$player_name','$player_pic_path','$player_team')";
 $insert_query_run = mysqli_query($conn , $insert_query);
 if($insert_query_run){
-   echo "<script>alert('Player Added')</script>";
+   header("location:showplayers.php");
 }
 }
 ?>

@@ -71,7 +71,7 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
         </div>
         <div class="container mb-5">
             <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-12 mb-5">
                     <div class="d-flex team-vs">
                         <span class="score">
                             <?php echo $fetching_array['team_1_goals'];?> -
@@ -201,43 +201,6 @@ $select_query_teams_run = mysqli_query($conn , $select_query);
             </div>
         </div>
 
-        <!-- <div class="container site-section">
-            <div class="row">
-                <div class="col-6 title-section">
-                    <h2 class="heading">Latest News</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="custom-media d-flex">
-                        <div class="img mr-4">
-                            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                        </div>
-                        <div class="text">
-                            <span class="meta">May 20, 2020</span>
-                            <h3 class="mb-4"><a href="#">News 1</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus deserunt saepe tempora
-                                dolorem.</p>
-                            <p><a href="#">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="custom-media d-flex">
-                        <div class="img mr-4">
-                            <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-                        </div>
-                        <div class="text">
-                            <span class="meta">May 20, 2020</span>
-                            <h3 class="mb-4"><a href="#">News 2</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus deserunt saepe tempora
-                                dolorem.</p>
-                            <p><a href="#">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
 
         <?php include('footer.html')?>
 

@@ -71,7 +71,7 @@ $news_id = $_GET['index'];
                 <li><a href="../matches.php" class="nav-link">Matches</a></li>
                 <li><a href="../players.php" class="nav-link">Players</a></li>
                 <li><a href="../news.php" class="nav-link">News</a></li>
-                <li><a href="../contact.php" class="nav-link">Contact</a></li>
+                <li><a href="../feedback.php" class="nav-link">Contact</a></li>
               </ul>
             </nav>
             <a href="#"

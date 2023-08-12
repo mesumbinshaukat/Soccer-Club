@@ -1,8 +1,30 @@
+<?php
+include("connection.php");
+if(isset($_POST['submit_btn'])){
+    $username = $_POST['user_name'];
+    $useremail = $_POST['user_email'];
+    $usermessage = $_POST['message'];
+    $userreview = $_POST['review'];
+
+    $insert_feedback = "INSERT INTO `feedback`(`u_name`, `u_email`, `u_review`, `u_message`) VALUES ('$username','$useremail','$userreview ','$usermessage')";
+
+    $insert_query_run = mysqli_query($conn , $insert_feedback);
+    if($insert_query_run){
+        echo "<script>alert('Message Sent')</script>";
+        header('location:index.php');
+    }
+
+
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Soccer </title>
+    <title>Feedback</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -35,7 +57,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-9 mx-auto text-center">
-                        <h1 class="text-white">Contact</h1>
+                        <h1 class="text-white">Feedback</h1>
                     </div>
                 </div>
             </div>
@@ -43,23 +65,38 @@
         <div class="site-section">
             <div class="container">
                 <div class="row">
+                    <div class="col-6 title-section">
+                        <h2 class="heading">Feedback</h2>
+                    </div>
                     <div class="col-lg-7">
-                        <form action="#">
+                        <form action="#" method="post">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Name">
+                                <input type="text"  name="user_name" class="form-control " placeholder="Name"  style="background:transparent; " value="<?php
+                                if(isset($_SESSION['u_name'])){
+                                $name = $_SESSION['u_name']; echo $name; }
+                                else{
+                                    echo "unknown user";    
+                                }
+                                ?>">
+
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email">
+                                <input type="text" name="user_email" class="form-control " placeholder="Email" 
+                                style="background:transparent;" value="<?php
+                                if(isset($_SESSION['u_email'])){
+                            $email = $_SESSION['u_email']; echo $email; }
+                                else{
+                                    echo "anonymous";}?>" >
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Subject">
+                                <input type="text" name="review" class="form-control" placeholder="Your Reviews" required>
                             </div>
                             <div class="form-group">
-                                <textarea name="" class="form-control" id="" cols="30" rows="10"
-                                    placeholder="Write something..."></textarea>
+                                <textarea name="message" class="form-control" cols="30" rows="4"
+                                    placeholder="Write your Message..." required></textarea>
                             </div>
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary py-3 px-5" value="Send Message">
+                                <input type="submit" class="btn btn-primary py-3 px-5" value="Submit Feedback" name="submit_btn">
                             </div>
                         </form>
                     </div>

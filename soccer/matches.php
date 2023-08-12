@@ -154,39 +154,79 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                 <div class="row mb-5">
                     <div class="col-lg-12">
                         <div class="widget-next-match">
+                          <?php
+                            $selecting_next_match = "SELECT * FROM `match_schedule` INNER JOIN `leagues` ON match_schedule.m_league_id = leagues.l_id  WHERE `m_status` = 0   ORDER BY `match_id` DESC ";
+                            $selecting_next_match_run = mysqli_query($conn, $selecting_next_match);
+                            $fetching_next_match_array = mysqli_fetch_array($selecting_next_match_run);
+
+                            $next_team1 = $fetching_next_match_array['team_1'];
+                            $select_next_team1_name = "SELECT * FROM `team` WHERE t_id = '$next_team1' ";
+                            $select_next_match1 = mysqli_query($conn, $select_next_team1_name);
+                            $fetcharrayteam1 = mysqli_fetch_array($select_next_match1);
+
+                            $next_team2 = $fetching_next_match_array['team_2'];
+                            $select_next_team2_name = "SELECT * FROM `team` WHERE t_id = '$next_team2' ";
+                            $select_next_match2 = mysqli_query($conn, $select_next_team2_name);
+                            $fetcharrayteam2 = mysqli_fetch_array($select_next_match2);
+
+
+                            ?>
+                            <?php if (empty($fetching_next_match_array['team_1_goals'])) { ?>
                             <div class="widget-title">
                                 <h3>Next Match</h3>
                             </div>
+
                             <div class="widget-body mb-3">
                                 <div class="widget-vs">
                                     <div
                                         class="d-flex align-items-center justify-content-around justify-content-between w-100">
                                         <div class="team-1 text-center">
-                                            <img src="images/logo_1.png" alt="Image">
-                                            <h3>Football League</h3>
+                                            <img src="./admin/<?php echo $fetcharrayteam1['t_logo']?>" alt="Image">
+                                            <h3><?php echo $fetcharrayteam1['t_name']; ?></h3>
                                         </div>
                                         <div>
                                             <span class="vs"><span>VS</span></span>
                                         </div>
                                         <div class="team-2 text-center">
-                                            <img src="images/logo_2.png" alt="Image">
-                                            <h3>Soccer</h3>
+                                            <img src="./admin/<?php echo $fetcharrayteam2['t_logo'];?>" alt="Image">
+                                            <h3><?php echo $fetcharrayteam2['t_name'];?></h3>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center widget-vs-contents mb-4">
-                                <h4>World Cup League</h4>
+                                <h4><?php echo $fetching_next_match_array['l_name'];?></h4>
                                 <p class="mb-5">
-                                    <span class="d-block">December 20th, 2020</span>
-                                    <span class="d-block">9:30 AM GMT+0</span>
-                                    <strong class="text-primary">New Euro Arena</strong>
+                                    <span class="d-block"><?php echo $fetching_next_match_array['date'];?></span>
+                                    <span class="d-block"><?php echo $fetching_next_match_array['time'];?></span>
+                                    <strong class="text-primary"><?php echo $fetching_next_match_array['Location'];?>
+                                    </strong>
                                 </p>
-                                <div id="date-countdown2" class="pb-1"></div>
+                                
                             </div>
-                        </div>
+                            
                     </div>
                 </div>
+                            </div>
+
+                            <?php     } else { ?>
+
+
+<div class="widget-title mb-3">
+<h3>Next Match</h3>
+</div>
+
+<div class="text-center widget-vs-contents mb-4">
+<h4>
+    No Match
+</h4>
+
+</div>
+</div>
+</div>
+<?php   }?>
+
+
                 <div class="row">
                     <div class="col-12 title-section">
                         <h2 class="heading">Played Match</h2>
@@ -196,8 +236,8 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
     <tr>
       <th scope="col">Match</th>
       <th scope="col">Teams</th>
-      <th scope="col">Team 1</th>
-      <th scope="col">Team 2</th>
+      <th scope="col">Team 1 Goals</th>
+      <th scope="col">Team 2 Goals</th>
     </tr>
   </thead>
   <tbody>

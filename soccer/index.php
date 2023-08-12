@@ -294,7 +294,6 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                                         <?php echo $fetching_next_match_array['Location'];?>
                                     </strong>
                                 </p>
-                                <div id="date-countdown2" class="pb-1"></div>
                             </div>
                             </div>
 </div>

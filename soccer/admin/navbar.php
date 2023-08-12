@@ -78,11 +78,13 @@ body {
 <div >
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <img  src="../images/logo.png" class="hello mb-4  ms-4 mt-5" alt="">
+  <a style="font-size: large; color:white;" href="index.php">Dashboard</a>
   <a style="font-size: medium;" href="notifications.php">Notifications</a>
   <a style="font-size: medium;" href="add_leagues.php">Add Leagues</a>
   <a style="font-size: medium;" href="addteam.php">Add Teams</a>
   <a style="font-size: medium;" href="schedule.php">Schedule</a>
   <a style="font-size: medium;" href="addplayers.php">Add Players</a>
+  <a style="font-size: medium;" href="showplayers.php">View Players</a>
   <a style="font-size: medium;" href="add_marchendise.php">Add Marchendise</a>
   <a style="font-size: medium;" href="marchendise_category.php">Add Marchendise Category</a>
   <a style="font-size: medium; color:white;font-weight:bold;" href="logout.php">Logout</a>
