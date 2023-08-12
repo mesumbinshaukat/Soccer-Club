@@ -50,8 +50,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5 ml-auto">
                         <h1 class="text-white">MERCHENDISE</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae
-                            pariatur.</p>
+                      
                         <div id="date-countdown"></div>
                         <p>
                             <a href="#card_div" class="btn btn-primary py-3 px-4 mr-3">View Merchandise</a>
@@ -102,7 +101,7 @@ $select_categories_run = mysqli_query($conn,$select_categories);
  while( $fetch = mysqli_fetch_array($select_categories_run)){
 ?>
   <div class="col-lg-4 col-md-6 col-sm-6">
-    <div class="card px-4 border-dark shadow-0 mb-4 mb-lg-0" style="background-color:#808080;">
+    <div class="card px-4 border-dark shadow-0 mb-4 mb-lg-0" >
       <div class="mask px-2" style="height: 20px;">
         
       </div>
@@ -110,12 +109,12 @@ $select_categories_run = mysqli_query($conn,$select_categories);
         <img src="./admin/<?php echo $fetch['p_image']?>" style="height: 285px;" class="card-img-top rounded-2" />
       </a>
       <div class="card-body d-flex flex-column pt-3 border-top">
-        <a href="#" class="nav-link fs-4 text-capitalize fw-bold text-light"><?php echo $fetch['p_name']?></a>
+        <a href="#" class="nav-link fs-4 text-capitalize fw-bold text-dark"><?php echo $fetch['p_name']?></a>
         <div class="price-wrap mb-2">
-          <strong class=" ">$ <?php echo $fetch['p_price']?></strong> 
-          <del class="">$<?php echo $fetch['p_price'] * 2?></del>
+          <strong class=" ">RS <?php echo $fetch['p_price']?></strong> 
+          <del class="">RS<?php echo $fetch['p_price'] * 2?></del>
         </div>
-        <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
+        <div class="card-footer  align-items-end pt-3 px-0 pb-0 mt-auto">
           <form action="addtocart.php" method = "post">
              <input type="hidden" name="pr_pic" value="<?php echo $fetch['p_image'] ?>">
              <input type="hidden" name="pr_id" value="<?php echo $fetch['p_id'] ?>">
@@ -123,8 +122,8 @@ $select_categories_run = mysqli_query($conn,$select_categories);
              <input type="hidden" name="pr_price" value="<?php echo $fetch['p_price'] ?>">
              <div class="d-flex justify-content-center" >
 
-               <button type="submit" class="btn btn-dark " name="submit_btn">Add to Cart</button>&nbsp;
-               <a type="submit" class="btn btn-dark">Buy Now</a>
+               <button type="submit" class="btn btn-dark w-100 " name="submit_btn">Add to Cart</button>&nbsp;
+               <!-- <a type="submit" class="btn btn-dark">Buy Now</a> -->
              </div>
           </form>
         </div>

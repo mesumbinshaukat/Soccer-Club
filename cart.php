@@ -99,7 +99,7 @@ try {
 
     
 
-    $body = "<p>Hello <b>" . $_POST['user_name'] . "!</b> Your Total Purchase: $" . "" . "</p><br><p><b>Call: +923362100225</b></p><br><br><p>Best Regards,<br> <b>Soccer Club</b></p><h3>Thanks For Shopping</h3>";
+    $body = "<p>Hello <b>" . $_POST['user_name'] . "!</b></p><br><p><b>Call: +923362100225</b></p><br><br><p>Best Regards,<br> <b>Soccer Club</b></p><h1>Thanks For Shopping</h1>";
 
     //Content
     $mail->isHTML(true);

@@ -126,7 +126,7 @@ if(isset($_SESSION['u_id']) && !empty($_SESSION['u_id']))
         .card {
             width: 120rem;
             margin-top: 100px;
-            background: #808080;
+            background: #fff;
             padding: 3em;
             line-height: 1.5em;
         }
@@ -166,11 +166,12 @@ if(isset($_SESSION['u_id']) && !empty($_SESSION['u_id']))
         .colors {
             text-transform: UPPERCASE;
             font-weight: bold;
+
         }
 
         .checked,
         .price span {
-            color: #fff;
+            color: #000;
         }
 
         .product-title,
@@ -351,12 +352,12 @@ if(isset($_SESSION['u_id']) && !empty($_SESSION['u_id']))
                             <p class="product-description" style="color:black;">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium
                                 cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.
                             </p>
-                            <h4 class="price" style="color:black;"> Price: <span>$<?php echo $fetch_array_details['p_price'] ?></span></h4>
+                            <h4 class="price" style="color:black ;"> Price: <span>RS <?php echo $fetch_array_details['p_price'] ?></span></h4>
                             <p class="vote" style="color:black;"><strong>91%</strong> of buyers enjoyed this product! <strong>(87
                                     votes)</strong></p>
                        
                             <div class="action">
-                                <button class="add-to-cart btn btn-default" type="button">add to cart</button>
+                                <button class="btn btn-dark add-to-cart " type="button">add to cart</button>
                               
                             </div>
                         </div>

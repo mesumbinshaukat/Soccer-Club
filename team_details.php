@@ -44,7 +44,15 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
             <div class="site-mobile-menu-body"></div>
         </div>
         <?php include("navbar.php"); ?>
-        <div class="hero mt-5">
+
+
+
+
+
+
+
+        
+        <div class="hero mt-5" style="padding-top:100px;">
 
             <div class="container">
                 <div class="row align-items-center">
@@ -54,7 +62,33 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
         </div>
       <div class="col-lg-6 mt-5">
 
+<div class="row">
+<div class="col-lg-3">
+<div class="form-group ">
+         <label for="exampleInputEmail1" class = "mt-5">Team Name</label>
+         <h4><?php echo $fetch_team_array['t_name'];?></h4>
+        </div>
+</div>
+<div class="col-lg-3">
+<div class="form-group ">
+         <label for="exampleInputEmail1" class = "mt-5">Total win</label>
+         <h4><?php echo $fetch_team_array['total_win'];?></h4>
+        </div>
+</div>
+<div class="col-lg-3">
+<div class="form-group ">
+         <label for="exampleInputEmail1" class = "mt-5">Total lost</label>
+         <h4><?php echo $fetch_team_array['total_lost'];?></h4>
+        </div>
+</div>
+<div class="col-lg-3">
+<div class="form-group ">
+         <label for="exampleInputEmail1" class = "mt-5">Total draw</label>
+         <h4><?php echo $fetch_team_array['total_drawn'];?></h4>
+        </div>
+</div>
 
+      </div>
 
 
 
@@ -65,7 +99,7 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
     
 
 
-<div class="container text-center">
+<!-- <div class="container text-center">
   <div class="row">
     <div class="col">
     <div class="form-group ">
@@ -79,10 +113,11 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
          <h4><?php echo $fetch_team_array['total_win'];?></h4>
         </div>
     </div>
+      </div>
   </div>
-</div>
+</div> -->
 
-<div class="container text-center">
+<!-- <div class="container text-center">
   <div class="row">
     <div class="col">
     <div class="form-group ">
@@ -97,8 +132,8 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
         </div>
     </div>
   </div>
-</div>
-
+</div> -->
+<hr>
 <div class="container text-center">
   <div class="row">
     <div class="col">
@@ -150,7 +185,7 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
                 </div>
             </div>
 
-
+         </div>
 
 
 

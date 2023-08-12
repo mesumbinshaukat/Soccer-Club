@@ -62,7 +62,7 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                             pariatur.</p>
                         <div id="date-countdown"></div>
                         <p>
-                            <a href="#" class="btn btn-primary py-3 px-4 mr-3">View Merchandise</a>
+                            <a href="merchendise.php" class="btn btn-primary py-3 px-4 mr-3">View Merchandise</a>
                             <a href="#" class="more light"></a>
                         </p>
                     </div>

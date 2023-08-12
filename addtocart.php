@@ -12,7 +12,7 @@ if (isset($_POST['submit_btn'])) {
       $myitems = array_column($_SESSION['items'], 'item_name');
       if (in_array($_POST['pr_name'], $myitems)) {
          echo "<script>alert('item already added');
-               window.location.href='merchendise.php';
+               window.location.href='cart.php';
                </script>
                ";
          //   print_r($_SESSION['items']);
