@@ -52,15 +52,69 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
          <img src="./admin/<?php echo $fetch_team_array['t_logo']?>" alt="" class = "w-50">
             
         </div>
-      <div class="col-lg-6">
-        <div class="form-group ">
+      <div class="col-lg-6 mt-5">
+
+
+
+
+
+        
+        
+        
+        
+    
+
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+    <div class="form-group ">
          <label for="exampleInputEmail1" class = "mt-5">Team Name</label>
          <h4><?php echo $fetch_team_array['t_name'];?></h4>
         </div>
-        <div class="form-group">
+    </div>
+    <div class="col">
+    <div class="form-group ">
+         <label for="exampleInputEmail1" class = "mt-5">Total win</label>
+         <h4><?php echo $fetch_team_array['total_win'];?></h4>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+    <div class="form-group ">
+         <label for="exampleInputEmail1" class = "mt-5">Total lost</label>
+         <h4><?php echo $fetch_team_array['total_lost'];?></h4>
+        </div>
+    </div>
+    <div class="col">
+    <div class="form-group ">
+         <label for="exampleInputEmail1" class = "mt-5">Total draw</label>
+         <h4><?php echo $fetch_team_array['total_drawn'];?></h4>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+    <div class="form-group">
           <label">Players</label>
           <h4><?php echo $fetch_team_array['t_players_count'];?></h4>  
         </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
       </div>
         
     <div class="col-lg-12 mb-5 ">

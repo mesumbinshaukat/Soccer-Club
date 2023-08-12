@@ -2,6 +2,7 @@
   include('connection.php');
   // session_start();
   // session_destroy();
+
   
   
 
@@ -117,6 +118,7 @@ $select_categories_run = mysqli_query($conn,$select_categories);
         <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
           <form action="addtocart.php" method = "post">
              <input type="hidden" name="pr_pic" value="<?php echo $fetch['p_image'] ?>">
+             <input type="hidden" name="pr_id" value="<?php echo $fetch['p_id'] ?>">
              <input type="hidden" name="pr_name" value="<?php echo $fetch['p_name'] ?>">
              <input type="hidden" name="pr_price" value="<?php echo $fetch['p_price'] ?>">
              <div class="d-flex justify-content-center" >
@@ -152,6 +154,7 @@ while( $fetch2 = mysqli_fetch_array($select_categories_id_run2)){
         <div class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
         <form action="addtocart.php" method = "post">
              <input type="hidden" name="pr_pic" value="<?php echo $fetch2['p_image'] ?>">
+             <input type="hidden" name="pr_id" value="<?php echo $fetch['p_id'] ?>">
              <input type="hidden" name="pr_name" value="<?php echo $fetch2['p_name'] ?>">
              <input type="hidden" name="pr_price" value="<?php echo $fetch2['p_price'] ?>">
              <button type="submit" class="btn btn-success" name="submit_btn">Add to Cart</button>
@@ -170,7 +173,23 @@ while( $fetch2 = mysqli_fetch_array($select_categories_id_run2)){
 
 
 </div>
+<script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="js/main.js"></script>
 
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.414/build/spline-viewer.js"></script>
 </body>
 </html>
 

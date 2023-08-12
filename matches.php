@@ -152,42 +152,82 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
         <div class="site-section bg-dark">
             <div class="container">
                 <div class="row mb-5">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 mb-5">
                         <div class="widget-next-match">
+                          <?php
+                            $selecting_next_match = "SELECT * FROM `match_schedule` INNER JOIN `leagues` ON match_schedule.m_league_id = leagues.l_id  WHERE `m_status` = 0   ORDER BY `match_id` DESC ";
+                            $selecting_next_match_run = mysqli_query($conn, $selecting_next_match);
+                            $fetching_next_match_array = mysqli_fetch_array($selecting_next_match_run);
+
+                            $next_team1 = $fetching_next_match_array['team_1'];
+                            $select_next_team1_name = "SELECT * FROM `team` WHERE t_id = '$next_team1' ";
+                            $select_next_match1 = mysqli_query($conn, $select_next_team1_name);
+                            $fetcharrayteam1 = mysqli_fetch_array($select_next_match1);
+
+                            $next_team2 = $fetching_next_match_array['team_2'];
+                            $select_next_team2_name = "SELECT * FROM `team` WHERE t_id = '$next_team2' ";
+                            $select_next_match2 = mysqli_query($conn, $select_next_team2_name);
+                            $fetcharrayteam2 = mysqli_fetch_array($select_next_match2);
+
+
+                            ?>
+                            <?php if (empty($fetching_next_match_array['team_1_goals'])) { ?>
                             <div class="widget-title">
                                 <h3>Next Match</h3>
                             </div>
+
                             <div class="widget-body mb-3">
                                 <div class="widget-vs">
                                     <div
                                         class="d-flex align-items-center justify-content-around justify-content-between w-100">
                                         <div class="team-1 text-center">
-                                            <img src="images/logo_1.png" alt="Image">
-                                            <h3>Football League</h3>
+                                            <img src="./admin/<?php echo $fetcharrayteam1['t_logo']?>" alt="Image">
+                                            <h3><?php echo $fetcharrayteam1['t_name']; ?></h3>
                                         </div>
                                         <div>
                                             <span class="vs"><span>VS</span></span>
                                         </div>
                                         <div class="team-2 text-center">
-                                            <img src="images/logo_2.png" alt="Image">
-                                            <h3>Soccer</h3>
+                                            <img src="./admin/<?php echo $fetcharrayteam2['t_logo'];?>" alt="Image">
+                                            <h3><?php echo $fetcharrayteam2['t_name'];?></h3>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center widget-vs-contents mb-4">
-                                <h4>World Cup League</h4>
+                                <h4><?php echo $fetching_next_match_array['l_name'];?></h4>
                                 <p class="mb-5">
-                                    <span class="d-block">December 20th, 2020</span>
-                                    <span class="d-block">9:30 AM GMT+0</span>
-                                    <strong class="text-primary">New Euro Arena</strong>
+                                    <span class="d-block"><?php echo $fetching_next_match_array['date'];?></span>
+                                    <span class="d-block"><?php echo $fetching_next_match_array['time'];?></span>
+                                    <strong class="text-primary"><?php echo $fetching_next_match_array['Location'];?>
+                                    </strong>
                                 </p>
-                                <div id="date-countdown2" class="pb-1"></div>
+                                
                             </div>
-                        </div>
+                            
                     </div>
                 </div>
-                <div class="row">
+                            </div>
+
+                            <?php     } else { ?>
+
+
+<div class="widget-title mb-5">
+<h3>Next Match</h3>
+</div>
+
+<div class="text-center widget-vs-contents mb-4">
+<h4>
+    No Match
+</h4>
+
+</div>
+</div>
+</div>
+<?php   }?>
+
+
+                <div class="row ">
                     <div class="col-12 title-section">
                         <h2 class="heading">Played Match</h2>
                     </div>
@@ -196,8 +236,8 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
     <tr>
       <th scope="col">Match</th>
       <th scope="col">Teams</th>
-      <th scope="col">Team 1</th>
-      <th scope="col">Team 2</th>
+      <th scope="col">Team 1 Goals</th>
+      <th scope="col">Team 2 Goals</th>
     </tr>
   </thead>
   <tbody>
@@ -236,9 +276,9 @@ $sq_fetch_2 = mysqli_fetch_array($s_q_r_2);
 <?php }?>
   </tbody>
 </table>
-                </div>
-            </div>
-        </div>
+                
+
+        
 
         <div class="container site-section">
             <div class="row">
@@ -246,44 +286,55 @@ $sq_fetch_2 = mysqli_fetch_array($s_q_r_2);
                     <h2 class="heading">Upcoming Matches</h2>
                 </div>
 
-        <div class="col-lg-6 mb-4">
-            <div class="bg-light p-4 rounded">
-              <div class="widget-body">
-                <div class="widget-vs">
-                  <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
-                    <div class="team-1 text-center">
-                      <img src="images/logo_1.png" alt="Image">
-                      <h3>Football League</h3>
-                    </div>
-                    <div>
-                      <span class="vs"><span>VS</span></span>
-                    </div>
-                    <div class="team-2 text-center">
-                      <img src="images/logo_2.png" alt="Image">
-                      <h3>Soccer</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="text-center widget-vs-contents mb-4">
-                <h4>World Cup League</h4>
-                <p class="mb-5">
-                  <span class="d-block">December 20th, 2020</span>
-                  <span class="d-block">9:30 AM GMT+0</span>
-                  <strong class="text-primary">New Euro Arena</strong>
-                </p>
-              </div>
+                <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Match</th>
+      <th scope="col">Teams</th>
+      <th scope="col">Team 1 Goals</th>
+      <th scope="col">Team 2 Goals</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<?php
+$var_1 =1 ;
+$select_recently_match = "SELECT * FROM `match_schedule` WHERE m_status = 0";
+$select_query_run = mysqli_query($conn , $select_recently_match);
+
+while($recently_data = mysqli_fetch_array($select_query_run)){
+
+    ?>
+    <tr>
+      <th scope="row"><?php echo $var_1++ ?></th>
+      <td><?php
+ $team_one = $recently_data['team_1'];
+$select_111 = "SELECT * FROM `team` WHERE t_id = '$team_one'";
+$s_q_r = mysqli_query($conn , $select_111);
+$sq_fetch_ = mysqli_fetch_array($s_q_r);
+
+$team_two = $recently_data['team_2'];
+$select_two = "SELECT * FROM `team` WHERE t_id = '$team_two'";
+$s_q_r_2 = mysqli_query($conn , $select_two);
+$sq_fetch_2 = mysqli_fetch_array($s_q_r_2);
+      
+      
+      
+      echo $sq_fetch_['t_name'];?> VS  <?php  echo $sq_fetch_2['t_name'];    ?></td>
+      <td><?php echo $recently_data['team_1_goals']?></td>
+      <td><?php echo $recently_data['team_2_goals']?></td>
+    </tr>
+<?php  }?>
+  </tbody>
+</table>
+        
+
+
             </div>
+         
         </div>
-
-
-            </div>
-            <div class="row">
-
-            </div>
-        </div>
-        <?php include('footer.html') ?>
     </div>
+    <?php include('footer.html') ?>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>

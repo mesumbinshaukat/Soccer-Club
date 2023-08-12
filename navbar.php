@@ -1,6 +1,6 @@
-<?php session_start();
+<?php 
 include('connection.php');
-
+session_start();
 if(isset($_SESSION['u_id']) && !empty($_SESSION['u_id']))
 {
     $id = $_SESSION['u_id'];

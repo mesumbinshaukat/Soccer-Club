@@ -18,7 +18,7 @@ if (isset($_POST['submit_btn'])) {
          //   print_r($_SESSION['items']);
       } else {
          $count = count($_SESSION['items']);
-         $_SESSION['items'][$count] = array('item_name' => $_POST['pr_name'], 'item_price' => $_POST['pr_price'], 'item_pic' => $_POST['pr_pic'], 'item_qty' => 1);
+         $_SESSION['items'][$count] = array('item_id' => $_POST['pr_id'] ,'item_name' => $_POST['pr_name'], 'item_price' => $_POST['pr_price'], 'item_pic' => $_POST['pr_pic'], 'item_qty' => 1);
          // print_r($_SESSION['items']);
 
          echo "<script>
@@ -29,7 +29,7 @@ if (isset($_POST['submit_btn'])) {
 
       }
    } else {
-      $_SESSION['items'][0] = array('item_name' => $_POST['pr_name'], 'item_price' => $_POST['pr_price'], 'item_pic' => $_POST['pr_pic'], 'item_qty' => 1);
+      $_SESSION['items'][0] = array('item_id' => $_POST['pr_id'] ,'item_name' => $_POST['pr_name'], 'item_price' => $_POST['pr_price'], 'item_pic' => $_POST['pr_pic'], 'item_qty' => 1);
       echo "<script>
            alert('item added to cart');
            window.location.href='cart.php';

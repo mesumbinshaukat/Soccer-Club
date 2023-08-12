@@ -158,76 +158,7 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
             </div>
         </div>
 
-        <div class="latest-news">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 title-section">
-                        <h2 class="heading">Latest News</h2>
-                    </div>
-                </div>
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-
-                        <div class="post-entry">
-                            <a href="index.php">
-                                <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="caption">
-                                <div class="caption-inner">
-                                    <!-- <h3 class="mb-3">Romolu to stay at Real Nadrid?</h3> -->
-                                    <!-- <div class="author d-flex align-items-center">
-                    <div class="img mb-2 mr-3">
-                      <img src="images/person_1.jpg" alt="">
-                    </div>
-                    <div class="text">
-                      <h4>Mellissa Allison</h4>
-                      <span>May 19, 2020 &bullet; Sports</span>
-                    </div>
-                  </div> -->
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="post-entry">
-                            <a href="#">
-                                <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="caption">
-                                <!-- <div class="caption-inner">
-                  <h3 class="mb-3">Kai Nets Double To Secure Comfortable Away Win</h3>
-                  <div class="author d-flex align-items-center">
-                    <div class="img mb-2 mr-3">
-                      <img src="images/person_1.jpg" alt="">
-                    </div>
-                    <div class="text">
-                      <h4>Mellissa Allison</h4>
-                      <span>May 19, 2020 &bullet; Sports</span>
-                    </div>
-                  </div>
-                </div> -->
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-4">
-                        <div class="post-entry">
-                            <a href="#">
-                                <img src="images/img_2.jpg" alt="Image" class="img-fluid">
-                            </a>
-                            <div class="caption">
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
+       
         <div class="site-section bg-dark">
             <div class="container">
                 <div class="row">
@@ -319,7 +250,8 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                     
                             
 <?php
-$select_teams = "SELECT * FROM `team`  ORDER BY `total_win` DESC" ;
+$league_id_one = $fetching_array['m_league_id'];
+$select_teams = "SELECT * FROM `team` WHERE league_id = '$league_id_one'  ORDER BY `total_win` DESC" ;
 $se_q = mysqli_query($conn ,$select_teams);
 
 
@@ -333,7 +265,7 @@ $se_q = mysqli_query($conn ,$select_teams);
                         <div class="widget-next-match">
                             <table class="table custom-table">
                                 <thead>
-                                    <tr>
+                                    <tr class = "text-center">
                                         <th>P</th>
                                         <th>Team</th>
                                         <th>W</th>
@@ -348,8 +280,8 @@ $se_q = mysqli_query($conn ,$select_teams);
                                  while ($fetchalls = mysqli_fetch_array($se_q)) {
                                     ?>
                                     
-                                    <tr>
-                                    <td><?php echo $em_nar++ ?></td>
+                                    <tr class = "text-center">
+                                    <td><?php echo $em_nar++   ?></td>
                                     <td><?php echo $fetchalls['t_name'] ?></td>
                                     <td><?php echo $fetchalls['total_win'] ?></td>
                                     <td><?php echo $fetchalls['total_drawn'] ?></td>
@@ -372,7 +304,7 @@ $se_q = mysqli_query($conn ,$select_teams);
             <div class="container">
                 <div class="row">
                     <div class="col-6 title-section">
-                        <h2 class="heading">Videos</h2>
+                        <h2 class="heading">Players</h2>
                     </div>
                     <div class="col-6 text-right">
                         <div class="custom-nav">
@@ -383,134 +315,82 @@ $se_q = mysqli_query($conn ,$select_teams);
                     </div>
                 </div>
                 <div class="owl-4-slider owl-carousel">
+
+
+                <?php  
+                $select_query = "SELECT * FROM `players`";
+                $s_q_ = mysqli_query($conn ,$select_query);
+                
+                while ($fetchallss = mysqli_fetch_array($s_q_)) {
+                 ?>
+               
+                
                     <div class="item">
                         <div class="video-media">
-                            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                            <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
-                                data-fancybox>
-                                <span class="icon mr-3">
-                                    <span class="icon-play"></span>
-                                </span>
-                                <div class="caption">
-                                    <h3 class="m-0">Dogba set for Juvendu return?</h3>
+                            <img src="./admin/<?php echo $fetchallss['p_pic'] ?>" alt="Image" class="img-fluid h-100" style="height:400px">
+                            
+                            <a href="playerdetails.php?id=<?php echo $fetchallss['p_id'];?>" class="d-flex play-button align-items-center">
+                               
+                            <div class="caption">
+                                    <h3 class="m-0"><?php echo $fetchallss['p_name'] ?></h3>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="video-media">
-                            <img src="images/img_2.jpg" alt="Image" class="img-fluid">
-                            <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
-                                data-fancybox>
-                                <span class="icon mr-3">
-                                    <span class="icon-play"></span>
-                                </span>
-                                <div class="caption">
-                                    <h3 class="m-0">Kai Nets Double To Secure Comfortable Away Win</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-media">
-                            <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-                            <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
-                                data-fancybox>
-                                <span class="icon mr-3">
-                                    <span class="icon-play"></span>
-                                </span>
-                                <div class="caption">
-                                    <h3 class="m-0">Romolu to stay at Real Nadrid?</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-media">
-                            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                            <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
-                                data-fancybox>
-                                <span class="icon mr-3">
-                                    <span class="icon-play"></span>
-                                </span>
-                                <div class="caption">
-                                    <h3 class="m-0">Dogba set for Juvendu return?</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-media">
-                            <img src="images/img_2.jpg" alt="Image" class="img-fluid">
-                            <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
-                                data-fancybox>
-                                <span class="icon mr-3">
-                                    <span class="icon-play"></span>
-                                </span>
-                                <div class="caption">
-                                    <h3 class="m-0">Kai Nets Double To Secure Comfortable Away Win</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="video-media">
-                            <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-                            <a href="https://vimeo.com/139714818" class="d-flex play-button align-items-center"
-                                data-fancybox>
-                                <span class="icon mr-3">
-                                    <span class="icon-play"></span>
-                                </span>
-                                <div class="caption">
-                                    <h3 class="m-0">Romolu to stay at Real Nadrid?</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                   
+                    <?php } ?>
+                   
                 </div>
             </div>
         </div>
-        <div class="container site-section">
-            <div class="row">
-                <div class="col-6 title-section">
-                    <h2 class="heading">Latest News</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="custom-media d-flex">
-                        <div class="img mr-4">
-                            <img src="images/img_1.jpg" alt="Image" class="img-fluid">
-                        </div>
-                        <div class="text">
-                            <span class="meta">May 20, 2020</span>
-                            <h3 class="mb-4"><a href="#">News 1</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus deserunt saepe tempora
-                                dolorem.</p>
-                            <p><a href="#">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="custom-media d-flex">
-                        <div class="img mr-4">
-                            <img src="images/img_3.jpg" alt="Image" class="img-fluid">
-                        </div>
-                        <div class="text">
-                            <span class="meta">May 20, 2020</span>
-                            <h3 class="mb-4"><a href="#">News 2</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus deserunt saepe tempora
-                                dolorem.</p>
-                            <p><a href="#">Read more</a></p>
-                        </div>
-                    </div>
-                </div>
+      
+            <script>
+
+var url = 'https://newsapi.org/v2/everything?q=football&apiKey=4707ccada6ac4342888507cc4227efd1';
+var req = new Request(url);
+fetch(req).then(res => res.json()).then(data => {
+// debugger
+var alldata = data.articles;
+console.log(alldata)
+for (var index = 15; index < 18 /*alldata.length*/ ; index++) {
+    element = alldata[index];
+    console.log(element);
+    // console.log(element['title']);
+    // console.log(element['urlToImage']);
+    document.getElementById('test').innerHTML +=
+        "<div class='col-lg-4 mb-4'><div class='custom-media d-block' ><div class='img mb-4'><a href='./articles/newsrelated.php?index=" +
+        index + "'><img src='" + element['urlToImage'] + "' alt='Image' class='img-fluid'></a>" +
+        "<div class='text'><span class='meta'>" + element['publishedAt'] +
+        "</span> <h3 class='mb-4'><a href='./articles/newsrelated.php?index=" + index + "'>" + element[
+            'title'] +
+        "</a></h3> <p><a href='./articles/newsrelated.php?index=" + index +
+        "'>Read more</a></p></div></div>";
+
+
+}
+});
+</script>
+
+<div class="container site-section">
+        <div class="row">
+            <div class="col-6 title-section">
+                <h2 class="heading">Latest News</h2>
             </div>
         </div>
 
-        <?php include('footer.html') ?>
+        <div class="row" id="test">
 
+
+        </div>
     </div>
+                 
+               
+        </div>
+        </div>
+        
+    </div>
+    
+            <?php include('footer.html') ?>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>

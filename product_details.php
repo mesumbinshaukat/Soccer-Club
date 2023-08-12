@@ -1,12 +1,29 @@
-<?php include("navbar.php"); ?>
+
+
 <?php 
 include('connection.php');
+session_start();
 $get_id_details = $_GET['id'];
 $select = "SELECT * FROM `marchandise` WHERE `p_id` = '$get_id_details'";
 $select_run = mysqli_query($conn , $select);
 $fetch_array_details = mysqli_fetch_array($select_run);
 
 
+if(isset($_SESSION['u_id']) && !empty($_SESSION['u_id']))
+{
+    $id = $_SESSION['u_id'];
+    $select_query = "SELECT * FROM `user` WHERE `u_id` = '$id'";
+    $run_select_query = mysqli_query($conn, $select_query);
+
+    if($run_select_query)
+    {
+        $fetch_details = mysqli_fetch_assoc($run_select_query);
+        $fetch_u_id = $fetch_details['u_id'];
+
+        $_SESSION['user_id'] = $fetch_u_id;
+    }
+
+}
 
 ?>
 <!DOCTYPE html>
@@ -34,9 +51,10 @@ $fetch_array_details = mysqli_fetch_array($select_run);
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
+ 
         body {
             overflow-x: hidden;
-           
+            font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; 
         }
 
         img {
@@ -257,6 +275,51 @@ $fetch_array_details = mysqli_fetch_array($select_run);
 
 <body>
 
+<header class="site-navbar py-4" role="banner">
+    <div class="container">
+        <div class="d-flex align-items-center">
+            <div class="site-logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="ml-auto">
+                <nav class="site-navigation position-relative text-right" role="navigation">
+                    <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                        <li class="active"><a href="index.php" class="nav-link">Home</a></li>
+                        <li><a href="matches.php" class="nav-link">Matches</a></li>
+                        <li><a href="players.php" class="nav-link">Players</a></li>
+                        <li><a href="teams.php" class="nav-link">Teams</a></li>
+                        <!-- <li><a href="teams.php" class="nav-link">Marchandise</a></li> -->
+                        <li><a href="news.php" class="nav-link">News</a></li>
+                        <li><a href="contact.php" class="nav-link">Contact</a></li>
+                        <?php if (isset($_SESSION['u_email']) && isset($_SESSION['u_pass']) && isset($_SESSION['u_name'])) { ?>
+                        <li><a href="user/profile.php?id=<?php echo $_SESSION['user_id'];?>" class="nav-link" style="color:white; font-weight:bold; ">Profile</a></li>
+                        <li><a href="logout.php" class="nav-link" style="color:red; font-weight:bold; ">Log Out</a></li>
+                        <?php } else {
+                        ?>
+                        <li><a href="./user/signup.php" class="nav-link btn btn-primary" style=" font-weight:bold; "
+                                id="sign_up">Sign
+                                Up</a></li>
+                        <?php
+                        } ?>
+                    </ul>
+                </nav>
+                <a href="#"
+                    class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
+                        class="icon-menu h3 text-white"></a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+
 <div class="site-mobile-menu site-navbar-target">
             <div class="site-mobile-menu-header">
                 <div class="site-mobile-menu-close">
@@ -304,4 +367,21 @@ $fetch_array_details = mysqli_fetch_array($select_run);
     </div>
 </body>
 
+<script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.414/build/spline-viewer.js"></script>
 </html>

@@ -1,5 +1,16 @@
 <?php
-// session_start();
+include('connection.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+
+$mail = new PHPMailer(true);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,6 +56,79 @@
     <?php
     include("navbar.php");
     ?>
+<?php
+
+if(isset($_POST['btn_checkout'])){
+    $u_id = $_SESSION['u_id'];
+    $date = date("Y-m-d-H-s");
+    $query_i_order = "INSERT INTO `tbl_order`(`order_time`, `user_id`) VALUES ($date,'$u_id')";
+    $query_i_order_run = mysqli_query($conn,$query_i_order);
+$last_row = mysqli_insert_id($conn);
+    //   echo $last_row;
+    foreach($_SESSION['items'] as $value){
+     $p_name =   $value['item_name'];
+     $p_price =   $value['item_price'];
+    
+
+    $query_i_items = "INSERT INTO `checkout`( `item_name`, `item_price`, `order_id`) VALUES ('$p_name','$p_price','$last_row')";
+    $query_i_items_run = mysqli_query($conn,$query_i_items);
+   
+    
+}
+$user_name = $_POST['user_name'];
+$user_email = $_POST['user_email'];
+$amount_mail = $_POST['amount_mail'];
+$discount = "<script>var abc = document.getElementById('value').value; document.write(abc)</script>";
+
+try {
+    //Server settings
+    // $mail->SMTPDebug = 2; //Enable verbose debug output
+    $mail->isSMTP(); //Send using SMTP
+    $mail->Host = 'smtp.gmail.com'; //Set the SMTP server to send through
+    $mail->SMTPAuth = true; //Enable SMTP authentication
+    $mail->Username = 'wot.official.786@gmail.com'; //SMTP username
+    $mail->Password = 'rbonmvlzxhgpouvw'; //SMTP password
+    $mail->SMTPSecure = 'ssl'; //Enable implicit TLS encryption
+    $mail->Port = 465; //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+
+
+    //Recipients
+    $mail->setFrom('wot.official.786@gmail.com', 'WORLD OF TECH');
+    $mail->addAddress($user_email, $user_name); //Add a recipient
+
+    
+
+    $body = "<p>Hello <b>" . $_POST['user_name'] . "!</b> Your Total Purchase: $" . "" . "</p><br><p><b>Call: +923362100225</b></p><br><br><p>Best Regards,<br> <b>Soccer Club</b></p><h3>Thanks For Shopping</h3>";
+
+    //Content
+    $mail->isHTML(true);
+    $mail->Subject = 'Verification Code | Soccer Club';
+    $mail->Body = $body;
+    $mail->AltBody = strip_tags($body);
+
+    $mail->send();
+  
+
+    echo 'Message has been sent';
+    echo "<script>alert('Form submitted successfuly')</script>";
+    header('location:index.php');
+    exit();
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+
+}
+
+
+
+?>
+
+
+
+
+
+
 
 
     <section class="h-100 h-custom " style="background-color: #;">
@@ -110,7 +194,7 @@
                                                         <form action="delete.php" method="post">
                                                             <button type="submit" name="remove_item"
                                                                 class="btn btn-danger">Delete</button>
-                                                                <input type="hidden" name="item_name" value="<?php echo $value['item_name'] ?>" >
+                                                                <input type="hidden" name="item_name"  value="<?php echo  $value['item_name']?>" >
                                                         </form>
                                                     </td>
 
@@ -134,28 +218,31 @@
                                             </div>
 
 
-                                            <form class="mt-4">
+                                            <form  method="post">
+                                            
                                                 <div class="form-outline form-white mb-4">
                                                     <label class="form-label" for="typeName">Cardholder's Name</label>
-                                                    <input type="text" id="typeName"
-                                                        class="form-control form-control-lg" siez="17"
+                                                    <input type="text" id="typeName" name="user_name"
+                                                        class="form-control form-control-lg"  value="<?php echo $_SESSION['u_name'] ?>"
                                                         placeholder="Cardholder's Name" />
                                                 </div>
 
                                                 <div class="form-outline form-white mb-4">
-                                                    <label class="form-label" for="typeText">Card Number</label>
-                                                    <input type="text" id="typeText"
-                                                        class="form-control form-control-lg" siez="17"
-                                                        placeholder="1234 5678 9012 3457" minlength="19"
+                                                    <label class="form-label" for="typeText">Cardholder's Email</label>
+                                                    <input type="text" id="typeText"  name="user_email"
+                                                        class="form-control form-control-lg" value="<?php echo $_SESSION['u_email'] ?>"
+                                                        placeholder="Cardholder's Email" 
                                                         maxlength="19" />
                                                 </div>
 
 
 
-                                            </form>
+                                            
 
                                             <hr class="my-4">
 
+
+                                            
                                             <div class="d-flex justify-content-between">
                                                 <p class="mb-2">Subtotal</p>
                                                 <p class="mb-2" id="g_total">
@@ -171,18 +258,22 @@
                                             <div class="d-flex justify-content-between mb-4">
                                                 <p class="mb-2">Grand Total(Incl. taxes and with Discount)</p>
                                                 <p class="mb-2" id="discount">
-                                                    <?php $amount = $total * 20 / 100;
-                                                    echo $total - $amount; ?>
-                                                </p>
+                                                
+                                                </p>                                                
+                                                <input type="hidden" name="amount_mail" class="mb-2" id="for_mail">
+                                                
+                                                
+                                               
                                             </div>
 
-                                            <button type="button" class="btn btn-info btn-block btn-lg">
+                                            <!-- <button type="button" class="btn btn-info btn-block btn-lg"> -->
                                                 <div class="d-flex justify-content-between">
 
-                                                    <span>Checkout <i
-                                                            class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                                                    <button type="submit" name="btn_checkout" class="btn btn-primary">Checkout </button>
+                                                    </form>
+
                                                 </div>
-                                            </button>
+                                            <!-- </button> -->
 
                                         </div>
                                     </div>
@@ -197,26 +288,47 @@
             </div>
         </div>
     </section>
-</body>
+
+<!-- smtp  -->
+<?php
+
+
+
+
+
+
+?>
+
+
+
+
+
 
 
 <script>
-   var price_get = document.getElementsByClassName("get_price");
-   var quantity_get = document.getElementsByClassName("get_quantity");
-   var total = document.getElementsByClassName("total");
-   var gr_total = document.getElementById("g_total");
-   var discount_display = document.getElementById("discount");
-   function subtotal() {
-    grand_total=0;
-    for (let index = 0; index < price_get.length; index++) {
-        total[index].innerText = (price_get[index].value)*(quantity_get[index].value);
-        grand_total = grand_total + (price_get[index].value)*(quantity_get[index].value);
+       var price_get = document.getElementsByClassName('get_price');
+    var quantity_get = document.getElementsByClassName('get_quantity');
+    var total = document.getElementsByClassName('total');
+    var gr_total = document.getElementById('g_total');
+    var discount_display = document.getElementById('discount');
+    var discount_mail = document.getElementById('for_mail');
+    function subtotal() {
+     grand_total=0;
+     for (let index = 0; index < price_get.length; index++) {
+         total[index].innerText = (price_get[index].value)*(quantity_get[index].value);
+         grand_total = grand_total + (price_get[index].value)*(quantity_get[index].value);
+     }
+     gr_total.innerText ='$'+ grand_total;
+     var amount = grand_total *20 / 100;
+     var discount = grand_total - amount;
+    
+     discount_display.innerText = '$' + discount; 
+     discount_mail.innerText = '$' + discount; 
     }
-    gr_total.innerText ="$"+ grand_total;
-    var amount = grand_total *20 / 100;
-    var discount = grand_total - amount;
-    discount_display.innerText = "$" + discount; 
-   }
-   subtotal();
-</script>
+    subtotal();
+    </script>
+
+                                             
+</body>
+
 </html>

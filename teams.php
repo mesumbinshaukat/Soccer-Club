@@ -69,7 +69,7 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                 </div>
             </div>
         </div>
-        <div class="container mb-5">
+        <div class="container">
             <div class="row">
             <div class="col-lg-12">
                     <div class="d-flex team-vs">
@@ -162,7 +162,7 @@ $select_query_teams_run = mysqli_query($conn , $select_query);
 ?>
 
 
-<div class="container mt-5 mb-4">
+<div class="container">
     <div class="col-12 title-section">
       <h2 class="heading mt-5">Teams</h2>
     </div>

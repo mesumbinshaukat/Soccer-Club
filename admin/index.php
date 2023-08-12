@@ -1,4 +1,5 @@
 <?php session_start();
+
 if(!isset($_SESSION['admin_loggedin'])){
     header('location:login.php');
 
@@ -26,7 +27,40 @@ if(!isset($_SESSION['admin_loggedin'])){
 </div>
   <div id="main">
   <span style="font-size:30px;cursor:pointer; color:white;" onclick="openNav()">&#9776; </span> 
+  <div class="container ">
+  <h1 class="text-center mb-4 text-light ">Latest User Feedbacks</h1>
+  
+  <table class="table table-dark table-bordered mt-5">
+    <thead>
+  
+      <tr>
+          <th scope="col">User Name</th>
+          <th scope="col">User Email</th>
+          <th scope="col">User Reviews</th>
+          <th scope="col">User Messages</th>
+  
+      </tr>
+    </thead>
+    <tbody>
+    <?php
+      include('../connection.php');
+      $select_feedback_query = "SELECT * FROM `feedback` ORDER BY `id` DESC LIMIT 10";
+      $query_run = mysqli_query($conn , $select_feedback_query);
+      while($feedback_review = mysqli_fetch_array($query_run)){
+      ?>
+      <tr>
+        <th scope="row"><?php echo $feedback_review['u_name']?></th>
+        <th><?php echo $feedback_review['u_email']?></th>
+        <th><?php echo $feedback_review['u_review']?></th>
+        <th><?php echo $feedback_review['u_message']?></th>
+  
+  
+      </tr>
+      <?php }?>
+  
+    </tbody>
+  </table>
+  </div>
 </div>
-
 </body>
 </html>
