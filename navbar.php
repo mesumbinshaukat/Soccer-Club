@@ -46,7 +46,7 @@ if(isset($_SESSION['u_id']) && !empty($_SESSION['u_id']))
                         <li><a href="teams.php" class="nav-link">Teams</a></li>
                         <!-- <li><a href="teams.php" class="nav-link">Marchandise</a></li> -->
                         <li><a href="news.php" class="nav-link">News</a></li>
-                        <li><a href="contact.php" class="nav-link">Contact</a></li>
+                        <li><a href="feedback.php" class="nav-link">Feedback</a></li>
                         <?php if (isset($_SESSION['u_email']) && isset($_SESSION['u_pass']) && isset($_SESSION['u_name'])) { ?>
                         <li><a href="user/profile.php?id=<?php echo $_SESSION['user_id'];?>" class="nav-link" style="color:white; font-weight:bold; ">Profile</a></li>
                         <li><a href="logout.php" class="nav-link" style="color:red; font-weight:bold; ">Log Out</a></li>
