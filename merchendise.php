@@ -71,6 +71,7 @@
      Categories
   </button>
   <ul class="dropdown-menu dropdown-menu-dark w-100 text-center" aria-labelledby="dropdownMenuButton2">
+    <li><a href="merchendise.php" class="dropdown-item">View All</a></li>
       <?php
       $select = "SELECT * FROM `product_category`";
 $select_run = mysqli_query($conn,$select);
