@@ -55,21 +55,16 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
         <?php include("navbar.php"); ?>
         <div class="hero overlay" style="background-image: url('images/bg_3.jpg');">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-5 ml-auto">
-                        <h1 class="text-white">Soccer</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae
-                            pariatur.</p>
-                        <div id="date-countdown"></div>
-                        <p>
-                            <a href="#" class="btn btn-primary py-3 px-4 mr-3">View Merchandise</a>
-                            <a href="#" class="more light"></a>
-                        </p>
+                <div class="row align-items-center text-center">
+                    <div class="col-lg-12 ml-auto">
+                        <h1 class="text-white mb-3">Players</h1>
+                       
+                    
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container mb-5">
+        <div class="container mb-5" >
             <div class="row">
             <div class="col-lg-12">
                     <div class="d-flex team-vs">

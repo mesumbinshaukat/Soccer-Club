@@ -64,25 +64,25 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
 
 <div class="row">
 <div class="col-lg-3">
-<div class="form-group ">
+<div class="form-group text-center">
          <label for="exampleInputEmail1" class = "mt-5">Team Name</label>
          <h4><?php echo $fetch_team_array['t_name'];?></h4>
         </div>
 </div>
 <div class="col-lg-3">
-<div class="form-group ">
+<div class="form-group text-center">
          <label for="exampleInputEmail1" class = "mt-5">Total win</label>
          <h4><?php echo $fetch_team_array['total_win'];?></h4>
         </div>
 </div>
 <div class="col-lg-3">
-<div class="form-group ">
+<div class="form-group text-center">
          <label for="exampleInputEmail1" class = "mt-5">Total lost</label>
          <h4><?php echo $fetch_team_array['total_lost'];?></h4>
         </div>
 </div>
 <div class="col-lg-3">
-<div class="form-group ">
+<div class="form-group text-center">
          <label for="exampleInputEmail1" class = "mt-5">Total draw</label>
          <h4><?php echo $fetch_team_array['total_drawn'];?></h4>
         </div>
@@ -104,13 +104,13 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
     <div class="col">
     <div class="form-group ">
          <label for="exampleInputEmail1" class = "mt-5">Team Name</label>
-         <h4><?php echo $fetch_team_array['t_name'];?></h4>
+         <h4></h4>
         </div>
     </div>
     <div class="col">
     <div class="form-group ">
          <label for="exampleInputEmail1" class = "mt-5">Total win</label>
-         <h4><?php echo $fetch_team_array['total_win'];?></h4>
+         <h4></h4>
         </div>
     </div>
       </div>
@@ -122,18 +122,19 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
     <div class="col">
     <div class="form-group ">
          <label for="exampleInputEmail1" class = "mt-5">Total lost</label>
-         <h4><?php echo $fetch_team_array['total_lost'];?></h4>
+         <h4></h4>
         </div>
     </div>
     <div class="col">
     <div class="form-group ">
          <label for="exampleInputEmail1" class = "mt-5">Total draw</label>
-         <h4><?php echo $fetch_team_array['total_drawn'];?></h4>
+         <h4></h4>
         </div>
     </div>
   </div>
 </div> -->
 <hr>
+
 <div class="container text-center">
   <div class="row">
     <div class="col">
@@ -152,13 +153,13 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
 
       </div>
         
-    <div class="col-lg-12 mb-5 ">
+    <div class="col-lg-12" >
     
 
 
-    <table class="table table-dark table-hover">
+    <table class="table table-dark table-bordered" style="margin-top:50px;">
   <thead>
-    <tr>
+    <tr class="text-center">
       <th scope="col">Player Name</th>
       <th scope="col">Jersey Number</th>
       <th scope="col">Player Achievement</th>
@@ -169,10 +170,14 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
         <?php $select_player_query = "SELECT * FROM `players` WHERE team_id = '$get_team_id' ";
         $select_query_run = mysqli_query($conn , $select_player_query);
          while ($player = mysqli_fetch_array($select_query_run)) {?>
-           <tr>
-            <td scope="row"><a href="playerdetails.php?id=<?php echo $player['p_id']?>"><?php echo $player['p_name'];?></a></td>  
+           <tr class="text-center" >
+            <td scope="row"><a class="text-decoration-none" href="playerdetails.php?id=<?php echo $player['p_id']?>"><?php echo $player['p_name'];?></a></td>  
             <td class="text-center"><?php echo $player['p_id'];?></td>
-            <td><?php echo $player['p_achievement'];?></td>
+            <td><?php if($player['p_achievement'] == 0){
+              echo "No Acheivements";
+            }else{
+              echo $player['p_achievement'] . " times player of the match";
+            }?></td>
             </tr>
         <?php }?>
     

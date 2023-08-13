@@ -233,7 +233,7 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                     </div>
                     <table class="table">
   <thead>
-    <tr>
+    <tr class="text-center">
       <th scope="col">Match</th>
       <th scope="col">Teams</th>
       <th scope="col">Team 1 Goals</th>
@@ -254,7 +254,7 @@ while($recently_data = mysqli_fetch_array($select_query_run)){
 
     
     ?>
-    <tr>
+    <tr class="text-center">
       <th scope="row"><?php echo $var_1++ ?></th>
       <td><?php
  $team_one = $recently_data['team_1'];
@@ -288,11 +288,11 @@ $sq_fetch_2 = mysqli_fetch_array($s_q_r_2);
 
                 <table class="table">
   <thead>
-    <tr>
+    <tr class="text-center">
       <th scope="col">Match</th>
       <th scope="col">Teams</th>
-      <th scope="col">Team 1 Goals</th>
-      <th scope="col">Team 2 Goals</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
     </tr>
   </thead>
   <tbody>
@@ -305,7 +305,7 @@ $select_query_run = mysqli_query($conn , $select_recently_match);
 while($recently_data = mysqli_fetch_array($select_query_run)){
 
     ?>
-    <tr>
+    <tr class="text-center">
       <th scope="row"><?php echo $var_1++ ?></th>
       <td><?php
  $team_one = $recently_data['team_1'];
@@ -321,8 +321,8 @@ $sq_fetch_2 = mysqli_fetch_array($s_q_r_2);
       
       
       echo $sq_fetch_['t_name'];?> VS  <?php  echo $sq_fetch_2['t_name'];    ?></td>
-      <td><?php echo $recently_data['team_1_goals']?></td>
-      <td><?php echo $recently_data['team_2_goals']?></td>
+      <td><?php echo $recently_data['date']?></td>
+      <td><?php echo $recently_data['time']?> PM</td>
     </tr>
 <?php  }?>
   </tbody>

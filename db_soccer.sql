@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2023 at 05:09 PM
+-- Generation Time: Aug 13, 2023 at 01:59 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_soccer`
+-- Database: `db_soccer_2`
 --
 
 -- --------------------------------------------------------
@@ -49,32 +49,9 @@ INSERT INTO `admin` (`id`, `user_name`, `password`) VALUES
 CREATE TABLE `checkout` (
   `payment_id` int(11) NOT NULL,
   `item_name` varchar(500) NOT NULL,
-  `item_price` int(100) NOT NULL,
+  `item_price` int(200) NOT NULL,
   `order_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `checkout`
---
-
-INSERT INTO `checkout` (`payment_id`, `item_name`, `item_price`, `order_id`) VALUES
-(1, 'nike shoes', 300, 2),
-(2, 'nike shoes', 300, 3),
-(3, 'nike shoes', 300, 4),
-(4, 'nike shoes', 300, 5),
-(5, 'nike shoes', 300, 6),
-(6, 'nike shoes', 300, 7),
-(7, 'polo shirt', 450, 7),
-(8, 'nike shoes', 300, 8),
-(9, 'polo shirt', 450, 8),
-(10, 'nike shoes', 300, 9),
-(11, 'polo shirt', 450, 9),
-(12, 'nike shoes', 300, 10),
-(13, 'polo shirt', 450, 10),
-(14, 'nike shoes', 300, 11),
-(15, 'polo shirt', 450, 11),
-(16, 'nike shoes', 300, 12),
-(17, 'nike shoes', 300, 13);
 
 -- --------------------------------------------------------
 
@@ -84,23 +61,11 @@ INSERT INTO `checkout` (`payment_id`, `item_name`, `item_price`, `order_id`) VAL
 
 CREATE TABLE `feedback` (
   `id` int(11) NOT NULL,
-  `u_name` varchar(100) NOT NULL,
-  `u_email` varchar(100) NOT NULL,
-  `u_review` varchar(100) NOT NULL,
-  `u_message` varchar(5000) NOT NULL
+  `u_name` varchar(200) NOT NULL,
+  `u_email` varchar(200) NOT NULL,
+  `u_review` varchar(500) NOT NULL,
+  `u_message` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `feedback`
---
-
-INSERT INTO `feedback` (`id`, `u_name`, `u_email`, `u_review`, `u_message`) VALUES
-(1, '', '', 'good ', 'good website'),
-(2, '', '', 'good ', 'good website'),
-(3, '', '', 'good ', 'good'),
-(4, '', '', 'good ', 'hehe'),
-(5, '', '', 'good ', 'goood products'),
-(6, 'unknown user', 'anonymous', 'good ', 'hehe');
 
 -- --------------------------------------------------------
 
@@ -119,27 +84,9 @@ CREATE TABLE `leagues` (
 --
 
 INSERT INTO `leagues` (`l_id`, `l_name`, `l_logo`) VALUES
-(5, 'Premier League', 'premier-league-logo-symbol-with-name-design-england-football-european-countries-football-teams-illustration-with-purple-background-free-vector.jpg'),
-(6, 'Premier League', 'premier-league-logo-symbol-with-name-design-england-football-european-countries-football-teams-illustration-with-purple-background-free-vector.jpg'),
-(7, 'Premier League', 'premier-league-logo-symbol-with-name-design-england-football-european-countries-football-teams-illustration-with-purple-background-free-vector.jpg'),
-(8, 'Premier League', 'premier-league-logo-symbol-with-name-design-england-football-european-countries-football-teams-illustration-with-purple-background-free-vector.jpg'),
-(9, 'Premier League', 'premier-league-logo-symbol-with-name-design-england-football-european-countries-football-teams-illustration-with-purple-background-free-vector.jpg'),
-(11, 'FIFA WORLD CUP', 'russia-world-cup (2).jpg0909-0808-232323231691592882'),
-(12, 'FIFA WORLD CUP', 'premier-league-logo-symbol-with-name-design-england-football-european-countries-football-teams-illustration-with-purple-background-free-vector.jpg0909-0808-232323231691592978'),
-(13, 'FIFA WORLD CUP', 'russia-world-cup (2).jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `leagues_statistics`
---
-
-CREATE TABLE `leagues_statistics` (
-  `id` int(11) NOT NULL,
-  `team_id` int(11) NOT NULL,
-  `league_id` int(11) NOT NULL,
-  `match_schedule_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(1, 'English Premier League', 'league_logo/2023-08-13-11-18download.png'),
+(2, 'Spanish La Liga', 'league_logo/2023-08-13-11-05download (1).png'),
+(3, 'French League 1', 'league_logo/2023-08-13-11-29download (2).png');
 
 -- --------------------------------------------------------
 
@@ -151,17 +98,9 @@ CREATE TABLE `marchandise` (
   `p_id` int(11) NOT NULL,
   `p_cat` int(11) NOT NULL,
   `p_name` varchar(500) NOT NULL,
-  `p_price` int(11) NOT NULL,
-  `p_image` varchar(500) NOT NULL
+  `p_price` int(100) NOT NULL,
+  `p_image` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `marchandise`
---
-
-INSERT INTO `marchandise` (`p_id`, `p_cat`, `p_name`, `p_price`, `p_image`) VALUES
-(3, 2, 'nike shoes', 300, 'product_photos/2023-08-11-23-51img_1.jpg'),
-(4, 3, 'polo shirt', 450, 'product_photos/2023-08-11-23-10img_3.jpg');
 
 -- --------------------------------------------------------
 
@@ -174,8 +113,8 @@ CREATE TABLE `match_schedule` (
   `team_1` int(11) NOT NULL,
   `team_2` int(11) NOT NULL,
   `date` date DEFAULT NULL,
-  `time` varchar(500) NOT NULL,
-  `Location` varchar(200) NOT NULL,
+  `time` varchar(100) NOT NULL,
+  `Location` varchar(100) NOT NULL,
   `m_league_id` int(11) DEFAULT NULL,
   `m_status` int(11) DEFAULT 0,
   `team_1_goals` int(11) DEFAULT NULL,
@@ -191,10 +130,15 @@ CREATE TABLE `match_schedule` (
 --
 
 INSERT INTO `match_schedule` (`match_id`, `team_1`, `team_2`, `date`, `time`, `Location`, `m_league_id`, `m_status`, `team_1_goals`, `team_2_goals`, `won_team`, `lost_team`, `drawn`, `player_of_match`) VALUES
-(9, 2, 3, '2023-08-12', '17:52', 'signal-iduna-park', 11, 2, 2, 3, 3, 2, NULL, 10),
-(10, 4, 16, '2023-08-13', '05:54', 'krestovsky', 11, 0, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 4, 14, '2023-08-11', '17:53', 'krestovsky', 11, 2, 3, 2, 4, 14, NULL, 0),
-(12, 16, 3, '2023-08-11', '17:54', 'saitama-stadium', 11, 2, 2, 2, NULL, NULL, 0, 0);
+(1, 1, 3, '2023-08-03', '18:00', 'san-siro', 1, 2, 4, 2, 1, 3, NULL, 3),
+(2, 4, 1, '2023-08-02', '19:00', 'luzhniki', 1, 2, 2, 4, 1, 4, NULL, 3),
+(3, 3, 4, '2023-08-30', '20:00', 'stadio-olimpico', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 5, 6, '2023-08-03', '20:30', 'saitama-stadium', 2, 2, 4, 1, 5, 6, NULL, 20),
+(5, 7, 5, '2023-02-08', '20:00', 'krestovsky', 2, 2, 1, 3, 5, 7, NULL, 19),
+(6, 6, 7, '2023-09-18', '20:40', 'wembley', 2, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 9, 10, '2023-08-02', '06:59', 'luzhniki', 3, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 4, 3, '2023-08-03', '18:45', 'krestovsky', 1, 2, 5, 1, 4, 3, NULL, 11),
+(9, 1, 3, '2023-08-30', '19:30', 'wembley', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -204,9 +148,9 @@ INSERT INTO `match_schedule` (`match_id`, `team_1`, `team_2`, `date`, `time`, `L
 
 CREATE TABLE `players` (
   `p_id` int(11) NOT NULL,
-  `p_name` varchar(111) NOT NULL,
-  `p_pic` varchar(111) NOT NULL,
-  `p_achievement` int(11) DEFAULT NULL,
+  `p_name` varchar(500) NOT NULL,
+  `p_pic` varchar(500) NOT NULL,
+  `p_achievement` int(11) NOT NULL,
   `team_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -215,9 +159,51 @@ CREATE TABLE `players` (
 --
 
 INSERT INTO `players` (`p_id`, `p_name`, `p_pic`, `p_achievement`, `team_id`) VALUES
-(8, 'Casmiro', 'player_photo/2023-08-10-13-51casmiro mancester united.jpg', 11, 14),
-(9, 'Muhammad Salah', 'player_photo/2023-08-10-13-56m salah liverpool.jpg', NULL, 3),
-(10, 'William Saliba', 'player_photo/2023-08-10-13-17william saliba livepool.jfif', 9, 3);
+(1, 'Aaron Ramsdale', 'player_photo/2023-08-13-11-25Headshot_Ramsdale_1510x850_0.jpg', 0, 1),
+(2, 'Ben White', 'player_photo/2023-08-13-11-01Headshot_White_1510x850_0.jpg', 0, 1),
+(3, 'Fabio Vieira', 'player_photo/2023-08-13-11-24Headshot_Vieira_1510x850_0.jpg', 2, 1),
+(4, 'Leandro Trossard', 'player_photo/2023-08-13-11-46Headshot_Trossard_1510x850_0.jpg', 0, 1),
+(5, 'Gabriel Jesus', 'player_photo/2023-08-13-11-12Headshot_Jesus_1510x850_0.jpg', 0, 1),
+(6, 'Kepa', 'player_photo/2023-08-13-11-40p109745.png', 0, 3),
+(7, 'Benoît Badiashile', 'player_photo/2023-08-13-11-12p242880.png', 0, 3),
+(8, 'Enzo Fernández', 'player_photo/2023-08-13-11-40p448047.png', 0, 3),
+(9, 'Raheem Sterling', 'player_photo/2023-08-13-11-09p103955.png', 0, 3),
+(10, 'Hakim Ziyech', 'player_photo/2023-08-13-11-57p124183.png', 0, 3),
+(11, 'Alisson Becker', 'player_photo/2023-08-13-11-47p116535.png', 8, 4),
+(12, 'Joe Gomez', 'player_photo/2023-08-13-11-14p171287.png', 0, 4),
+(13, 'Stefan Bajcetic', 'player_photo/2023-08-13-11-42p535928.png', 0, 4),
+(14, 'Mohamed Salah', 'player_photo/2023-08-13-11-17p118748.png', 0, 4),
+(15, 'Diogo Jota', 'player_photo/2023-08-13-11-10p194634.png', 0, 4),
+(16, 'Jan Oblak', 'player_photo/2023-08-13-11-37jan-oblak-2016-1618396920-60793.jpg', 0, 5),
+(17, 'José María Giménez', 'player_photo/2023-08-13-11-38jose-maria-gimenez-atletico-1635845887-73982.jpg', 0, 5),
+(18, 'Mario Hermoso', 'player_photo/2023-08-13-11-46hermoso-atletico-1590680678-39901.jpg', 0, 5),
+(19, 'Koke', 'player_photo/2023-08-13-11-50koke-atletico-de-madrid-2022-2023-1676288641-101917.jpg', 5, 5),
+(20, 'Antoine Griezmann', 'player_photo/2023-08-13-12-46antoine-griezmann-atletico-madrid-2021-22-1632913141-71838.jpg', 4, 5),
+(21, 'Marc-André ter Stegen', 'player_photo/2023-08-13-12-06ter-stegen-barcelona-2022-23-1678693412-103482.jpg', 0, 6),
+(22, 'Jules Koundé', 'player_photo/2023-08-13-12-16kounde-jules-2022-france-1670799312-98360.jpg', 0, 6),
+(23, 'Iñigo Martínez', 'player_photo/2023-08-13-12-58inigo-martinez-san-sebastian-1501873184-11411.jpg', 0, 6),
+(24, 'Sergiño Dest', 'player_photo/2023-08-13-12-10sergino-dest-fc-barcelona-1661845442-91322.jpg', 0, 6),
+(25, 'Sergi Roberto', 'player_photo/2023-08-13-12-09sergi-roberto-barcelona-1590674579-39873.jpg', 0, 6),
+(26, 'DANI VIVIAN', 'player_photo/2023-08-13-12-51p437554_t174_2023_0_001_000.png', 0, 7),
+(27, 'UNAI SIMON', 'player_photo/2023-08-13-12-38p212769_t174_2023_0_001_000.png', 0, 7),
+(29, 'MIKEL VESGA', 'player_photo/2023-08-13-12-16p197326_t174_2023_0_001_000.png', 0, 7),
+(30, 'ALEX BERENGUER', 'player_photo/2023-08-13-12-43p195385_t174_2023_0_001_000.png', 0, 7),
+(31, 'DANIEL GARCÍA CARRILLO', 'player_photo/2023-08-13-12-22p140264_t174_2023_0_001_000.png', 0, 7),
+(32, 'Abdoulaye Bamba', 'player_photo/2023-08-13-12-02licensed-image.jpg', 0, 8),
+(33, 'Nabil Bentaleb', 'player_photo/2023-08-13-12-49licensed-image (1).jpg', 0, 8),
+(34, 'Pierrick Capelle', 'player_photo/2023-08-13-12-22licensed-image (2).jpg', 0, 8),
+(35, 'Zinédine Ould Khaled', 'player_photo/2023-08-13-12-59images.jpg', 0, 8),
+(36, 'Batista Mendy', 'player_photo/2023-08-13-12-40images (1).jpg', 0, 8),
+(37, 'Philipp Köhn', 'player_photo/2023-08-13-12-17philipp-kohn-red-bull-salzburg-1648655738-82954.jpg', 0, 9),
+(38, 'Mohammed Salisu', 'player_photo/2023-08-13-12-13mohammed-salisu-real-valladolid-cf-1588228666-37404.jpg', 0, 9),
+(39, 'Caio Henrique', 'player_photo/2023-08-13-12-59caio-henrique-as-monaco-2022-1660295642-90048.jpg', 0, 9),
+(40, 'Ruben Aguilar', 'player_photo/2023-08-13-12-04ruben-aguilar-as-monaco-1588593562-37599.jpg', 0, 9),
+(41, 'Guillermo Maripán ', 'player_photo/2023-08-13-12-36guillermo-maripan-chile-2021-1648637157-82916.jpg', 0, 9),
+(42, 'Loïc Perrin', 'player_photo/2023-08-13-12-47loic-perrin-im-trikot-von-as-st-etienne-1552034707-20947.jpg', 0, 10),
+(43, 'Julien Sablé', 'player_photo/2023-08-13-12-59licensed-image (3).jpg', 0, 10),
+(44, 'Mathieu Debuchy', 'player_photo/2023-08-13-12-52licensed-image (4).jpg', 0, 10),
+(45, 'Paul Baysse', 'player_photo/2023-08-13-12-41licensed-image (5).jpg', 0, 10),
+(46, 'Habib Maïga', 'player_photo/2023-08-13-12-52RC_Lens_-_FC_Metz_(14-03-2021)_39_(cropped).jpg', 0, 10);
 
 -- --------------------------------------------------------
 
@@ -227,17 +213,8 @@ INSERT INTO `players` (`p_id`, `p_name`, `p_pic`, `p_achievement`, `team_id`) VA
 
 CREATE TABLE `product_category` (
   `c_id` int(11) NOT NULL,
-  `c_name` varchar(500) NOT NULL
+  `c_name` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `product_category`
---
-
-INSERT INTO `product_category` (`c_id`, `c_name`) VALUES
-(1, 'Jersey'),
-(2, 'Shoes'),
-(3, 'Player Posters');
 
 -- --------------------------------------------------------
 
@@ -247,28 +224,9 @@ INSERT INTO `product_category` (`c_id`, `c_name`) VALUES
 
 CREATE TABLE `tbl_order` (
   `order_id` int(11) NOT NULL,
-  `order_time` varchar(200) NOT NULL,
+  `order_time` varchar(500) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_order`
---
-
-INSERT INTO `tbl_order` (`order_id`, `order_time`, `user_id`) VALUES
-(1, '1947', 1),
-(2, '1976', 1),
-(3, '1940', 1),
-(4, '1974', 1),
-(5, '1931', 1),
-(6, '1990', 1),
-(7, '1988', 1),
-(8, '1977', 1),
-(9, '1943', 1),
-(10, '1957', 1),
-(11, '1980', 1),
-(12, '1932', 1),
-(13, '1943', 1);
 
 -- --------------------------------------------------------
 
@@ -280,23 +238,27 @@ CREATE TABLE `team` (
   `t_id` int(11) NOT NULL,
   `t_name` varchar(500) NOT NULL,
   `t_logo` varchar(500) NOT NULL,
-  `t_players_count` int(11) NOT NULL,
+  `t_players_count` int(100) NOT NULL,
   `league_id` int(11) NOT NULL,
-  `total_win` int(11) DEFAULT NULL,
-  `total_drawn` int(11) DEFAULT NULL,
-  `total_lost` int(11) DEFAULT NULL
+  `total_win` int(100) NOT NULL,
+  `total_lost` int(100) NOT NULL,
+  `total_drawn` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `team`
 --
 
-INSERT INTO `team` (`t_id`, `t_name`, `t_logo`, `t_players_count`, `league_id`, `total_win`, `total_drawn`, `total_lost`) VALUES
-(2, 'Arsenal', 'team_logo/Arsenal-Logo.png', 14, 11, NULL, NULL, 1),
-(3, 'Liverpool FC', 'team_logo/Liverpool_FC.png', 15, 11, 1, NULL, NULL),
-(4, 'Chelsea', 'team_logo/Chelsea_FC.png', 16, 11, 2, NULL, NULL),
-(14, 'Manchester United', 'team_logo/2023-08-10-11-52manchester united.jpg', 12, 11, NULL, NULL, 1),
-(16, 'zohair ki team', 'team_logo/2023-08-11-19-58logo_4.png', 15, 11, NULL, NULL, NULL);
+INSERT INTO `team` (`t_id`, `t_name`, `t_logo`, `t_players_count`, `league_id`, `total_win`, `total_lost`, `total_drawn`) VALUES
+(1, 'Arsenal', 'team_logo/2023-08-13-11-52Arsenal-Logo.png', 12, 1, 2, 0, 0),
+(3, 'Chelsea', 'team_logo/2023-08-13-11-40Chelsea_FC.png', 14, 1, 0, 2, 0),
+(4, 'Liverpool FC', 'team_logo/2023-08-13-11-14Liverpool_FC.png', 14, 1, 1, 1, 0),
+(5, 'Atletico-Madrid', 'team_logo/2023-08-13-11-58atletico-madrid.png', 13, 2, 2, 0, 0),
+(6, 'Barcelona', 'team_logo/2023-08-13-11-16barcelona.png', 14, 2, 0, 1, 0),
+(7, 'Athletic', 'team_logo/2023-08-13-11-43athletic.png', 13, 2, 0, 1, 0),
+(8, 'Angers-Sco', 'team_logo/2023-08-13-11-54angers-sco.png', 13, 3, 0, 0, 0),
+(9, 'As-Monaco', 'team_logo/2023-08-13-11-16as-monaco.png', 14, 3, 0, 0, 0),
+(10, 'As-Saint-Etienne', 'team_logo/2023-08-13-11-55as-saint-etienne.png', 14, 3, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -308,18 +270,10 @@ CREATE TABLE `user` (
   `u_id` int(11) NOT NULL,
   `u_name` varchar(500) NOT NULL,
   `u_password` varchar(500) NOT NULL,
-  `u_profile` varchar(500) NOT NULL,
-  `u_contact` int(11) NOT NULL,
+  `u_pofile` varchar(500) NOT NULL,
+  `u_contact` int(100) NOT NULL,
   `user_email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`u_id`, `u_name`, `u_password`, `u_profile`, `u_contact`, `user_email`) VALUES
-(1, 'sarim khan', '$2y$10$gFcKDYQGjTty3chxQ.EajuK0oVHO5A6lPLswoEhhfJufkXjii/6Dm', 'portfolio.png', 987662223, 'sarimsaleem515@gmail.com'),
-(2, 'Username', '$2y$10$xaSmokELAGA5/R5qtJ8HVucfYUdRDTtelHVnqC0kMgWcsK6k9pyli', 'dataset-card (2).png', 2147483647, 'smokeark3@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -335,7 +289,8 @@ ALTER TABLE `admin`
 -- Indexes for table `checkout`
 --
 ALTER TABLE `checkout`
-  ADD PRIMARY KEY (`payment_id`);
+  ADD PRIMARY KEY (`payment_id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `feedback`
@@ -350,19 +305,10 @@ ALTER TABLE `leagues`
   ADD PRIMARY KEY (`l_id`);
 
 --
--- Indexes for table `leagues_statistics`
---
-ALTER TABLE `leagues_statistics`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `team_id` (`team_id`),
-  ADD KEY `league_id` (`league_id`);
-
---
 -- Indexes for table `marchandise`
 --
 ALTER TABLE `marchandise`
-  ADD PRIMARY KEY (`p_id`),
-  ADD KEY `p_cat` (`p_cat`);
+  ADD PRIMARY KEY (`p_id`);
 
 --
 -- Indexes for table `match_schedule`
@@ -380,8 +326,7 @@ ALTER TABLE `match_schedule`
 --
 ALTER TABLE `players`
   ADD PRIMARY KEY (`p_id`),
-  ADD KEY `team_id` (`team_id`),
-  ADD KEY `p_achievement` (`p_achievement`);
+  ADD KEY `team_id` (`team_id`);
 
 --
 -- Indexes for table `product_category`
@@ -401,7 +346,7 @@ ALTER TABLE `tbl_order`
 --
 ALTER TABLE `team`
   ADD PRIMARY KEY (`t_id`),
-  ADD KEY `league_acheivment_id` (`league_id`);
+  ADD KEY `league_id` (`league_id`);
 
 --
 -- Indexes for table `user`
@@ -424,84 +369,71 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `checkout`
 --
 ALTER TABLE `checkout`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `leagues`
 --
 ALTER TABLE `leagues`
-  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `leagues_statistics`
---
-ALTER TABLE `leagues_statistics`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `l_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `marchandise`
 --
 ALTER TABLE `marchandise`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `match_schedule`
 --
 ALTER TABLE `match_schedule`
-  MODIFY `match_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `match_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `players`
 --
 ALTER TABLE `players`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
-  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `t_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `leagues_statistics`
+-- Constraints for table `checkout`
 --
-ALTER TABLE `leagues_statistics`
-  ADD CONSTRAINT `leagues_statistics_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `team` (`t_id`),
-  ADD CONSTRAINT `leagues_statistics_ibfk_2` FOREIGN KEY (`league_id`) REFERENCES `leagues` (`l_id`);
-
---
--- Constraints for table `marchandise`
---
-ALTER TABLE `marchandise`
-  ADD CONSTRAINT `marchandise_ibfk_1` FOREIGN KEY (`p_cat`) REFERENCES `product_category` (`c_id`);
+ALTER TABLE `checkout`
+  ADD CONSTRAINT `checkout_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `tbl_order` (`order_id`);
 
 --
 -- Constraints for table `match_schedule`
@@ -517,14 +449,19 @@ ALTER TABLE `match_schedule`
 -- Constraints for table `players`
 --
 ALTER TABLE `players`
-  ADD CONSTRAINT `players_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `team` (`t_id`),
-  ADD CONSTRAINT `players_ibfk_2` FOREIGN KEY (`p_achievement`) REFERENCES `match_schedule` (`match_id`);
+  ADD CONSTRAINT `players_ibfk_1` FOREIGN KEY (`team_id`) REFERENCES `team` (`t_id`);
 
 --
 -- Constraints for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
   ADD CONSTRAINT `tbl_order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`u_id`);
+
+--
+-- Constraints for table `team`
+--
+ALTER TABLE `team`
+  ADD CONSTRAINT `team_ibfk_1` FOREIGN KEY (`league_id`) REFERENCES `leagues` (`l_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

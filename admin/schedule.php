@@ -57,6 +57,17 @@ if (isset($_POST['submit_btn'])) {
         <div class="container me-5 mt-3">
             <h1 class="text-center mb-2">Schedule</h1>
             <form method="post">
+                <label for="">League</label>
+                <select name="league" id="" class="form-control form-select">
+                    <?php
+                $league_query = "SELECT * FROM `leagues`";
+                $league_query_run = mysqli_query($conn, $league_query);
+                while ($league = mysqli_fetch_array($league_query_run)) {
+
+                    ?>
+                    <option value="<?php echo $league['l_id'] ?>"><?php echo $league['l_name']; ?></option>
+                    <?php } ?>
+                </select>
                 <label for="">TEAM 1</label>
                 <select name="team1_id" id="" class="form-control form-select">
                     <option value="" disabled selected hidden>Select Team one</option>
@@ -81,17 +92,6 @@ if (isset($_POST['submit_btn'])) {
 
                     ?>
                     <option value="<?php echo $data2['t_id']; ?>"><?php echo $data2['t_name']; ?></option>
-                    <?php } ?>
-                </select>
-                <label for="">League</label>
-                <select name="league" id="" class="form-control form-select">
-                    <?php
-                $league_query = "SELECT * FROM `leagues`";
-                $league_query_run = mysqli_query($conn, $league_query);
-                while ($league = mysqli_fetch_array($league_query_run)) {
-
-                    ?>
-                    <option value="<?php echo $league['l_id'] ?>"><?php echo $league['l_name']; ?></option>
                     <?php } ?>
                 </select>
                 <label for="">Scheduled Date </label>
