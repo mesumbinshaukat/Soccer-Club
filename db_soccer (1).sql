@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2023 at 01:59 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
+-- Generation Time: Aug 13, 2023 at 05:50 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_soccer_2`
+-- Database: `db_soccer`
 --
 
 -- --------------------------------------------------------
@@ -101,6 +101,29 @@ CREATE TABLE `marchandise` (
   `p_price` int(100) NOT NULL,
   `p_image` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `marchandise`
+--
+
+INSERT INTO `marchandise` (`p_id`, `p_cat`, `p_name`, `p_price`, `p_image`) VALUES
+(1, 1, 'Adidas Soccer Shoes', 99, 'product_photos/2023-08-13-17-10adidas2.jpg'),
+(2, 1, 'Adidas Black Shoes', 89, 'product_photos/2023-08-13-17-45adidas.jpg'),
+(3, 1, 'Nike Soccer Shoes', 75, 'product_photos/2023-08-13-17-47nike.jpg'),
+(4, 1, 'Nike Blue Shoes', 86, 'product_photos/2023-08-13-17-26nike2.jpg'),
+(5, 1, 'Puma Soccer Shoes', 110, 'product_photos/2023-08-13-17-50puma.jpg'),
+(6, 4, 'Nike Soccer ', 25, 'product_photos/2023-08-13-17-33nikefootball.jpg'),
+(7, 4, 'Nike Premium Soccer ', 30, 'product_photos/2023-08-13-17-03nikefootball2.jpg'),
+(8, 4, 'Adidas Soccer ', 13, 'product_photos/2023-08-13-17-32adidasfootbal.jpg'),
+(9, 4, 'Adidas Premium Soccer ', 18, 'product_photos/2023-08-13-17-03adidasfootball2.jpg'),
+(10, 4, 'Puma Soccer ', 10, 'product_photos/2023-08-13-17-27pumafootball.jpg'),
+(11, 2, 'Ronaldo Jersey', 5, 'product_photos/2023-08-13-17-04ronaldo.jpg'),
+(12, 2, 'Messi Jersey', 5, 'product_photos/2023-08-13-17-26messi.jpg'),
+(13, 2, 'Ozil Jersey', 5, 'product_photos/2023-08-13-17-46ozil.jpg'),
+(14, 2, 'Neymar Jersey', 5, 'product_photos/2023-08-13-17-04neymar.jpg'),
+(15, 2, 'Mbappe Jersey', 5, 'product_photos/2023-08-13-17-28mbappe.jpg'),
+(16, 3, 'Messi Poster', 8, 'product_photos/2023-08-13-17-03messiplayer.jpg'),
+(17, 3, 'Ronaldo Poster', 8, 'product_photos/2023-08-13-17-31ronaldoplayer.jpg');
 
 -- --------------------------------------------------------
 
@@ -215,6 +238,16 @@ CREATE TABLE `product_category` (
   `c_id` int(11) NOT NULL,
   `c_name` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product_category`
+--
+
+INSERT INTO `product_category` (`c_id`, `c_name`) VALUES
+(1, 'Shoes'),
+(2, 'Jerseys'),
+(3, 'Player Posters'),
+(4, 'Soccer');
 
 -- --------------------------------------------------------
 
@@ -387,7 +420,7 @@ ALTER TABLE `leagues`
 -- AUTO_INCREMENT for table `marchandise`
 --
 ALTER TABLE `marchandise`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `match_schedule`
@@ -405,7 +438,7 @@ ALTER TABLE `players`
 -- AUTO_INCREMENT for table `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_order`

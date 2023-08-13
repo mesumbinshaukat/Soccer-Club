@@ -25,6 +25,8 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
 <head>
     <title>Soccer</title>
     <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="images/football.png" />
+    <link rel="icon" type="image/png" href="images/football.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
@@ -345,8 +347,8 @@ $se_q = mysqli_query($conn ,$select_teams);
         </div>
       
             <script>
-
-var url = 'https://newsapi.org/v2/everything?q=football&apiKey=4707ccada6ac4342888507cc4227efd1';
+var getapi = fetch('https://newsapi.org/v2/everything?q=football&apiKey=4707ccada6ac4342888507cc4227efd1');
+var url = getapi;
 var req = new Request(url);
 fetch(req).then(res => res.json()).then(data => {
 // debugger

@@ -23,7 +23,8 @@ if (isset($_SESSION['code']) && !empty($_SESSION['code'])) {
 
 <head>
     <title></title>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="images/football.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
     <?php include('../bootstrap/bootstrap-cdn.html'); ?>
