@@ -347,7 +347,7 @@ $se_q = mysqli_query($conn ,$select_teams);
         </div>
       
             <script>
-var getapi = fetch('https://newsapi.org/v2/everything?q=football&apiKey=4707ccada6ac4342888507cc4227efd1');
+var getapi = 'https://newsapi.org/v2/everything?q=football&apiKey=4707ccada6ac4342888507cc4227efd1';
 var url = getapi;
 var req = new Request(url);
 fetch(req).then(res => res.json()).then(data => {
