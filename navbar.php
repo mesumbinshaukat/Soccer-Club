@@ -40,14 +40,43 @@ if(isset($_SESSION['u_id']) && !empty($_SESSION['u_id']))
             <div class="ml-auto">
                 <nav class="site-navigation position-relative text-right" role="navigation">
                     <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                        <li class="active"><a href="index.php" class="nav-link">Home</a></li>
-                        <li><a href="matches.php" class="nav-link">Matches</a></li>
-                        <li><a href="players.php" class="nav-link">Players</a></li>
-                        <li><a href="teams.php" class="nav-link">Teams</a></li>
+                        <li class="<?php
+                if(!empty($_GET['home'])){
+                            echo "active";
+                        }
+                        
+                        ?>"><a href="index.php?home=home" class="nav-link">Home</a></li>
+                        <li class="<?php
+                        if (!empty($_GET['matches'])) {
+                            echo "active";
+                        }
+                        ?>"><a href="matches.php?matches=matches" class="nav-link">Matches</a></li>
+                        <li class="<?php
+                        if (!empty($_GET['players'])) {
+                            echo "active";
+                        }
+                        ?>"><a href="players.php?players=players" class="nav-link">Players</a></li>
+                        <li class="<?php
+                        if (!empty($_GET['teams'])) {
+                            echo "active";
+                        }
+                        ?>"><a href="teams.php?teams=teams" class="nav-link">Teams</a></li>
                         <!-- <li><a href="teams.php" class="nav-link">Marchandise</a></li> -->
-                        <li><a href="news.php" class="nav-link">News</a></li>
-                        <li><a href="feedback.php" class="nav-link">Feedback</a></li>
-                        <li><a href="merchendise.php" class="nav-link">shop</a></li>
+                        <li class="<?php
+                        if (!empty($_GET['news'])) {
+                            echo "active";
+                        }
+                        ?>"><a href="news.php?news=news" class="nav-link">News</a></li>
+                        <li class="<?php
+                        if (!empty($_GET['feedback'])) {
+                            echo "active";
+                        }
+                        ?>"><a href="feedback.php?feedback=feedback" class="nav-link">Feedback</a></li>
+                        <li class="<?php
+                        if (!empty($_GET['marchandise'])) {
+                            echo "active";
+                        }
+                        ?>"><a href="merchendise.php?marchandise=marchandise" class="nav-link">shop</a></li>
 
                         <?php if (isset($_SESSION['u_email']) && isset($_SESSION['u_pass']) && isset($_SESSION['u_name'])) { ?>
                         <li><a href="user/profile.php?id=<?php echo $_SESSION['user_id'];?>" class="nav-link" style="color:white; font-weight:bold; ">Profile</a></li>
