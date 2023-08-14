@@ -346,29 +346,23 @@ $se_q = mysqli_query($conn ,$select_teams);
         </div>
       
             <script>
-var getapi = 'https://newsapi.org/v2/everything?q=football&apiKey=4707ccada6ac4342888507cc4227efd1';
-var url = getapi;
-var req = new Request(url);
-fetch(req).then(res => res.json()).then(data => {
-// debugger
-var alldata = data.articles;
-console.log(alldata)
-for (var index = 15; index < 18 /*alldata.length*/ ; index++) {
-    element = alldata[index];
-    console.log(element);
-    // console.log(element['title']);
-    // console.log(element['urlToImage']);
-    document.getElementById('test').innerHTML +=
-        "<div class='col-lg-4 mb-4'><div class='custom-media d-block' ><div class='img mb-4'><a href='./articles/newsrelated.php?index=" +
-        index + "'><img src='" + element['urlToImage'] + "' alt='Image' class='img-fluid'></a>" +
-        "<div class='text'><span class='meta'>" + element['publishedAt'] +
-        "</span> <h3 class='mb-4'><a href='./articles/newsrelated.php?index=" + index + "'>" + element[
-            'title'] +
-        "</a></h3> <p><a href='./articles/newsrelated.php?index=" + index +
-        "'>Read more</a></p></div></div>";
-
-
-}
+fetch('./news.json')
+.then(res => res.json())
+.then(data =>{
+    // console.log(data);
+    for (let index = 0; index < 3; index++) {
+         element = data[index];
+        //  console.log(element);
+         document.getElementById('test').innerHTML +=
+                "<div class='col-lg-4 mb-4'><div class='custom-media d-block' ><div class='img mb-4'><a href='./articles/newsrelated.php?index=" +
+                index + "'><img src='" + element['image'] + "' alt='Image' class='img-fluid'></a>" +
+                "<div class='text'><span class='meta'>" + element['published_at'] +
+                "</span> <h3 class='mb-4'><a href='./articles/newsrelated.php?index=" + index + "'>" + element[
+                    'title'] +
+                "</a></h3> <p><a href='./articles/newsrelated.php?index=" + index +
+                "'>Read more</a></p></div></div>";
+        
+    }
 });
 </script>
 

@@ -23,13 +23,13 @@ $news_id = $_GET['index'];
   <link rel="stylesheet" href="../fonts/flaticon/font/flaticon.css">
   <link rel="stylesheet" href="../css/aos.css">
   <link rel="stylesheet" href="../css/style.css">
-  <script>
+  <!-- <script>
      var url = 'https://newsapi.org/v2/everything?q=football&apiKey=4707ccada6ac4342888507cc4227efd1';
       var req = new Request(url);
       fetch(req).then(res => res.json()).then(data => {
         // debugger
         var alldata = data.articles;
-        element = alldata['<?php echo $news_id ?>'];
+        element = alldata[''];
         console.log(element)
         var abc = element['publishedAt'];
         document.getElementById("date").innerText = abc.slice(0,10);
@@ -41,7 +41,32 @@ $news_id = $_GET['index'];
         document.getElementById("description").innerText = element['description'];
 
       })
-  </script>
+  </script> -->
+    <script>
+
+       
+
+fetch('../news.json')
+.then(res => res.json())
+.then(data => {
+    // console.log(data);
+         element = data['<?php echo $news_id ?>'];
+         console.log(element);
+         var abc = element['published_at'];
+        document.getElementById("date").innerText = abc.slice(0,10);
+        document.getElementById("time").innerText = abc.slice(11,19);
+        document.getElementById("author").innerText = element['author'];
+        document.getElementById("title").innerText = element['title'];
+        document.getElementById("pic").src = element['image'];
+        document.getElementById("content").innerText = element['content'];
+        document.getElementById("description").innerText = element['description'];
+        
+   
+});
+
+ 
+
+    </script>
 </head>
 
 <body>
