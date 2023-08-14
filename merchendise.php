@@ -50,7 +50,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-5 ml-auto">
-                        <h1 class="text-white">MERCHENDISE</h1>
+                        <h1 class="text-white">MARCHANDISE</h1>
                       
                         <div id="date-countdown"></div>
                         <p>
@@ -72,7 +72,7 @@
      Categories
   </button>
   <ul class="dropdown-menu dropdown-menu-dark w-100 text-center" aria-labelledby="dropdownMenuButton2">
-    <li><a href="merchendise.php" class="dropdown-item">View All</a></li>
+    <li><a href="merchendise.php#card_div" class="dropdown-item">View All</a></li>
       <?php
       $select = "SELECT * FROM `product_category`";
 $select_run = mysqli_query($conn,$select);

@@ -182,8 +182,7 @@ try {
                                                     <td>
                                                         <?php echo $value['item_name'] ?>
                                                     </td>
-                                                    <td>$
-                                                        <?php echo $value['item_price'] ?>
+                                                    <td>Rs.<?php echo $value['item_price'] ?>
                                                         <input type="hidden" class="get_price" value="<?php echo $value['item_price'] ?>" >
                                                     </td>
                                                     <td>
@@ -316,15 +315,15 @@ try {
     function subtotal() {
      grand_total=0;
      for (let index = 0; index < price_get.length; index++) {
-         total[index].innerText = (price_get[index].value)*(quantity_get[index].value);
+         total[index].innerText = "Rs." + (price_get[index].value)*(quantity_get[index].value);
          grand_total = grand_total + (price_get[index].value)*(quantity_get[index].value);
      }
-     gr_total.innerText ='$'+ grand_total;
+     gr_total.innerText ='Rs.'+ grand_total;
      var amount = grand_total *20 / 100;
      var discount = grand_total - amount;
     
-     discount_display.innerText = '$' + discount; 
-     discount_mail.innerText = '$' + discount; 
+     discount_display.innerText = 'Rs.' + discount; 
+     discount_mail.innerText = 'Rs.' + discount; 
     }
     subtotal();
     </script>
