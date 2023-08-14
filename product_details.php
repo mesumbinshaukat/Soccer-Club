@@ -29,7 +29,7 @@ if (isset($_SESSION['u_id']) && !empty($_SESSION['u_id'])) {
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>eCommerce Product Detail</title>
+    <title>Product Details</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -275,8 +275,8 @@ if (isset($_SESSION['u_id']) && !empty($_SESSION['u_id'])) {
         <div class="container">
             <div class="d-flex align-items-center">
                 <div class="site-logo">
-                    <a href="index.html">
-                        <img src="images/logo.png" alt="Logo">
+                        <a href="index.php">
+                        <img src="images/logo.png"  alt="Logo">
                     </a>
                 </div>
                 <div class="ml-auto">
@@ -303,29 +303,11 @@ if (isset($_SESSION['u_id']) && !empty($_SESSION['u_id'])) {
                             } ?>
                         </ul>
                     </nav>
-                    <a href="#"
-                        class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
-                            class="icon-menu h3 text-white"></a>
+                   
                 </div>
             </div>
         </div>
     </header>
-
-
-
-
-
-
-
-
-    <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close">
-                <span class="icon-close2 js-menu-toggle"></span>
-            </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-    </div>
 
     <div class="hero mt-5">
 

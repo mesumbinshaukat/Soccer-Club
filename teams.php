@@ -58,12 +58,11 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-5 ml-auto">
-                        <h1 class="text-white">Soccer</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae
-                            pariatur.</p>
-                        <div id="date-countdown"></div>
+                        <h1 class="text-white">Soccer Teams</h1>
+                        <p>We compete with other teams, using our skills and teamwork to achieve success and make our supporters proud.</p>
+                        <!-- <div id="date-countdown"></div> -->
                         <p>
-                            <a href="#" class="btn btn-primary py-3 px-4 mr-3">View Merchandise</a>
+                            <!-- <a href="#" class="btn btn-primary py-3 px-4 mr-3">View Merchandise</a> -->
                             <a href="#" class="more light"></a>
                         </p>
                     </div>
@@ -164,7 +163,7 @@ $select_query_teams_run = mysqli_query($conn , $select_query);
 
 
 <div class="container">
-    <div class="col-12 title-section">
+    <div class="col-12 title-section pt-5">
       <h2 class="heading mt-5">Teams</h2>
     </div>
     <div class="text-center mb-5">
@@ -240,7 +239,7 @@ $select_query_teams_run = mysqli_query($conn , $select_query);
             </div>
         </div> -->
 
-        <?php include('footer.html')?>
+        <?php include('footer.php')?>
 
     </div>
 

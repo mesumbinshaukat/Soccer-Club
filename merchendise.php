@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" href="images/football.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Merchandise</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/bootstrap/bootstrap.css">
@@ -50,11 +50,11 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-5 ml-auto">
-                        <h1 class="text-white">MARCHANDISE</h1>
+                        <h1 class="text-white">MERCHANDISE</h1>
                       
-                        <div id="date-countdown"></div>
+                        <!-- <div id="date-countdown"></div> -->
                         <p>
-                            <a href="#card_div" class="btn btn-primary py-3 px-4 mr-3">View Merchandise</a>
+                            <a href="#card_div" class="btn btn-primary btn-sm fw-bold py-3 px-4 mr-3">View Merchandise</a>
                             <a href="#" class="more light"></a>
                         </p>
                     </div>
@@ -143,7 +143,7 @@ while( $fetch2 = mysqli_fetch_array($select_categories_id_run2)){
       <div class="mask px-2" style="height: 20px;">
         
       </div>
-      <a href="#" class="">
+      <a href="product_details.php?id=<?php echo $fetch2['p_id'] ?>" class="">
         <img src="./admin/<?php echo $fetch2['p_image']?>" style="height: 225px;" class="card-img-top rounded-2" />
       </a>
       <div class="card-body d-flex flex-column pt-3 border-top">

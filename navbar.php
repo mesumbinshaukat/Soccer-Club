@@ -33,7 +33,7 @@ if(isset($_SESSION['u_id']) && !empty($_SESSION['u_id']))
     <div class="container">
         <div class="d-flex align-items-center">
             <div class="site-logo">
-                <a href="index.html">
+                <a href="index.php">
                     <img src="images/logo.png" alt="Logo">
                 </a>
             </div>

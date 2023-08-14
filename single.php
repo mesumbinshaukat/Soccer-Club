@@ -254,7 +254,7 @@
                 </div>
             </div>
         </div>
-        <?php include('footer.html') ?>
+        <?php include('footer.php') ?>
     </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>

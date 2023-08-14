@@ -103,7 +103,7 @@ if(isset($_POST['submit_btn'])){
                     </div>
                     <div class="col-lg-4 ml-auto">
                         <div class="col-6 title-section">
-                            <h2 class="heading">Feedback</h2>
+                            <h2 class="heading">Contact us</h2>
                         </div>
                         <ul class="list-unstyled">
                             <li class="mb-2">
@@ -125,7 +125,7 @@ if(isset($_POST['submit_btn'])){
                 </div>
             </div>
         </div>
-        <?php include('footer.html') ?>
+        <?php include('footer.php') ?>
     </div>
 
     <script src="js/jquery-3.3.1.min.js"></script>

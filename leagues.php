@@ -95,7 +95,7 @@ include('connection.php');
         </div>
 
 
-        <?php include('footer.html') ?>
+        <?php include('footer.php') ?>
 
         <script src="js/jquery-3.3.1.min.js"></script>
         <script src="js/jquery-migrate-3.0.1.min.js"></script>

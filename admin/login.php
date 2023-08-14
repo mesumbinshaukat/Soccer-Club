@@ -52,7 +52,7 @@ session_start();
 <input type="password" name="pass" class="form-control ">
 <div>
 <div class="mb-3">
-<input type = "submit"  name="login_btn" class="btn btn-success mt-3">
+<input type= "submit" value="Login"  name="login_btn" class="btn btn-success mt-3">
 </div>
  </form>
 

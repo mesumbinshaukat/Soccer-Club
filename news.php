@@ -42,8 +42,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5 mx-auto text-center">
                         <h1 class="text-white">News</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae
-                            pariatur.</p>
+                        <p>Stay updated with the latest soccer news, where thrilling victories, player achievements, and game-changing moments unfold.</p>
                     </div>
                 </div>
             </div>
@@ -103,7 +102,7 @@
 
 
 
-    <div class="row justify-content-center">
+    <!-- <div class="row justify-content-center">
         <div class="col-lg-7 text-center">
             <div class="custom-pagination">
                 <a href="#">1</a>
@@ -115,9 +114,9 @@
         </div>
     </div>
     </div>
-    </div>
+    </div> -->
 
-    <?php include('footer.html')?>
+    <?php include('footer.php')?>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>

@@ -60,9 +60,8 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                 <div class="row align-items-center">
                     <div class="col-lg-5 ml-auto">
                         <h1 class="text-white">Soccer</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae
-                            pariatur.</p>
-                        <div id="date-countdown"></div>
+                        <p>we aim to blend tradition with innovation, fostering a powerhouse of talent that transcends borders.</p>
+                        <!-- <div id="date-countdown"></div> -->
                         <p>
                             <a href="merchendise.php" class="btn btn-primary py-3 px-4 mr-3">View Merchandise</a>
                             <a href="#" class="more light"></a>
@@ -227,7 +226,7 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                                         <?php echo $fetching_next_match_array['Location'];?>
                                     </strong>
                                 </p>
-                                <div id="date-countdown2" class="pb-1"></div>
+                                <!-- <div id="date-countdown2" class="pb-1"></div> -->
                             </div>
                             </div>
 </div>
@@ -392,7 +391,7 @@ for (var index = 15; index < 18 /*alldata.length*/ ; index++) {
         
     </div>
     
-            <?php include('footer.html') ?>
+            <?php include('footer.php') ?>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>

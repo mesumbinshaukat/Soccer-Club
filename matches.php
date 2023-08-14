@@ -56,8 +56,7 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                 <div class="row align-items-center">
                     <div class="col-lg-5 mx-auto text-center">
                         <h1 class="text-white">Matches</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae
-                            pariatur.</p>
+                        <p>Our team plays soccer matches with strong teamwork and skill, creating exciting moments for fans. </p>
                     </div>
                 </div>
             </div>
@@ -335,7 +334,7 @@ $sq_fetch_2 = mysqli_fetch_array($s_q_r_2);
          
         </div>
     </div>
-    <?php include('footer.html') ?>
+    <?php include('footer.php') ?>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>

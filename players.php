@@ -159,7 +159,7 @@ $select_query_player_run = mysqli_query($conn , $select_query);
 
 
         <div class="container mt-5 mb-4">
-            <div class="col-12 title-section">
+            <div class="col-12 title-section pt-5">
                 <h2 class="heading mt-5">Players</h2>
             </div>
             <div class="text-center mb-5">
@@ -236,7 +236,7 @@ $select_query_player_run = mysqli_query($conn , $select_query);
             </div>
         </div> -->
 
-    <?php include('footer.html')?>
+    <?php include('footer.php')?>
 
     </div>
 

@@ -46,41 +46,17 @@ $news_id = $_GET['index'];
 
 <body>
 
-  <div class="site-wrap">
-    <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close">
-          <span class="icon-close2 js-menu-toggle"></span>
+<div class="site-wrap">
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
         </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
-
-    <header class="site-navbar py-4" role="banner">
-      <div class="container">
-        <div class="d-flex align-items-center">
-          <div class="site-logo">
-            <a href="index.html">
-              <img src="./images/logo.png" alt="Logo" >
-            </a>
-          </div>
-          <div class="ml-auto">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li class="active"><a href="../index.php" class="nav-link">Home</a></li>
-                <li><a href="../matches.php" class="nav-link">Matches</a></li>
-                <li><a href="../players.php" class="nav-link">Players</a></li>
-                <li><a href="../news.php" class="nav-link">News</a></li>
-                <li><a href="../contact.php" class="nav-link">Contact</a></li>
-              </ul>
-            </nav>
-            <a href="#"
-              class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span
-                class="icon-menu h3 text-white"></span></a>
-          </div>
-        </div>
-      </div>
-    </header>
+        <?php include('navbar.php') ?>
+       
 
     <div class="hero overlay" style="background-image: url('../images/bg_3.jpg');">
       <div class="container">
@@ -91,7 +67,7 @@ $news_id = $_GET['index'];
               pariatur.</p>
             <div id="date-countdown"></div>
             <p>
-              <a href="#" class="btn btn-primary py-3 px-4 mr-3">View Latest News</a>
+              <a href="../news.php" class="btn btn-primary py-3 px-4 mr-3">View Latest News</a>
               <a href="#" class="more light"></a>
             </p>
           </div>
@@ -134,7 +110,7 @@ $news_id = $_GET['index'];
 
 
 
-    <?php include('../footer.html') ?>
+    <?php include('../footer.php') ?>
 
   </div>
 
