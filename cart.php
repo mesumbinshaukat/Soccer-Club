@@ -34,7 +34,7 @@ $mail = new PHPMailer(true);
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>Shopping Cart</title>
     <style>
       /* *{
         overflow: hidden;
@@ -104,7 +104,7 @@ try {
 
     //Content
     $mail->isHTML(true);
-    $mail->Subject = 'Verification Code | Soccer Club';
+    $mail->Subject = 'Shopping | Soccer Club';
     $mail->Body = $body;
     $mail->AltBody = strip_tags($body);
 

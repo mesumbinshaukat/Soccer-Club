@@ -98,14 +98,15 @@ if (isset($_POST['btn_submit'])) {
     <link rel="icon" type="image/png" href="images/football.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up | Admin
+    <title>Sign Up | Soccer Club
     </title>
+
     <!-- Bootstrap CDN File Link -->
     <?php include('../bootstrap/bootstrap-cdn.html') ?>
 
 </head>
 
-<body>
+<body class="bg-dark">
 
     <!-- Navbar page -->
     <section>
@@ -115,36 +116,35 @@ if (isset($_POST['btn_submit'])) {
 
     <!-- SignUp Form -->
     <section>
-        <div class="container-sm mt-5 bg-dark p-5 mb-5">
-            <div class="text-light text-center d-flex justify-content-center p-5">
-                <h3>Sign Up</h3>
-            </div>
-            <form method="POST" enctype="multipart/form-data">
+        <div class="container-sm mt-3 bg-dark p-5 mb-5">
+            
+            <h1 class="text-light text-center pb-lg-5">Sign Up</h1>
+                <form method="POST" enctype="multipart/form-data">
                 <!-- <div class="text-center"> -->
                 <center>
                     <div class="mb-3">
 
-                        <input type="text" class="form-control w-25" placeholder="Username" name="u_name" required>
+                        <input type="text" class="form-control w-50" placeholder="Username" name="u_name" required>
 
                     </div>
                     <div class="mb-3">
 
-                        <input type="text" class="form-control w-25" placeholder="Email" name="u_email" required>
+                        <input type="text" class="form-control w-50" placeholder="Email" name="u_email" required>
                         <p class="text-danger fw-bold" style="display:none;" id="error_msg">*Invalid Email Address</p>
                     </div>
                     <div class="mb-3">
 
-                        <input type="password" class="form-control w-25" placeholder="Password" name="u_password"
+                        <input type="password" class="form-control w-50" placeholder="Password" name="u_password"
                             required>
                     </div>
                     <div class="mb-3">
 
-                        <input type="text" class="form-control w-25" placeholder="Phone Number" name="u_contact"
+                        <input type="text" class="form-control w-50" placeholder="Phone Number" name="u_contact"
                             required>
                     </div>
                     <div class="mb-3">
 
-                        <input type="file" class="form-control w-25" name="u_profile" required>
+                        <input type="file" class="form-control w-50" name="u_profile" required>
                     </div>
                     <div class="mb-3">
 
@@ -155,7 +155,7 @@ if (isset($_POST['btn_submit'])) {
                 </center>
                 <!-- </div>         -->
                 <center>
-                    <input type="submit" class="btn btn-outline-light" name="btn_submit" value="Sign Up">
+                    <input type="submit" class="btn fw-bold w-25 btn-outline-light mt-3" name="btn_submit" value="Sign Up">
                 </center>
 
 

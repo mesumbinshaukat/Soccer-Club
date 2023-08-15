@@ -158,7 +158,11 @@ while( $fetch2 = mysqli_fetch_array($select_categories_id_run2)){
              <input type="hidden" name="pr_id" value="<?php echo $fetch['p_id'] ?>">
              <input type="hidden" name="pr_name" value="<?php echo $fetch2['p_name'] ?>">
              <input type="hidden" name="pr_price" value="<?php echo $fetch2['p_price'] ?>">
-             <button type="submit" class="btn btn-success" name="submit_btn">Add to Cart</button>
+             <div class="d-flex justify-content-center" >
+
+<button type="submit" class="btn btn-dark w-100 " name="submit_btn">Add to Cart</button>&nbsp;
+<!-- <a type="submit" class="btn btn-dark">Buy Now</a> -->
+</div>
           </form>
         </div>
       </div>

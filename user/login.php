@@ -85,7 +85,7 @@ if (isset($_POST['btn_submit'])) {
     <?php include("../bootstrap/bootstrap-cdn.html") ?>
 </head>
 
-<body>
+<body class="bg-dark">
 
     <!-- Navbar page -->
     <section>
@@ -93,17 +93,17 @@ if (isset($_POST['btn_submit'])) {
     </section>
 
     <!-- LogIn Form -->
-    <section class="mt-5">
-        <div class="container-sm bg-dark bg-gradient p-5 mb-5">
+    <section class="mt-4">
+        <div class="container-sm bg-dark p-5 mb-5">
             <h1 class="text-light text-center pb-lg-5">Log In</h1>
             <form method="POST">
                 <center>
                     <div class="mb-3">
-                        <input type="email" class="form-control w-25" name="u_email" placeholder="Email" required>
+                        <input type="email" class="form-control w-50" name="u_email" placeholder="Email" required>
                     </div>
                     <div class="mb-3">
 
-                        <input type="password" class="form-control w-25" name="u_pass" placeholder="Password" required>
+                        <input type="password" class="form-control w-50" name="u_pass" placeholder="Password" required>
                     </div>
                     <div class="mb-3">
 
@@ -111,7 +111,7 @@ if (isset($_POST['btn_submit'])) {
                             *Invalid Credentials</p>
                     </div>
 
-                    <input type="submit" name="btn_submit" value="Log In" class="btn btn-outline-success">
+                    <input type="submit" name="btn_submit" value="Log In" class="btn w-25 mt-3 btn-outline-success">
                 </center>
 
                 <center>

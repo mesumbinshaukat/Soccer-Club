@@ -47,6 +47,7 @@ if (isset($_SESSION['u_id']) && !empty($_SESSION['u_id'])) {
     <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
+        
         body {
             overflow-x: hidden;
             font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -272,23 +273,24 @@ if (isset($_SESSION['u_id']) && !empty($_SESSION['u_id'])) {
 <body>
 
     <header class="site-navbar py-4" role="banner">
-        <div class="container">
-            <div class="d-flex align-items-center">
-                <div class="site-logo">
-                        <a href="index.php">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center ">
+            
+                <div class="ml-auto" style="margin-top:20px;">
+                    <nav class="site-navigation position-relative text-right " role="navigation">
+                        <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block" style="margin-right:280px">
+                       
+                       <li style="margin-right:80px"> <a href="index.php" class="nav-link" >
                         <img src="images/logo.png"  alt="Logo">
-                    </a>
-                </div>
-                <div class="ml-auto">
-                    <nav class="site-navigation position-relative text-right" role="navigation">
-                        <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                         </a>
+                         </li>
                             <li class="active"><a href="index.php" class="nav-link">Home</a></li>
                             <li><a href="matches.php" class="nav-link">Matches</a></li>
                             <li><a href="players.php" class="nav-link">Players</a></li>
                             <li><a href="teams.php" class="nav-link">Teams</a></li>
-                            <!-- <li><a href="teams.php" class="nav-link">Marchandise</a></li> -->
                             <li><a href="news.php" class="nav-link">News</a></li>
-                            <li><a href="contact.php" class="nav-link">Contact</a></li>
+                            <li><a href="feedback.php" class="nav-link">Feedback</a></li>
+                            <li><a href="merchendise.php" class="nav-link">Shop</a></li>
                             <?php if (isset($_SESSION['u_email']) && isset($_SESSION['u_pass']) && isset($_SESSION['u_name'])) { ?>
                                 <li><a href="user/profile.php?id=<?php echo $_SESSION['user_id']; ?>" class="nav-link"
                                         style="color:white; font-weight:bold; ">Profile</a></li>
@@ -303,11 +305,12 @@ if (isset($_SESSION['u_id']) && !empty($_SESSION['u_id'])) {
                             } ?>
                         </ul>
                     </nav>
-                   
                 </div>
             </div>
         </div>
     </header>
+
+    
 
     <div class="hero mt-5">
 
@@ -331,9 +334,7 @@ if (isset($_SESSION['u_id']) && !empty($_SESSION['u_id'])) {
                                 <?php echo $fetch_array_details['p_name'] ?>
                             </h3>
 
-                            <p class="product-description" style="color:black;">Suspendisse quos? Tempus cras iure
-                                temporibus? Eu laudantium
-                                cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.
+                            <p class="product-description" style="color:black;">a vibrant tapestry of team loyalty and athletic fashion, serves as a dynamic symbol of the global passion for the beautiful game.
                             </p>
                             <h4 class="price" style="color:black ;"> Price: <span>RS
                                     <?php echo $fetch_array_details['p_price'] ?>
@@ -349,8 +350,7 @@ if (isset($_SESSION['u_id']) && !empty($_SESSION['u_id'])) {
                                 <input type="hidden" name="pr_name" value="<?php echo $fetch_array_details['p_name'] ?>">
                                 <input type="hidden" name="pr_price" value="<?php echo $fetch_array_details['p_price'] ?>">
                                 <div class="action">
-                                    <button type="submit" class="btn btn-dark add-to-cart " name="submit_btn" type="button">Buy
-                                        Now</button>
+                                    <button type="submit" class="btn btn-dark add-to-cart " name="submit_btn" type="button">Buy Now</button>
 
                                 </div>
                             </form>
