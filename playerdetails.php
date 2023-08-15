@@ -31,10 +31,10 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
     <title>Team Details</title>
 
     <style>
-        .colss{
+        /* .colss{
             margin-top: 50px;
 
-        }
+        } */
     </style>
 </head>
 <body>
@@ -52,12 +52,12 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
             <div class="container">
                 <div class="row align-items-center">
                 <div class="col-lg-6 text-center">
-         <img src="./admin/<?php echo $fetch_team_array['p_pic']?>" alt="" class = "w-50">
+         <img src="./admin/<?php echo $fetch_team_array['p_pic']?>" alt="" width="500px" style="height:400px;" >
             
         </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 text-center">
         <div class="form-group ">
-         <label for="exampleInputEmail1" class = "mt-5">Player Name</label>
+         <label for="exampleInputEmail1" class = "">Player Name</label>
          <h4><?php echo $fetch_team_array['p_name'];?></h4>
         </div>
         <div class="form-group">
@@ -68,13 +68,42 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
           <label">Team</label>
           <h4><?php echo $fetch_team_array['t_name'];?></h4>  
         </div>
+        <div class="form-group">
+          <label>Player Acheivements</label>
+          <?php
+          if ($fetch_team_array['p_achievement'] == 0) {
+            echo "<h3>-----</h3>";
+          }
+          else{
+           $player_id = $fetch_team_array['p_id'];
+           $query = "SELECT * FROM `match_schedule` WHERE `player_of_match`='$player_id'";
+           $query_run = mysqli_query($conn,$query);
+           while($fetch = mysqli_fetch_array($query_run)){
+           $team1 = $fetch['team_1'];
+           $team2 = $fetch['team_2'];
+           $league = $fetch['m_league_id'];
+           $for_team1 = "SELECT * FROM `team` WHERE `t_id`='$team1'";
+           $for_team1_run = mysqli_query($conn , $for_team1);
+           $fetch_team1 = mysqli_fetch_array($for_team1_run);
+           $for_team2 = "SELECT * FROM `team` WHERE `t_id`='$team2'";
+           $for_team2_run = mysqli_query($conn , $for_team2);
+           $fetch_team2 = mysqli_fetch_array($for_team2_run); 
+           $for_league = "SELECT * FROM `leagues` WHERE `l_id`='$league'";
+           $for_league_run = mysqli_query($conn , $for_league);
+           $fetch_league = mysqli_fetch_array($for_league_run); 
+           
+           echo "<li class='text-white' >Player of the match in " . $fetch_team1['t_name'] ." Vs " .$fetch_team2['t_name'] . " of League " . $fetch_league['l_name'] ."</li>" ;   
+           }
+        }
+           ?>  
+            
+        </div>
       </div>
         
     
+      
                 </div>
             </div>
-
-
 
 
 

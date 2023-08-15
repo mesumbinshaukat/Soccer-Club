@@ -50,7 +50,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-5 ml-auto">
-                        <h1 class="text-white">MERCHANDISE</h1>
+                        <h1 class="text-white">MARCHANDISE</h1>
                       
                         <!-- <div id="date-countdown"></div> -->
                         <p>

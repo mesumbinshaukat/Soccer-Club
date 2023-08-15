@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 session_start();
 if (!isset($_SESSION['admin_loggedin'])) {
     header('location:login.php');
@@ -15,13 +16,12 @@ $fetching_array_for_player = mysqli_fetch_array($select_query_run);
 
 
 if (isset($_POST['updated'])) {
-   $player_of_the_match =$_POST['player_of_the_match'];
+   $player_of_the_match = $_POST['player_of_the_match'];
    $update_query = "UPDATE `match_schedule` SET `player_of_match`=' $player_of_the_match' WHERE `match_id` = '$get_id'";
    $update_query_run = mysqli_query($conn , $update_query);
-
-   
-   $upp_q = "UPDATE `players` SET `p_achievement`='$get_id ' WHERE p_id = '$player_of_the_match'";
+   $upp_q = "UPDATE `players` SET `p_achievement`='$get_id' WHERE p_id = '$player_of_the_match'";
    $uppq = mysqli_query($conn , $upp_q);
+  
 
 
    if ($fetching_array_for_player['won_team'] == $fetching_array_for_player['team_1'] ||
@@ -90,17 +90,17 @@ if (isset($_POST['updated'])) {
     $select_query22 = mysqli_query($conn , $teams22);
     $fetching_22 = mysqli_fetch_array($select_query22); 
     $total_name22 = $fetching_22['total_drawn'];
-    $increament =$total_name + 1;
+    $increament =$total_name22 + 1;
 
 
 
     $draw_team2 = $fetching_array_for_player['team_2'];
     $teamss33 = "SELECT * FROM `team` WHERE t_id = '$draw_team2' ";
-    $selectquery33 = mysqli_query($conn , $teamss33);
+    $selectquery33 = mysqli_query($conn , $teamss33);   
     $fetching_33 = mysqli_fetch_array($selectquery33); 
     $total_na33 = $fetching_33['total_drawn'];
-    $increaments =$total_na + 1;
-
+    $increaments =$total_na33 + 1;
+    $total_na33 += 1;
 
 
         $q_update_won = "UPDATE `team` SET `total_drawn`='$increament' WHERE t_id = '$draw_team' ";
@@ -167,6 +167,8 @@ if (isset($_POST['updated'])) {
             <label>Player of the Match</label>
             <select name="player_of_the_match" class="form-control form-select">
                 <option value="" disabled selected hidden>Select Above</option>
+                <option value="0">None (drawn)</option>
+
                 <?php 
                   if ($fetching_array_for_player['team_1_goals'] > $fetching_array_for_player['team_2_goals']) {
                     $won_team = $fetching_array_for_player['team_1'];

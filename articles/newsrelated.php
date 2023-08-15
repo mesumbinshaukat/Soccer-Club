@@ -88,8 +88,7 @@ fetch('../news.json')
         <div class="row align-items-center">
           <div class="col-lg-5 ml-auto">
             <h1 class="text-white">Soccer Latest News</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, molestias repudiandae
-              pariatur.</p>
+            <p>Stay updated with the latest soccer news, where thrilling victories, player achievements, and game-changing moments unfold.</p>
             <div id="date-countdown"></div>
             <p>
               <a href="../news.php" class="btn btn-primary py-3 px-4 mr-3">View Latest News</a>

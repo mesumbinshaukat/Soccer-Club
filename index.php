@@ -166,7 +166,7 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                     <div class="col-lg-6">
                         <div class="widget-next-match">
                             <?php
-                            $selecting_next_match = "SELECT * FROM `match_schedule` INNER JOIN `leagues` ON match_schedule.m_league_id = leagues.l_id  WHERE `m_status` = 0   ORDER BY `match_id` DESC ";
+                            $selecting_next_match = "SELECT * FROM `match_schedule` INNER JOIN `leagues` ON match_schedule.m_league_id = leagues.l_id  WHERE `m_status` = 0   ORDER BY `date` ";
                             $selecting_next_match_run = mysqli_query($conn, $selecting_next_match);
                             $fetching_next_match_array = mysqli_fetch_array($selecting_next_match_run);
 
@@ -252,9 +252,11 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                             
 <?php
 $league_id_one = $fetching_array['m_league_id'];
-$select_teams = "SELECT * FROM `team` WHERE league_id = '$league_id_one'  ORDER BY `total_win` DESC" ;
+$select_teams = "SELECT * FROM `team` WHERE league_id = '$league_id_one'  ORDER BY `total_win` DESC ,`total_lost` ASC, `total_drawn` DESC" ;
 $se_q = mysqli_query($conn ,$select_teams);
-
+$select_teams_for_league_name = "SELECT * FROM `leagues` WHERE `l_id` = '$league_id_one'" ;
+$se_q2 = mysqli_query($conn ,$select_teams_for_league_name);
+$fetch_league = mysqli_fetch_array($se_q2);
 
 
 
@@ -263,11 +265,12 @@ $se_q = mysqli_query($conn ,$select_teams);
 
 
                     <div class="col-lg-6">
+                        <h2 class="text-center mb-3"><?php echo $fetch_league['l_name'] ?></h2>
                         <div class="widget-next-match">
                             <table class="table custom-table">
                                 <thead>
                                     <tr class = "text-center">
-                                        <th>P</th>
+                                        <th>Rank</th>
                                         <th>Team</th>
                                         <th>W</th>
                                         <th>D</th>

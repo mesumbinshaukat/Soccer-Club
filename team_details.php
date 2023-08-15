@@ -168,7 +168,7 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
   </thead>
   <tbody>
    
-        <?php $select_player_query = "SELECT * FROM `players` WHERE team_id = '$get_team_id' ";
+        <?php $select_player_query = "SELECT * FROM `players` WHERE team_id = '$get_team_id'  ";
         $select_query_run = mysqli_query($conn , $select_player_query);
          while ($player = mysqli_fetch_array($select_query_run)) {?>
            <tr class="text-center" >
@@ -177,7 +177,13 @@ $fetch_team_array = mysqli_fetch_array($select_query_run);
             <td><?php if($player['p_achievement'] == 0){
               echo "No Acheivements";
             }else{
-              echo $player['p_achievement'] . " times player of the match";
+              $p_id = $player['p_id'];
+              $query = "SELECT * FROM `match_schedule` WHERE `player_of_match`='$p_id'";
+              // "SELECT @times = COUNT(DidWin) FROM ``
+              // $team_1 = "SELECT * FROM `match_schedule` WHERE `match_id` = '$match_id'";
+              $run = mysqli_query($conn,$query);
+              $no = mysqli_num_rows($run);
+              echo  $no . " times player of the match  <a href='playerdetails.php?id=" . $player['p_id'] . "'>(see details)</a>" ;
             }?></td>
             </tr>
         <?php }?>

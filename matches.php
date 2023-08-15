@@ -155,7 +155,7 @@ $fetcharrayteam2 = mysqli_fetch_array($select_match2);
                     <div class="col-lg-12 mb-5">
                         <div class="widget-next-match">
                           <?php
-                            $selecting_next_match = "SELECT * FROM `match_schedule` INNER JOIN `leagues` ON match_schedule.m_league_id = leagues.l_id  WHERE `m_status` = 0   ORDER BY `match_id` DESC ";
+                            $selecting_next_match = "SELECT * FROM `match_schedule` INNER JOIN `leagues` ON match_schedule.m_league_id = leagues.l_id  WHERE `m_status` = 0   ORDER BY `date` ";
                             $selecting_next_match_run = mysqli_query($conn, $selecting_next_match);
                             $fetching_next_match_array = mysqli_fetch_array($selecting_next_match_run);
 
@@ -299,7 +299,7 @@ $sq_fetch_2 = mysqli_fetch_array($s_q_r_2);
 
 <?php
 $var_1 =1 ;
-$select_recently_match = "SELECT * FROM `match_schedule` WHERE m_status = 0";
+$select_recently_match = "SELECT * FROM `match_schedule` WHERE m_status = 0 ORDER BY `date`";
 $select_query_run = mysqli_query($conn , $select_recently_match);
 
 while($recently_data = mysqli_fetch_array($select_query_run)){

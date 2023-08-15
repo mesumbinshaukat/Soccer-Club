@@ -59,12 +59,12 @@
     <script>
 
        
-var url = 'https://newsapi.org/v2/everything?q=football&apiKey=4707ccada6ac4342888507cc4227efd1';
-      var req = new Request(url);
-      fetch(req).then(res => res.json()).then(data => {
-        // debugger
-        var alldata = data.articles;
-        console.log(alldata)
+// var url = 'https://newsapi.org/v2/everything?q=football&apiKey=4707ccada6ac4342888507cc4227efd1';
+//       var req = new Request(url);
+//       fetch(req).then(res => res.json()).then(data => {
+//         // debugger
+//         var alldata = data.articles;
+//         console.log(alldata)
         // for (var index = 1; index < alldata /*alldata.length*/ ; index++) {
         //     element = alldata[index];
         //     console.log(element);
@@ -81,7 +81,7 @@ var url = 'https://newsapi.org/v2/everything?q=football&apiKey=4707ccada6ac43428
 
 
         // }
-    });
+    // });
 
 fetch('./news.json')
 .then(res => res.json())

@@ -39,7 +39,7 @@ if (isset($_POST['btn_update'])) {
         
     }
     elseif ($team2_goals == $team1_goals) {
-        $update_query = "UPDATE `match_schedule` SET `m_status`='2' ,`team_1_goals`='$team1_goals',`team_2_goals`='$team2_goals',`drawn`='draw' WHERE `match_id` = '$get_id'";
+        $update_query = "UPDATE `match_schedule` SET `m_status`='2' ,`team_1_goals`='$team1_goals',`team_2_goals`='$team2_goals',`drawn`= '0' WHERE `match_id` = '$get_id'";
         $update_query_run = mysqli_query($conn, $update_query);
         if ($update_query_run) {
             echo "<script>alert('schedule updated')</script>";
