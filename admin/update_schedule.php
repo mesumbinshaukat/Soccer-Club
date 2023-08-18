@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 session_start();
 if (!isset($_SESSION['admin_loggedin'])) {
     header('location:login.php');
@@ -24,31 +25,24 @@ if (isset($_POST['btn_update'])) {
         if ($update_query_run) {
             echo "<script>alert('schedule updated');
         </script>";
-        header('location:playerofthematch.php?id='. $get_id);
+            header('location:playerofthematch.php?id=' . $get_id);
         }
-        
-    }
-    elseif ($team2_goals > $team1_goals) {
+    } elseif ($team2_goals > $team1_goals) {
         $update_query = "UPDATE `match_schedule` SET `m_status`='2' ,`team_1_goals`='$team1_goals',`team_2_goals`='$team2_goals',`won_team`='$get_team2_id',`lost_team`='$get_team1_id' WHERE `match_id` = '$get_id'";
         $update_query_run = mysqli_query($conn, $update_query);
         if ($update_query_run) {
             echo "<script>alert('schedule updated');
          </script>";
-         header('location:playerofthematch.php?id='. $get_id);
+            header('location:playerofthematch.php?id=' . $get_id);
         }
-        
-    }
-    elseif ($team2_goals == $team1_goals) {
-        $update_query = "UPDATE `match_schedule` SET `m_status`='2' ,`team_1_goals`='$team1_goals',`team_2_goals`='$team2_goals',`drawn`= '0' WHERE `match_id` = '$get_id'";
+    } elseif ($team2_goals == $team1_goals) {
+        $update_query = "UPDATE `match_schedule` SET `m_status`='2' ,`team_1_goals`='$team1_goals',`team_2_goals`='$team2_goals',`drawn`='draw' WHERE `match_id` = '$get_id'";
         $update_query_run = mysqli_query($conn, $update_query);
         if ($update_query_run) {
             echo "<script>alert('schedule updated')</script>";
-            header('location:playerofthematch.php?id='. $get_id);
-        }     
+            header('location:playerofthematch.php?id=' . $get_id);
+        }
     }
-
-
-
 }
 
 ?>
@@ -63,8 +57,7 @@ if (isset($_POST['btn_update'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Schedule</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
         body {
             background-color: #252525;
@@ -94,28 +87,26 @@ if (isset($_POST['btn_update'])) {
 
         <div class="container me-5 mt-5 ">
 
-            <form method="post" >
-        
+            <form method="post">
 
-<div id="hide" >
-        <div class="mb-3">
-            <label>Team 1 Goals</label>
-            <input required type="number" min="0" class="form-control" name="team1_goals"
-                placeholder="Goals Score By <?php echo $get_team1 ?>">
-        </div>
-        <div class="mb-3">
-            <label>Team 2 Goals</label>
-            <input required type="number" min="0" class="form-control" name="team2_goals"
-                placeholder="Goals Score By <?php echo $get_team2 ?>">
-        </div>
-    </div>
 
-    <input type="submit" value="Update Button " class="btn btn-success" name ="btn_update" >
-    
-    
-    
-</form>
-    </script>
+                <div id="hide">
+                    <div class="mb-3">
+                        <label>Team 1 Goals</label>
+                        <input required type="number" min="0" class="form-control" name="team1_goals" placeholder="Goals Score By <?php echo $get_team1 ?>">
+                    </div>
+                    <div class="mb-3">
+                        <label>Team 2 Goals</label>
+                        <input required type="number" min="0" class="form-control" name="team2_goals" placeholder="Goals Score By <?php echo $get_team2 ?>">
+                    </div>
+                </div>
+
+                <input type="submit" value="Update Button " class="btn btn-success" name="btn_update">
+
+
+
+            </form>
+            </script>
 </body>
 
 
