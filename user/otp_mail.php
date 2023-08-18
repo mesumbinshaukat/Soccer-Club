@@ -47,7 +47,7 @@ if ($query_run) {
 
 
         //Recipients
-        $mail->setFrom('wot.official.786@gmail.com', 'WORLD OF TECH');
+        $mail->setFrom('soccer.club.techwiz@gmail.com', 'Soccer Club');
         $mail->addAddress($user_email, $user_name); //Add a recipient
 
 
